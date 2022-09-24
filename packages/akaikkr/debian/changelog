@@ -1,0 +1,54 @@
+akaikkr (20220114-1) unstable; urgency=medium
+
+  * New upstream version 20220114
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 31 Jan 2022 23:45:16 +0900
+
+akaikkr (20210506-1) unstable; urgency=medium
+
+  * New upstream version 20210506
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 15 May 2021 16:14:33 +0900
+
+akaikkr (20200910-1) unstable; urgency=low
+
+  * New upstream version 20200910 (cpa2002v010)
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 20 Oct 2020 13:56:46 +0900
+
+akaikkr (20200903-1) unstable; urgency=low
+
+  * New upstream version 20200903 (cpa2002v010)
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 09 Sep 2020 20:52:47 +0900
+
+akaikkr (20180822-1) unstable; urgency=low
+
+  * Update upstream to version 20180822 (cpa2002v010)
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 19 Sep 2018 09:59:16 +0900
+
+akaikkr (20180520-1) unstable; urgency=low
+
+  * Update upstream to version 20180520 (cpa2002v010)
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 16 Jun 2018 21:36:46 +0900
+
+akaikkr (20170222-1) unstable; urgency=low
+
+  * Update upstream to version 20170222
+  * Added support for Jessie
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 15 Apr 2017 15:37:17 +0900
+
+akaikkr (20140905-1) unstable; urgency=low
+
+  * Update upstream to version 20140905 (supported OpenMP parallelization)
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 15 Sep 2014 15:58:28 +0900
+
+akaikkr (20130914-1) unstable; urgency=low
+
+  * Initial debian package for AkaiKKR (previously known as Machikanayama2002)
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 04 July 2014 09:06:38 +0900

@@ -1,0 +1,12 @@
+Source: akaikkr
+Section: non-free
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper, gfortran
+Standards-Version: 3.9.3
+Homepage: http://kkr.issp.u-tokyo.ac.jp
+
+Package: akaikkr
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: AkaiKKR (previously called as Machikaneyama2002)
