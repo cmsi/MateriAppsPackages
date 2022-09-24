@@ -1,0 +1,11 @@
+Source: materiapps-keyring
+Section: scientific
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Homepage: http://cmsi.github.io/MateriAppsLive
+
+Package: materiapps-keyring
+Architecture: all
+Description: GPG Public Keys of MateriApps LIVE! repository
