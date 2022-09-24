@@ -3,21 +3,20 @@
 SCRIPT="$0"
 SCRIPT_DIR=$(cd $(dirname ${SCRIPT})/.. && pwd)
 
-export PACKAGE="$1"
-export PACKAGE_DIR="${SCRIPT_DIR}/packages/${PACKAGE}"
+PACKAGE="$1"
+PACKAGE_DIR="${SCRIPT_DIR}/packages/${PACKAGE}"
 if [ -z "${PACKAGE}" ]; then
   echo "Usage: ${SCRIPT} package"
   exit 127
 fi
-
 if [ -d "${PACKAGE_DIR}" ]; then :; else
-  echo "Error: ${PACKAGE_DIR} not found"
+  echo "Error: package ${PACKAGE} not found"
   echo "Usage: ${SCRIPT} package"
   exit 127
 fi
 
 . ${SCRIPT_DIR}/script/path.sh
-test -z ${BUILD_DIR} && exit 127
+test -z "${BUILD_DIR}" && exit 127
 
 RELEASE=$(lsb_release -s -c)
 if [ -f ${PACKAGE_DIR}/no-${RELEASE} ]; then

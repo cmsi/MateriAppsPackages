@@ -1,5 +1,20 @@
 #!/bin/sh
 
+SCRIPT="$0"
+SCRIPT_DIR=$(cd $(dirname ${SCRIPT})/.. && pwd)
+
+PACKAGE="$1"
+PACKAGE_DIR="${SCRIPT_DIR}/packages/${PACKAGE}"
+if [ -z "${PACKAGE}" ]; then
+  echo "Usage: ${SCRIPT} package"
+  exit 127
+fi
+if [ -d "${PACKAGE_DIR}" ]; then :; else
+  echo "Error: package ${PACKAGE} not found"
+  echo "Usage: ${SCRIPT} package"
+  exit 127
+fi
+
 VERSION=$(head -1 ${PACKAGE_DIR}/debian/changelog | sed 's/1://g' | cut -d ' ' -f 2 | sed 's/[()]//g')
 VERSION_BASE=$(echo ${VERSION} | cut -d '-' -f 1)
 
