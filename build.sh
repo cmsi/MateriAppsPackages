@@ -16,8 +16,11 @@ if [ -z ${APP} ]; then
   exit 127
 fi
 
+. $SCRIPT_DIR/config/version.sh
 if [ -z "${CODENAMES}" ]; then
-  . ${SCRIPT_DIR}/config.sh
+  for v in ${VERSIONS}; do
+    CODENAMES="${CODENAMES} $(echo ${v} | cut -d/ -f1)"
+  done
 fi
 
 if [ -z ${MALIVE_DATA_DIR} ]; then
