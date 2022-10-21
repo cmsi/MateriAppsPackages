@@ -1,0 +1,16 @@
+Source: tenes
+Section: science
+Priority: optional
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: cmake, debhelper (>= 9), libblas-dev, liblapack-dev, mpi-default-dev, libscalapack-mpi-dev, python3-numpy, python3-scipy, python3-toml
+Standards-Version: 3.9.3
+Homepage: https://www.pasums.issp.u-tokyo.ac.jp/tenes/
+
+Package: tenes
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}, python3-numpy, python3-scipy, python3-toml
+Description: TeNeS - massively parallel tensor network solver
+ A solver program for two dimensional quantum lattice model based on a projected
+ entangled pair state wavefunction and the corner transfer matrix renormalization
+ group method. This works on a massively parallel machine because tensor operations
+ are OpenMP/MPI parallelized.
