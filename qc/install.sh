@@ -9,7 +9,7 @@ pip3 install ipython numpy matplotlib
 pip3 install blueqat cirq openfermion openjij qiskit qulacs qutip strawberryfields
 
 (cd $HOME/qc && git clone https://github.com/iqusoft/intel-qs.git)
-(cd $HOME/qc/intel-qs && curl -sL https://gist.github.com/wistaria/eba362a66bd434cddba48caca7551aaa/raw/5e925e720b29f50285958f90781152e7bec1419a/intel-qs.patch | patch -p1)
+(cd $HOME/qc/intel-qs && curl -sL https://github.com/cmsi/MateriAppsPackages/raw/main/qc/intel-qs.patch | patch -p1)
 mkdir $HOME/qc/intel-qs/build
 (cd $HOME/qc/intel-qs/build && cmake -DIqsPython=ON .. && make)
 cp -fp $HOME/qc/intel-qs/include/* $HOME/qc/include
