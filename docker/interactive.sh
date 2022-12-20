@@ -21,8 +21,8 @@ if [ -d "${HOME}/share" ]; then
   SHARE_CONFIG="-v ${HOME}/share:${D_HOME}/share"
 fi
 
-if [ -d "${HOME}/development/ma" ]; then
-  DEV_CONFIG="-v ${HOME}/development/ma:${D_HOME}/development/ma"
+if [ -d "${HOME}/development" ]; then
+  DEV_CONFIG="-v ${HOME}/development:${D_HOME}/development"
 fi
 
 if [ -d "${HOME}/.config/git" ]; then
@@ -44,4 +44,4 @@ IMAGE="madev/${CODENAME}"
 ID_U=$(id -u)
 ID_G=$(id -g)
 set -x
-docker run --rm -it --name $CODENAME.$$ --user ${ID_U}:${ID_G} -e DISPLAY=host.docker.internal:0 -v madev-vol:${D_HOME} ${DATA_CONFIG} ${SSH_CONFIG} ${SHARE_CONFIG} ${DEV_CONFIG} ${GIT_CONFIG} ${QUILT_CONFIG} madev/${CODENAME} /bin/bash
+docker run --rm -it --detach-keys='ctrl-e,e' --name $CODENAME.$$ --user ${ID_U}:${ID_G} -e DISPLAY=host.docker.internal:0 -v madev-vol:${D_HOME} ${DATA_CONFIG} ${SSH_CONFIG} ${SHARE_CONFIG} ${DEV_CONFIG} ${GIT_CONFIG} ${QUILT_CONFIG} madev/${CODENAME} /bin/bash

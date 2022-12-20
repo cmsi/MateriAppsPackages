@@ -1,0 +1,23 @@
+Source: espresso-esm-rism
+Section: science
+Priority: optional
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper,
+               gfortran,
+               libblas-dev,
+               libfftw3-dev,
+               liblapack-dev,
+               libscalapack-mpi-dev,
+               mpi-default-dev
+Standards-Version: 4.2.0
+Homepage: https://gitlab.com/minoru-otani/q-e/-/commits/rism_expand_oneside
+
+Package: quantum-espresso-esm-rism
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Recommends: quantum-espresso-data
+Description: Electronic-Structure Calculations and Materials Modeling
+ Quantum ESPRESSO is an integrated suite of Open-Source computer codes
+ for electronic-structure calculations and materials modeling at the
+ nanoscale. It is based on density-functional theory, plane waves, and
+ pseudopotentials.

@@ -1,0 +1,24 @@
+Description: .PHONY target has to be declared to avoid target name conflict
+ with install/ directory.
+Bug: https://gitlab.com/QEF/q-e/issues/50
+Forwarded: https://gitlab.com/QEF/q-e/issues/50
+Author: Andrius Merkys <andrius.merkys@gmail.com>
+Last-Update: 2018-08-23
+
+--- a/Makefile
++++ b/Makefile
+@@ -260,10 +260,11 @@
+ # - If the PREFIX/bin directory does not exists it creates it
+ #############################################################
+ 
++.PHONY: install
++
+ install : 
+-	mkdir -p $(DESTDIR)$(bindir) ; \
+-	for x in `find * ! -path "test-suite/*" -name *.x -type f` ; do \
+-		cp -v $$x $(DESTDIR)$(bindir)/ ; done
++	mkdir -p $(DESTDIR)/usr/share/espresso-esm-rism/bin
++	cp -v bin/pw.x bin/pprism.x $(DESTDIR)/usr/share/espresso-esm-rism/bin
+ 	@echo -e '\nQuantum ESPRESSO binaries are installed in $(DESTDIR)$(bindir)\n'
+ 
+ #########################################################

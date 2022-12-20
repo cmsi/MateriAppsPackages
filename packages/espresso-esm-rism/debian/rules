@@ -1,0 +1,47 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+#export DH_VERBOSE=1
+
+include /usr/share/dpkg/architecture.mk
+include /usr/share/mpi-default-dev/debian_defaults
+
+DEB_RELEASE ?= $(shell lsb_release -c -s)
+export SCALAPACK_LIBS:=-lscalapack-$(ARCH_DEFAULT_MPI_IMPL)
+ifeq ($(DEB_RELEASE), stretch)
+    export SCALAPACK_LIBS:=-lscalapack-$(ARCH_DEFAULT_MPI_IMPL) -lblacs-$(ARCH_DEFAULT_MPI_IMPL) -lblacsF77init-$(ARCH_DEFAULT_MPI_IMPL)
+endif
+export SCALAPACK_LIB:=/usr/lib
+ifeq ($(DEB_BUILD_ARCH_CPU), i386)
+    export FFTW_FORCE_ALIGN=-D_FFTW_FORCE_UNALIGNED
+else
+    export FFTW_FORCE_ALIGN=
+endif
+export LDFLAGS=-fopenmp
+export OMPI_MCA_orte_rsh_agent=/bin/false
+
+# workaround for dpkg exporting conflicting DFLAGS since #975896
+export DFLAGS
+
+%:
+	dh $@
+
+override_dh_auto_clean:
+	-dh_auto_clean
+	rm -rf CPV/tmp
+	rm -f install/make_wannier90.sys
+	rm -f install/make_lapack.inc
+	rm -f install/make_blas.inc
+	rm -f include/fft_defs.h
+	rm -f Modules/version.f90.tmp
+	rm -f include/configure.h
+
+override_dh_auto_configure:
+	dh_auto_configure -- --enable-openmp
+
+override_dh_auto_build:
+	$(MAKE) pw
+	$(MAKE) -C PP/src pprism.x
+
+override_dh_auto_test:
+	/bin/true

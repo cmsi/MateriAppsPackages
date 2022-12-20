@@ -1,0 +1,11 @@
+--- a/install/make.inc.in
++++ b/install/make.inc.in
+@@ -102,7 +102,7 @@
+ # F90 flags must include MODFLAGS, IFLAGS, and FDFLAGS with appropriate syntax
+ 
+ CFLAGS         = @cflags@ $(DFLAGS) $(IFLAGS)
+-F90FLAGS       = @f90flags@ @pre_fdflags@$(FDFLAGS) $(CUDA_F90FLAGS) $(IFLAGS) $(MODFLAGS)
++F90FLAGS       = @f90flags@ @pre_fdflags@$(FDFLAGS) $(CUDA_F90FLAGS) $(IFLAGS) $(MODFLAGS) -fallow-argument-mismatch
+ 
+ # compiler flags with and without optimization for fortran-77
+ # the latter is NEEDED to properly compile dlamch.f, used by lapack
