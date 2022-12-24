@@ -1,3 +1,9 @@
+espresso-esm-rism (6.7-2) unstable; urgency=medium
+
+  * include rism1d
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 24 Dec 2022 14:25:09 +0900
+
 espresso-esm-rism (6.7-1) unstable; urgency=medium
 
   * QE/ESM-RISM

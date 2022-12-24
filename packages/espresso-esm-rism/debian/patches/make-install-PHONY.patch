@@ -18,7 +18,7 @@ Last-Update: 2018-08-23
 -	for x in `find * ! -path "test-suite/*" -name *.x -type f` ; do \
 -		cp -v $$x $(DESTDIR)$(bindir)/ ; done
 +	mkdir -p $(DESTDIR)/usr/share/espresso-esm-rism/bin
-+	cp -v bin/pw.x bin/pprism.x $(DESTDIR)/usr/share/espresso-esm-rism/bin
++	cp -v bin/pw.x bin/pprism.x bin/rism1d.x $(DESTDIR)/usr/share/espresso-esm-rism/bin
  	@echo -e '\nQuantum ESPRESSO binaries are installed in $(DESTDIR)$(bindir)\n'
  
  #########################################################
