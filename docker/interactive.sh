@@ -8,6 +8,13 @@ if [ -z ${CODENAME} ]; then
   CODENAME="bullseye"
 fi
 
+. $SCRIPT_DIR/../config/version.sh
+for v in ${VERSIONS}; do
+  if [ $(echo ${v} | cut -d/ -f1) = ${CODENAME} ]; then
+    LABEL=$(echo ${v} | cut -d: -f2)
+  fi
+done
+
 D_USERNAME=$(id -un)
 D_HOME=/home/${D_USERNAME}
 
@@ -40,8 +47,8 @@ if [ -n "${MALIVE_DATA_DIR}" ]; then
 fi
 
 echo "starting ${CODENAME}"
-IMAGE="madev/${CODENAME}"
+IMAGE="madev/${CODENAME}:${LABEL}"
 ID_U=$(id -u)
 ID_G=$(id -g)
 set -x
-docker run --rm -it --detach-keys='ctrl-e,e' --name $CODENAME.$$ --user ${ID_U}:${ID_G} -e DISPLAY=host.docker.internal:0 -v madev-vol:${D_HOME} ${DATA_CONFIG} ${SSH_CONFIG} ${SHARE_CONFIG} ${DEV_CONFIG} ${GIT_CONFIG} ${QUILT_CONFIG} madev/${CODENAME} /bin/bash
+docker run --rm -it --detach-keys='ctrl-e,e' --name $CODENAME.$$ --user ${ID_U}:${ID_G} -e DISPLAY=host.docker.internal:0 -v madev-vol:${D_HOME} ${DATA_CONFIG} ${SSH_CONFIG} ${SHARE_CONFIG} ${DEV_CONFIG} ${GIT_CONFIG} ${QUILT_CONFIG} ${IMAGE} /bin/bash

@@ -46,7 +46,12 @@ fi
 
 for c in ${CODENAMES}; do
   echo "building ${APP} for ${c}..."
-  IMAGE="madev/${c}"
+  for v in ${VERSIONS}; do
+    if [ $(echo ${v} | cut -d/ -f1) = ${c} ]; then
+      LABEL=$(echo ${v} | cut -d: -f2)
+    fi
+  done
+  IMAGE="madev/${c}:${LABEL}"
   ID_U=$(id -u)
   ID_G=$(id -g)
   set -x

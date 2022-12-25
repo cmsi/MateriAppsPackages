@@ -16,9 +16,10 @@ for c in ${CODENAMES}; do
   for v in ${VERSIONS}; do
     if [ $(echo ${v} | cut -d/ -f1) = ${c} ]; then
       BASE=$(echo ${v} | cut -d/ -f2)
+      LABEL=$(echo ${v} | cut -d: -f2)
       IMAGE="madev/${c}"
       echo "building image ${IMAGE} from ${BASE}..."
-      docker build -t ${IMAGE} - <<EOF
+      docker build -t ${IMAGE}:${LABEL} - <<EOF
 FROM ${BASE}
 ENV DEBIAN_FRONTEND=noninteractive
 
