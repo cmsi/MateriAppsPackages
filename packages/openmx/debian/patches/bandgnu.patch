@@ -1,0 +1,10 @@
+--- a/source/bandgnu13.c
++++ b/source/bandgnu13.c
+@@ -385,7 +385,6 @@
+   fprintf(fp,"set style data lines\n");
+   fprintf(fp,"set nokey\n");
+   fprintf(fp,"set zeroaxis\n");
+-  fprintf(fp,"set ytics 1\n");
+   fprintf(fp,"set mytics 5\n");
+ 
+   fprintf(fp,"set xra [%lf:%lf]\n",

@@ -1,0 +1,197 @@
+--- a/source/makefile
++++ b/source/makefile
+@@ -5,10 +5,10 @@
+ #                                                                 #
+ ###################################################################
+ 
+-MKLROOT = /opt/intel/mkl
+-CC = mpicc -O3 -xHOST -ip -no-prec-div -qopenmp -I/opt/intel/mkl/include/fftw
+-FC = mpif90 -O3 -xHOST -ip -no-prec-div -qopenmp
+-LIB= -L${MKLROOT}/lib/intel64 -lmkl_scalapack_lp64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_blacs_openmpi_lp64 -lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -liomp5 -lpthread -lm -ldl
++# MKLROOT = /opt/intel/mkl
++# CC = mpicc -O3 -xHOST -ip -no-prec-div -qopenmp -I/opt/intel/mkl/include/fftw
++# FC = mpif90 -O3 -xHOST -ip -no-prec-div -qopenmp
++# LIB= -L${MKLROOT}/lib/intel64 -lmkl_scalapack_lp64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_blacs_openmpi_lp64 -lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -liomp5 -lpthread -lm -ldl
+ 
+ 
+ #
+@@ -102,8 +102,15 @@
+ # LIB= -L${MKLROOT}/lib/intel64 -lmkl_scalapack_lp64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_blacs_openmpi_lp64 -lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -liomp5 -lpthread -lm -ldl
+ #
+ 
+-
+-CFLAGS  = -g 
++ifeq ($(shell arch), x86_64)
++  DEB_SSE =
++else
++  DEB_SSE = -Dnosse
++endif
++
++CC = mpicc -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fstack-protector-strong -Wformat -Werror=format-security $(DEB_SSE) -fopenmp -Dkcomp
++FC = mpif90 -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fstack-protector-strong $(DEB_SSE) -fopenmp -Dkcomp
++LIB = -Wl,-z,relro -lscalapack-openmpi -lfftw3 -llapack -lblas
+ 
+ OBJS    = openmx.o openmx_common.o Input_std.o Inputtools.o init.o LU_inverse.o ReLU_inverse.o \
+           truncation.o readfile.o FT_PAO.o FT_NLP.o FT_ProExpn_VNA.o FT_VNA.o FT_ProductPAO.o \
+@@ -198,16 +205,15 @@
+ # destination directory
+ #
+ 
+-PROG    = openmx
+-DESTDIR = ../work
+-UTIL 	= DosMain jx analysis_example esp polB calB Z2FH bandgnu13 bin2txt cube2xsf intensity_map md2axsf tp kSpin BandDispersion ADenBand FermiLoop GridCalc MulPOnly MulPCalc example_mpi_spawn gcube2oned
++PROG    = openmx DosMain bandgnu13
++UTIL 	= jx analysis_example esp polB calB Z2FH bin2txt cube2xsf intensity_map md2axsf tp kSpin BandDispersion ADenBand FermiLoop GridCalc MulPOnly MulPCalc example_mpi_spawn gcube2oned
+ 
+ #
+ # OpenMX
+ #
+ 
+ openmx:	$(OBJS)
+-	$(CC) $(OBJS) $(STACK) $(LIB) -lm -o openmx
++	$(FC) $(OBJS) $(STACK) $(LIB) -lm -o openmx
+ 
+ #
+ #
+@@ -216,7 +222,6 @@
+ #
+ 
+ all: $(PROG) $(UTIL)
+-	cp $(PROG) $(UTIL) $(DESTDIR)/
+ 
+ openmx.o: openmx.c openmx_common.h tran_variables.h tran_prototypes.h 
+ 	$(CC) -c openmx.c
+@@ -671,9 +676,10 @@
+ #
+ #
+ 
+-install: $(PROG)
+-#	strip $(PROG)
+-	cp $(PROG) $(DESTDIR)/$(PROG)
++install: $(PROG) $(UTIL)
++	mkdir -p $(DESTDIR)/usr/bin $(DESTDIR)/usr/share/openmx/util
++	cp $(PROG) $(DESTDIR)/usr/bin/
++	cp $(UTIL) $(DESTDIR)/usr/share/openmx/util/
+ 
+ #
+ #
+@@ -692,7 +698,6 @@
+ 
+ DosMain: DosMain.o Inputtools.o malloc_multidimarray.o Tetrahedron_Blochl.o 
+ 	$(CC) -o $@ DosMain.o Inputtools.o malloc_multidimarray.o Tetrahedron_Blochl.o -lm 
+-	cp DosMain $(DESTDIR)/DosMain
+ 
+ DosMain.o :DosMain.c openmx_common.h
+ 	$(CC) -o $@ -c DosMain.c
+@@ -734,7 +739,6 @@
+ 
+ jx: $(OBJ_jx)
+ 	$(CC) $(OBJ_jx) $(LIB) -lm -o jx
+-	cp jx $(DESTDIR)/jx
+ 
+ #
+ #
+@@ -744,7 +748,6 @@
+ 
+ tp: tp.o read_scfout.o
+ 	$(CC) tp.o read_scfout.o $(LIB) -lm -o tp
+-	cp tp $(DESTDIR)/tp
+ 
+ tp.o: tp.c read_scfout.h 
+ 	$(CC) -c tp.c
+@@ -757,7 +760,6 @@
+ 
+ analysis_example: analysis_example.o read_scfout.o
+ 	$(CC) analysis_example.o read_scfout.o $(LIB)  -lm -o analysis_example
+-	cp analysis_example $(DESTDIR)/analysis_example
+ 
+ analysis_example.o: analysis_example.c read_scfout.h 
+ 	$(CC) -c analysis_example.c
+@@ -774,7 +776,6 @@
+ OBJS_ESP  = esp.o Inputtools.o
+ esp:	$(OBJS_ESP)
+ 	$(CC) $(OBJS_ESP) $(LIB) -lm -o $@
+-	cp esp $(DESTDIR)/esp
+ esp.o : esp.c Inputtools.h
+ 	$(CC) -o $@ -c esp.c
+ 
+@@ -786,7 +787,6 @@
+ 
+ check_lead: check_lead.o Inputtools.o
+ 	$(CC) check_lead.o Inputtools.o -lm -o check_lead
+-	cp check_lead $(DESTDIR)/check_lead
+ 
+ check_lead.o: check_lead.c Inputtools.h 
+ 	$(CC) -c check_lead.c
+@@ -800,7 +800,6 @@
+ OpticalConductivityMain: OpticalConductivityMain.o \
+               Inputtools.o  malloc_multidimarray.o
+ 	$(CC) -o $@   OpticalConductivityMain.o  Inputtools.o  malloc_multidimarray.o -lm 
+-	cp OpticalConductivityMain $(DESTDIR)/OpticalConductivityMain
+ 
+ #
+ #
+@@ -811,7 +810,6 @@
+ OBJS_polB = polB.o read_scfout.o
+ polB:	$(OBJS_polB)
+ 	$(CC) $(OBJS_polB) $(LIB) -lm -o polB
+-	cp polB $(DESTDIR)/polB
+ 
+ polB.o: polB.c read_scfout.h 
+ 	$(CC) -c polB.c
+@@ -825,7 +823,6 @@
+ OBJS_calB = calB.o read_scfout.o
+ calB:	$(OBJS_calB)
+ 	$(CC) $(OBJS_calB) $(LIB) -lm -o calB
+-	cp calB $(DESTDIR)/calB
+ 
+ calB.o: calB.c read_scfout.h 
+ 	$(CC) -c calB.c
+@@ -839,7 +836,6 @@
+ OBJS_Z2FH = Z2FH.o read_scfout.o
+ Z2FH:	$(OBJS_Z2FH)
+ 	$(CC) $(OBJS_Z2FH) $(LIB) -lm -o Z2FH
+-	cp Z2FH $(DESTDIR)/Z2FH
+ 
+ Z2FH.o: Z2FH.c read_scfout.h 
+ 	$(CC) -c Z2FH.c
+@@ -852,7 +848,6 @@
+ 
+ example_mpi_spawn: example_mpi_spawn.o
+ 	$(CC) example_mpi_spawn.o $(LIB) -lm -o example_mpi_spawn
+-	cp example_mpi_spawn $(DESTDIR)/example_mpi_spawn
+ 
+ example_mpi_spawn.o: example_mpi_spawn.c
+ 	$(CC) -c example_mpi_spawn.c
+@@ -866,7 +861,6 @@
+ 
+ test_mpi: test_mpi.o
+ 	$(CC) test_mpi.o $(LIB) -lm -o test_mpi
+-	cp test_mpi $(DESTDIR)/test_mpi
+ 
+ test_mpi.o: test_mpi.c
+ 	$(CC) -c test_mpi.c
+@@ -1093,7 +1087,7 @@
+ #
+ 
+ MulPCalc: MulPCalc.o Tools_BandCalc.o Inputtools_kSpin.o
+-	$(CC) $^ $(LIB) -lm -o $@
++	$(FC) $^ $(LIB) -lm -o $@
+ 
+ MulPCalc.o: MulPCalc.c Tools_BandCalc.h Inputtools.h read_scfout.h
+ 	$(CC) -c $<
+@@ -1147,7 +1141,7 @@
+ #
+ 
+ MulPOnly: MulPOnly.o read_scfout.o Inputtools_kSpin.o EigenValue_Problem.o Eigen_HH.o Tools_BandCalc.o GetOrbital.o SigmaEK.o
+-	$(CC) $^ $(LIB) -lm -o $@
++	$(FC) $^ $(LIB) -lm -o $@
+ 
+ MulPOnly.o: MulPOnly.c Tools_BandCalc.h Inputtools.h read_scfout.h EigenValue_Problem.h GetOrbital.h SigmaEK.o
+ 	$(CC) -c $< 
+@@ -1157,5 +1151,3 @@
+ 
+ SigmaEK.o: SigmaEK.c
+ 	$(CC) -c $< -o $@
+-
+-

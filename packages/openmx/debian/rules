@@ -1,0 +1,23 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+ifeq ($(DEB_BUILD_ARCH_CPU), amd64)
+  DEB_SSE =
+else
+  DEB_SSE = -Dnosse
+endif
+
+export SCALAPACK_LIBS:=-lscalapack-$(ARCH_DEFAULT_MPI_IMPL) -lblacs-$(ARCH_DEFAULT_MPI_IMPL) -lblacsF77init-$(ARCH_DEFAULT_MPI_IMPL)
+DEB_CC = mpicc `dpkg-buildflags --get CPPFLAGS` `dpkg-buildflags --get CFLAGS` $(DEB_SSE) -fopenmp -Dkcomp
+DEB_FC := mpif90 `dpkg-buildflags --get CPPFLAGS` `dpkg-buildflags --get FFLAGS` -fopenmp -Dkcomp
+DEB_LIB := $(SCALAPACK_LIBS) -lfftw3 -llapack -lblas `dpkg-buildflags --get LDFLAGS`
+
+%:
+	dh $@ --sourcedirectory=source/
+
+override_dh_clean:
+	dh_clean source/elpa1.mod
+	find source -name "*openmx.oo" -delete
