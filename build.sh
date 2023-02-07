@@ -55,6 +55,6 @@ for c in ${CODENAMES}; do
   ID_U=$(id -u)
   ID_G=$(id -g)
   set -x
-  docker run --rm --name ${c}.$$ --user ${ID_U}:${ID_G} ${ENV_CONFIG} ${SSH_CONFIG} ${GIT_CONFIG} ${IMAGE} /bin/bash -c "rm -rf MateriAppsPackages && git clone https://github.com/cmsi/MateriAppsPackages.git && sh MateriAppsPackages/script/setup.sh ${APP} && sh MateriAppsPackages/script/build.sh ${APP}"
+  docker run --rm --name ${c}.$$ --user ${ID_U}:${ID_G} ${ENV_CONFIG} ${SSH_CONFIG} ${GIT_CONFIG} ${IMAGE} /bin/bash -c "rm -rf MateriAppsPackages && git clone https://github.com/cmsi/MateriAppsPackages.git && sh MateriAppsPackages/script/setup.sh ${APP} && sh MateriAppsPackages/script/build.sh ${APP}" 2>&1 | tee build-${APP}-${c}-$(date +%Y%m%d-%H%M%S).log
   set +x
 done
