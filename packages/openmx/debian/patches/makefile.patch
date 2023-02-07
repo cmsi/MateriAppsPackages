@@ -171,19 +171,58 @@
  
  test_mpi.o: test_mpi.c
  	$(CC) -c test_mpi.c
-@@ -1019,9 +1013,9 @@
+@@ -978,20 +972,28 @@
+ 	$(CC) -c TRAN_CDen_Main.c
+ # E MitsuakiKAWAMURA                       
+ 
++elpa1.mod: elpa1.o
++elpa1_compute_complex.mod: elpa1_compute_complex.o
++elpa1_compute_real.mod: elpa1_compute_real.o
++elpa2_compute_complex.mod: elpa2_compute_complex.o
++elpa2_compute_real.mod: elpa2_compute_real.o
++elpa2_workload.mod: elpa2_determine_workload.o
++elpa_utilities.mod: elpa_utilities.o
++
+ elpa1.o: elpa1.f90
+ 	$(FC) -c elpa1.f90
+-solve_evp_real.o: solve_evp_real.f90 elpa1.o
++solve_evp_real.o: solve_evp_real.f90 elpa1.mod
+ 	$(FC) -c solve_evp_real.f90
+-solve_evp_complex.o: solve_evp_complex.f90 elpa1.o
++solve_evp_complex.o: solve_evp_complex.f90 elpa1.mod
+ 	$(FC) -c solve_evp_complex.f90
+ 
+ mod_precision.o: $(LIBELPADIR)/mod_precision.F90
+ 	$(FC) -c $(LIBELPADIR)/mod_precision.F90
+ elpa_utilities.o: $(LIBELPADIR)/elpa_utilities.F90
+ 	$(FC) -c $(LIBELPADIR)/elpa_utilities.F90
+-elpa1_compute_real.o: $(LIBELPADIR)/elpa1_compute_real.F90
++elpa1_compute_real.o: $(LIBELPADIR)/elpa1_compute_real.F90 elpa_utilities.mod
+ 	$(FC) -c $(LIBELPADIR)/elpa1_compute_real.F90
+-elpa1_compute_complex.o: $(LIBELPADIR)/elpa1_compute_complex.F90
++elpa1_compute_complex.o: $(LIBELPADIR)/elpa1_compute_complex.F90 elpa_utilities.mod
+ 	$(FC) -c $(LIBELPADIR)/elpa1_compute_complex.F90
+ aligned_mem.o: $(LIBELPADIR)/aligned_mem.F90
+ 	$(FC) -c $(LIBELPADIR)/aligned_mem.F90
+@@ -1015,13 +1017,13 @@
+ 	$(FC) -c $(LIBELPADIR)/mod_compute_hh_trafo_real.F90
+ mod_compute_hh_trafo_complex.o: $(LIBELPADIR)/mod_compute_hh_trafo_complex.F90
+ 	$(FC) -c $(LIBELPADIR)/mod_compute_hh_trafo_complex.F90
+-elpa2_compute_real.o: $(LIBELPADIR)/elpa2_compute_real.F90
++elpa2_compute_real.o: $(LIBELPADIR)/elpa2_compute_real.F90 elpa_utilities.mod elpa2_workload.mod elpa1_compute_real.mod
  	$(FC) -c $(LIBELPADIR)/elpa2_compute_real.F90
- elpa2_compute_complex.o: $(LIBELPADIR)/elpa2_compute_complex.F90
+-elpa2_compute_complex.o: $(LIBELPADIR)/elpa2_compute_complex.F90
++elpa2_compute_complex.o: $(LIBELPADIR)/elpa2_compute_complex.F90 elpa_utilities.mod elpa1_compute_complex.mod
  	$(FC) -c $(LIBELPADIR)/elpa2_compute_complex.F90
 -elpa_solve_evp_real_2stage_double_impl.o: $(LIBELPADIR)/elpa_solve_evp_real_2stage_double_impl.F90
-+elpa_solve_evp_real_2stage_double_impl.o: $(LIBELPADIR)/elpa_solve_evp_real_2stage_double_impl.F90 elpa2_compute_real.o
++elpa_solve_evp_real_2stage_double_impl.o: $(LIBELPADIR)/elpa_solve_evp_real_2stage_double_impl.F90 elpa2_compute_real.mod elpa1_compute_real.mod
  	$(FC) -c $(LIBELPADIR)/elpa_solve_evp_real_2stage_double_impl.F90
 -elpa_solve_evp_complex_2stage_double_impl.o: $(LIBELPADIR)/elpa_solve_evp_complex_2stage_double_impl.F90
-+elpa_solve_evp_complex_2stage_double_impl.o: $(LIBELPADIR)/elpa_solve_evp_complex_2stage_double_impl.F90 elpa2_compute_complex.o
++elpa_solve_evp_complex_2stage_double_impl.o: $(LIBELPADIR)/elpa_solve_evp_complex_2stage_double_impl.F90 elpa2_compute_complex.mod elpa1_compute_complex.mod elpa1_compute_real.mod elpa_utilities.mod
  	$(FC) -c $(LIBELPADIR)/elpa_solve_evp_complex_2stage_double_impl.F90
  
  
-@@ -1093,7 +1087,7 @@
+@@ -1093,7 +1095,7 @@
  #
  
  MulPCalc: MulPCalc.o Tools_BandCalc.o Inputtools_kSpin.o
@@ -192,7 +231,7 @@
  
  MulPCalc.o: MulPCalc.c Tools_BandCalc.h Inputtools.h read_scfout.h
  	$(CC) -c $<
-@@ -1147,7 +1141,7 @@
+@@ -1147,7 +1149,7 @@
  #
  
  MulPOnly: MulPOnly.o read_scfout.o Inputtools_kSpin.o EigenValue_Problem.o Eigen_HH.o Tools_BandCalc.o GetOrbital.o SigmaEK.o
@@ -201,7 +240,7 @@
  
  MulPOnly.o: MulPOnly.c Tools_BandCalc.h Inputtools.h read_scfout.h EigenValue_Problem.h GetOrbital.h SigmaEK.o
  	$(CC) -c $< 
-@@ -1157,5 +1151,3 @@
+@@ -1157,5 +1159,3 @@
  
  SigmaEK.o: SigmaEK.c
  	$(CC) -c $< -o $@

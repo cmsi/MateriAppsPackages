@@ -1,0 +1,13 @@
+--- a/source/Input_std.c
++++ b/source/Input_std.c
+@@ -94,7 +94,9 @@
+   }
+ 
+   /* add '/' to filepath */
+-  sprintf(filepath,"%s/",filepath);
++  char tmp_filepath[YOUSO10];
++  strcpy(tmp_filepath,filepath);
++  sprintf(filepath,"%s/",tmp_filepath); 
+ 
+   input_string("System.Name",filename,"default");
+   input_string("DATA.PATH",DFT_DATA_PATH,"/usr/share/openmx/DFT_DATA19");
