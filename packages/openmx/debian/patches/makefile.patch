@@ -171,6 +171,18 @@
  
  test_mpi.o: test_mpi.c
  	$(CC) -c test_mpi.c
+@@ -1019,9 +1013,9 @@
+ 	$(FC) -c $(LIBELPADIR)/elpa2_compute_real.F90
+ elpa2_compute_complex.o: $(LIBELPADIR)/elpa2_compute_complex.F90
+ 	$(FC) -c $(LIBELPADIR)/elpa2_compute_complex.F90
+-elpa_solve_evp_real_2stage_double_impl.o: $(LIBELPADIR)/elpa_solve_evp_real_2stage_double_impl.F90
++elpa_solve_evp_real_2stage_double_impl.o: $(LIBELPADIR)/elpa_solve_evp_real_2stage_double_impl.F90 elpa2_compute_real.o
+ 	$(FC) -c $(LIBELPADIR)/elpa_solve_evp_real_2stage_double_impl.F90
+-elpa_solve_evp_complex_2stage_double_impl.o: $(LIBELPADIR)/elpa_solve_evp_complex_2stage_double_impl.F90
++elpa_solve_evp_complex_2stage_double_impl.o: $(LIBELPADIR)/elpa_solve_evp_complex_2stage_double_impl.F90 elpa2_compute_complex.o
+ 	$(FC) -c $(LIBELPADIR)/elpa_solve_evp_complex_2stage_double_impl.F90
+ 
+ 
 @@ -1093,7 +1087,7 @@
  #
  
