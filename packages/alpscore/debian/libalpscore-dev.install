@@ -1,0 +1,4 @@
+usr/include/alps/*
+usr/share/alpscore/ALPSCoreConfig*.cmake
+usr/share/alpscore/alps-*
+usr/lib/pkgconfig/alps-*.pc

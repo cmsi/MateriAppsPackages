@@ -1,0 +1,51 @@
+Source: alpscore
+Section: scientific
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 8.0.0), cmake, mpi-default-dev, libboost-all-dev, libhdf5-dev, libeigen3-dev, doxygen, graphviz
+Standards-Version: 3.9.3
+Homepage: https://alpscore.org
+
+Package: libalpscore
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Applications and Libraries for Physics Simulations Core libraries
+ The ALPS Core libraries aim to provide a set of well tested, robust,
+ and standardized components for numerical simulations of condensed
+ matter systems, in particular systems with strongly correlated electrons.
+ They consist of a set of components that are used in state of the art
+ high performance codes. The ALPSCore libraries are a spinoff of the ALPS
+ libraries available from alps.comp-phys.org
+
+Package: libalpscore-dev
+Architecture: any
+Depends: libalpscore (= ${binary:Version}), libeigen3-dev (>= 3.3.5), ${shlibs:Depends}, ${misc:Depends}
+Description: Applications and Libraries for Physics Simulations Core libraries
+ The ALPS Core libraries aim to provide a set of well tested, robust,
+ and standardized components for numerical simulations of condensed
+ matter systems, in particular systems with strongly correlated electrons.
+ They consist of a set of components that are used in state of the art
+ high performance codes. The ALPSCore libraries are a spinoff of the ALPS
+ libraries available from alps.comp-phys.org
+
+Package: alpscore-doc
+Architecture: all
+Depends: ${misc:Depends}
+Description: Applications and Libraries for Physics Simulations Core libraries
+ The ALPS Core libraries aim to provide a set of well tested, robust,
+ and standardized components for numerical simulations of condensed
+ matter systems, in particular systems with strongly correlated electrons.
+ They consist of a set of components that are used in state of the art
+ high performance codes. The ALPSCore libraries are a spinoff of the ALPS
+ libraries available from alps.comp-phys.org
+
+Package: alpscore-tutorials
+Architecture: all
+Depends: ${misc:Depends}
+Description: Applications and Libraries for Physics Simulations Core libraries
+ The ALPS Core libraries aim to provide a set of well tested, robust,
+ and standardized components for numerical simulations of condensed
+ matter systems, in particular systems with strongly correlated electrons.
+ They consist of a set of components that are used in state of the art
+ high performance codes. The ALPSCore libraries are a spinoff of the ALPS
+ libraries available from alps.comp-phys.org

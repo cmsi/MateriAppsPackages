@@ -1,0 +1,9 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: alpscore
+Source: <https://github.com/ALPSCore/ALPSCore>
+
+Files: *
+Copyright:
+ 2012-19 University of Michigan
+ 1998-14 ETH Zurich
+License: GPL-2+
