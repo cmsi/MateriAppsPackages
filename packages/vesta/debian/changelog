@@ -1,0 +1,65 @@
+vesta (3.5.8-1) unstable; urgency=medium
+
+  * New upstream version 3.5.8
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 04 Jul 2023 13:28:47 +0900
+
+vesta (3.5.7-1) unstable; urgency=medium
+
+  * New upstream version 3.5.7
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 15 May 2021 15:42:51 +0900
+
+vesta (3.5.5-2) unstable; urgency=low
+
+  * Add launcher's icon
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Thu, 22 Oct 2020 09:03:27 +0900
+
+vesta (3.5.5-1) unstable; urgency=low
+
+  * New upstream version 3.5.5
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 20 Oct 2020 17:52:11 +0900
+
+vesta (3.5.3-1) unstable; urgency=low
+
+  * New upstream version 3.5.3
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Fri, 04 Sep 2020 12:26:46 +0900
+
+vesta (3.5.2-1) unstable; urgency=low
+
+  * New upstream version 3.5.2
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Thu, 23 Jul 2020 13:22:44 +0900
+
+vesta (3.4.8-1) unstable; urgency=low
+
+  * New upstream version 3.4.8
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 11 Apr 2020 09:08:52 +0900
+
+vesta (3.4.6-1) unstable; urgency=low
+
+  * New upstream version 3.4.6
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 13 May 2019 14:51:14 +0900
+
+vesta (3.4.4-2) unstable; urgency=low
+
+  * Fix build script
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 18 Jun 2018 15:24:27 +0900
+
+vesta (3.4.4-1) unstable; urgency=low
+
+  * New upstream version 3.4.4
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sun, 17 Jun 2018 10:35:07 +0900
+
+vesta (3.3.0-1) unstable; urgency=low
+
+  * Initial release.
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Fri, 17 Jul 2015 00:32:27 +0900
