@@ -1,6 +1,6 @@
 --- /dev/null
 +++ b/CMakeLists.txt
-@@ -0,0 +1,236 @@
+@@ -0,0 +1,243 @@
 +cmake_minimum_required(VERSION 3.7)
 +project(akaikkr Fortran)
 +
@@ -29,9 +29,9 @@
 +source/bzmesh.f
 +source/bzmrot.f
 +source/bzmsmb.f
++source/bzmsmf.f
 +source/bzvrtx.f
 +source/cartes.f
-+source/cdrlud.f
 +source/cemesh.f
 +source/cemesr.f
 +source/cg.f
@@ -43,6 +43,7 @@
 +source/chebpc.f
 +source/chkcnf.f
 +source/chklat.f
++source/chkprm.f
 +source/chktyp.f
 +source/chleng.f
 +source/chrasa.f
@@ -54,8 +55,6 @@
 +source/clrarc.f
 +source/clrari.f
 +source/clrarr.f
-+source/clubks.f
-+source/cludcm.f
 +source/cnsole.f
 +source/corada.f
 +source/corcnf.f
@@ -70,6 +69,7 @@
 +source/cstatc.f
 +source/cstate.f
 +source/cubmtr.f
++source/curie.f
 +source/dawson.f
 +source/diffn.f
 +source/dplini.f
@@ -102,7 +102,6 @@
 +source/exgga.f
 +source/extorg.f
 +source/fczero.f
-+source/fd2ini.f
 +source/fd3.f
 +source/finitn.f
 +source/fintgr.f
@@ -120,6 +119,7 @@
 +source/getorg.f
 +source/getrtm.f
 +source/gettmp.f
++source/getwsr.f
 +source/gmtrns.f
 +source/gnpset.f
 +source/gntcds.f
@@ -138,19 +138,20 @@
 +source/inijip.f
 +source/inqbrv.f
 +source/isrtyp.f
++source/jkkr.f
 +source/julday.f
 +source/kkrsed.f
 +source/laguer.f
 +source/lftfil.f
 +source/lindx.f
 +source/lsqftr.f
++source/lstcgt.f
 +source/lubksb.f
 +source/ludcmp.f
 +source/lwcase.f
 +source/madlng.f
 +source/mdbsl.f
 +source/mdexp2.f
-+source/midexp.f
 +source/mkemap.f
 +source/mseque.f
 +source/mshatm.f
@@ -158,8 +159,11 @@
 +source/neutrl.f
 +source/nfqlty.f
 +source/numcor.f
++source/nzelem.f
 +source/phasea.f
 +source/phaseb.f
++source/phasef.f
++source/pltmrk.f
 +source/poisna.f
 +source/poisnb.f
 +source/polin0.f
@@ -182,9 +186,11 @@
 +source/readin.f
 +source/readk.f
 +source/realh.f
++source/reconf.f
 +source/redata.f
 +source/reduce.f
 +source/relred.f
++source/rgconv.f
 +source/rlubks.f
 +source/rludcm.f
 +source/rmesha.f
@@ -214,6 +220,7 @@
 +source/tchmta.f
 +source/tchstr.f
 +source/tfp.f
++source/tltcry.f
 +source/totalw.f
 +source/transp.f
 +source/trmkey.f
@@ -226,8 +233,8 @@
 +source/viomix.f
 +source/vrotat.f
 +source/vwncor.f
-+source/wgnstz.f
 +source/wrtspc.f
++source/wscell.f
 +source/xtoken.f
 +source/zroots.f
 +)
