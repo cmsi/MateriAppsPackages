@@ -12,5 +12,5 @@ fi
 
 tar zxf cpa2021v01.tgz
 mv cpa2021 ${PACKAGE}_$VERSION_BASE
-tar zcvf ${PACKAGE}_$VERSION_BASE.orig.tar.gz ".DS_Store" ${PACKAGE}_$VERSION_BASE
+tar zcvf ${PACKAGE}_$VERSION_BASE.orig.tar.gz ${PACKAGE}_$VERSION_BASE
 rm -rf ${PACKAGE}_$VERSION_BASE
