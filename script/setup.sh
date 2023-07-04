@@ -47,5 +47,5 @@ sudo apt-get update
 sudo apt-get -y upgrade
 dpkg-checkbuilddeps 2>&1 | sed 's/dpkg-checkbuilddeps.*dependencies: //' | sudo xargs apt-get -y install
 if [ -f ${PACKAGE_DIR}/setup-extra.sh ]; then
-  (cd ${PACKAGE} && sh ${PACKAGE_DIR}/setup-extra.sh)
+  sh ${PACKAGE_DIR}/setup-extra.sh
 fi
