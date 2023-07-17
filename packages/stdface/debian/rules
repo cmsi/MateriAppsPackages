@@ -1,0 +1,8 @@
+#!/usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/cmake.mk
+
+# DEB_CMAKE_EXTRA_FLAGS = -DCMAKE_CXX_FLAGS="-g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2" -DCMAKE_EXE_LINKER_FLAGS="-Wl,-Bsymbolic-functions" -DCMAKE_MODULE_LINKER_FLAGS="-Wl,-Bsymbolic-functions" -DCMAKE_SHARED_LINKER_FLAGS="-Wl,-Bsymbolic-functions" -DCMAKE_SKIP_RPATH=OFF -DBUILD_SHARED_LIBS=ON -DMPIEXEC_POSTFLAGS="--allow-run-as-root"
+
+# DEB_MAKE_CHECK_TARGET := test

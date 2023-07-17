@@ -1,0 +1,12 @@
+Source: stdface
+Section: science
+Priority: optional
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: build-essential, cmake, debhelper (>= 9)
+Standards-Version: 3.9.3
+Homepage: https://github.com/issp-center-dev/StdFace
+
+Package: stdface
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: StdFace - An input files generator for HPhi, mVMC, UHF, and H-wave
