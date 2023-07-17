@@ -1,0 +1,19 @@
+Source: hwave
+Section: science
+Priority: optional
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9), dh-python, libpython3-all-dev, pybuild-plugin-pyproject, python3-all-dev, python3-numpy, python3-poetry-core, python3-scipy
+Standards-Version: 3.9.3
+Homepage: https://www.pasums.issp.u-tokyo.ac.jp/h-wave/en/
+
+Package: hwave
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}, ${python:Depends}
+Description: H-wave - a Python package for unrestricted Hartree-Fock (UHF) and random phase approximation (RPA)
+ H-wave is a Python package for performing unrestricted Hartree-Fock (UHF)
+ calculations and random phase approximation (RPA) calculations for itinerant
+ electron systems. H-wave supports UHF calculations both in real- and
+ wavenumber-spaces. H-wave supports one-body and two-body interactions in the
+ Wannier90 format as inputs for H-wave, and thus users can solve ab initio effective
+ Hamiltonians derived from  Wannier90/RESPACK calculations based on UHF and RPA
+ methods.
