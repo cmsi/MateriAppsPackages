@@ -1,6 +1,6 @@
 --- a/common/cmake/ALPSCommonModuleDefinitions.cmake
 +++ b/common/cmake/ALPSCommonModuleDefinitions.cmake
-@@ -256,7 +256,7 @@
+@@ -257,7 +257,7 @@
            LIBRARY DESTINATION lib
            ARCHIVE DESTINATION lib
            INCLUDES DESTINATION include)
@@ -9,7 +9,7 @@
    target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/include ${PROJECT_BINARY_DIR}/include)
  
    install(DIRECTORY include DESTINATION .
-@@ -299,8 +299,8 @@
+@@ -300,8 +300,8 @@
                   "${PROJECT_BINARY_DIR}/stage/ALPSCoreConfig.cmake" @ONLY)
    configure_file("${PROJECT_SOURCE_DIR}/common/cmake/ALPSCoreConfigVersion.cmake.in" 
                   "${PROJECT_BINARY_DIR}/stage/ALPSCoreConfigVersion.cmake" @ONLY)
@@ -20,7 +20,7 @@
  endfunction()
  
  
-@@ -326,5 +326,5 @@
+@@ -327,5 +327,5 @@
      endif()
      configure_file("${PROJECT_SOURCE_DIR}/../common/cmake/ALPSModuleConfig.cmake.in" 
                     "${PROJECT_BINARY_DIR}/stage/${PROJECT_NAME}Config.cmake" @ONLY)
