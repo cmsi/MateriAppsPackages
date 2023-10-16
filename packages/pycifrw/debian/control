@@ -1,0 +1,19 @@
+Source: pycifrw
+Section: python
+Priority: optional
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9), dh-python, python-all-dev, python-setuptools
+Standards-Version: 3.9.3
+Homepage: https://bitbucket.org/jamesrhester/pycifrw
+
+Package: python-pycifrw
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}, ${python:Depends}
+Description: PyCIFRW - Python library for interacting with CIF files
+ PyCIFRW provides support for reading and writing CIF (Crystallographic
+ Information Format) files using Python. It was developed at the Australian
+ National Beamline Facility (ANBF), run by the Australian Synchrotron
+ Research Program (ASRP), as part of a larger project to provide CIF 
+ input/output capabilities for data collection. It is now (Feb 2019)
+ maintained and developed within the Australian Nuclear Science and
+ Technology Organisation (ANSTO).

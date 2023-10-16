@@ -1,0 +1,12 @@
+#!/usr/bin/make -f
+
+export PYBUILD_NAME=pycifrw
+
+%:
+	dh $@ --buildsystem=pybuild
+
+override_dh_auto_test:
+
+override_dh_installchangelogs:
+	dh_installchangelogs RELEASENOTES
+
