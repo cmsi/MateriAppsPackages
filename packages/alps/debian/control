@@ -1,0 +1,115 @@
+Source: alps
+Section: non-free
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: cdbs, debhelper, cmake, libboost-all-dev, libhdf5-dev, mpi-default-dev, libsqlite3-dev, python3-matplotlib, python3-dev, liblapack-dev, gfortran
+Standards-Version: 3.9.1
+Homepage: http://alps.comp-phys.org/
+Vcs-Browser: https://alps.comp-phys.org/trac/browser
+
+Package: task-alps
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, alps-applications, alps-tutorials, libalps, libalps-bin, libalps-dbg, libalps-dev, libboost-numeric-bindings-dev, python3-pyalps
+Description: The ALPS project - Libraries, Applications, and Tutorials
+ The ALPS project (Algorithms and Libraries for Physics Simulations)
+ is an open source effort aiming at providing high-end simulation
+ codes for strongly correlated quantum mechanical systems as well as
+ C++ libraries for simplifying the development of such code. ALPS
+ strives to increase software reuse in the physics community.
+ This package installs all the ALPS libraries, applications, and tutorials.
+
+Package: libalps
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: The ALPS project - Library
+ The ALPS project (Algorithms and Libraries for Physics Simulations)
+ is an open source effort aiming at providing high-end simulation
+ codes for strongly correlated quantum mechanical systems as well as
+ C++ libraries for simplifying the development of such code. ALPS
+ strives to increase software reuse in the physics community.
+ This package contains shared library of ALPS Library.
+
+Package: libalps-dbg
+Architecture: any
+Depends: libalps (= ${binary:Version}), ${misc:Depends}
+Description: The ALPS project - Library with debugging symbols
+ The ALPS project (Algorithms and Libraries for Physics Simulations)
+ is an open source effort aiming at providing high-end simulation
+ codes for strongly correlated quantum mechanical systems as well as
+ C++ libraries for simplifying the development of such code. ALPS
+ strives to increase software reuse in the physics community.
+ This package contains debugging symbols of ALPS Library.
+
+Package: libalps-dev
+Architecture: any
+Depends: libalps (= ${binary:Version}),
+ libboost-numeric-bindings-dev, ${misc:Depends}
+Recommends: libalps-bin (= ${binary:Version})
+Description: The ALPS project - Development files
+ The ALPS project (Algorithms and Libraries for Physics Simulations)
+ is an open source effort aiming at providing high-end simulation
+ codes for strongly correlated quantum mechanical systems as well as
+ C++ libraries for simplifying the development of such code. ALPS
+ strives to increase software reuse in the physics community.
+ This package contains development files of ALPS Library.
+
+Package: libboost-numeric-bindings-dev
+Architecture: any
+Depends: ${misc:Depends}
+Description: Numeric Bindings Library for Linear Algebra
+ This package forms part of the Boost C++ Libraries (Sandbox)
+ collections.
+
+Package: libalps-bin
+Architecture: any
+Depends: libalps (= ${binary:Version}), ${shlibs:Depends},
+ ${misc:Depends}
+Description: The ALPS project - Miscellaneous tools
+ The ALPS project (Algorithms and Libraries for Physics Simulations)
+ is an open source effort aiming at providing high-end simulation
+ codes for strongly correlated quantum mechanical systems as well as
+ C++ libraries for simplifying the development of such code. ALPS
+ strives to increase software reuse in the physics community.
+ This package contains miscellaneous tools of ALPS Library.
+
+Package: alps-applications
+Architecture: any
+Depends: libalps (= ${binary:Version}), ${shlibs:Depends},
+ ${misc:Depends}
+Recommends: libalps-bin (= ${binary:Version}), python3-pyalps (=
+ ${binary:Version})
+Description: The ALPS project - Application binaries
+ The ALPS project (Algorithms and Libraries for Physics Simulations)
+ is an open source effort aiming at providing high-end simulation
+ codes for strongly correlated quantum mechanical systems as well as
+ C++ libraries for simplifying the development of such code. ALPS
+ strives to increase software reuse in the physics community.
+ This package contains application binary.
+
+Package: python3-pyalps
+Architecture: any
+Depends: libalps (= ${binary:Version}), python3, python3-numpy,
+ python3-scipy, python3-matplotlib, python3-tk, ${shlibs:Depends},
+ ${misc:Depends}
+Conflicts: python-pyalps
+Replaces: python-pyalps
+Description: The ALPS project - python modules
+ The ALPS project (Algorithms and Libraries for Physics Simulations)
+ is an open source effort aiming at providing high-end simulation
+ codes for strongly correlated quantum mechanical systems as well as
+ C++ libraries for simplifying the development of such code. ALPS
+ strives to increase software reuse in the physics community.
+ This package contains python module.
+
+Package: alps-tutorials
+Architecture: any
+Depends: alps-applications (= ${binary:Version}), python3-pyalps (=
+ ${binary:Version}), libalps-bin (= ${binary:Version}),
+ ${misc:Depends}
+Description: The ALPS project - tutorials
+ The ALPS project (Algorithms and Libraries for Physics Simulations)
+ is an open source effort aiming at providing high-end simulation
+ codes for strongly correlated quantum mechanical systems as well as
+ C++ libraries for simplifying the development of such code. ALPS
+ strives to increase software reuse in the physics community.
+ This package contains tutorials for applications.

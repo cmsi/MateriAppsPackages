@@ -5,7 +5,7 @@ SCRIPT_DIR=$(cd $(dirname ${SCRIPT}) && pwd)
 
 CODENAME="$1"
 if [ -z ${CODENAME} ]; then
-  CODENAME="bullseye"
+  CODENAME="trixie"
 fi
 
 . $SCRIPT_DIR/../config/version.sh

@@ -1,0 +1,24 @@
+--- a/applications/mc/spins/spinsim.h
++++ b/applications/mc/spins/spinsim.h
+@@ -275,8 +275,8 @@
+   
+   this->measurements.template get<alps::RealObservable>("Energy") << en;
+   this->measurements.template get<alps::RealObservable>("Energy Density") << en/this->num_sites();
+-  this->measurements.template get<alps::RealVectorObservable>("Bond-type Energy") << bt_en;
+-  this->measurements.template get<alps::RealVectorObservable>("Bond-type Energy Density") << bt_en_density;
++  // this->measurements.template get<alps::RealVectorObservable>("Bond-type Energy") << bt_en;
++  // this->measurements.template get<alps::RealVectorObservable>("Bond-type Energy Density") << bt_en_density;
+   this->measurements.template get<alps::RealObservable>("Energy^2") << en*en;
+   this->measurements.template get<alps::RealObservable>("beta * Energy / sqrt(N)") << this->beta_ *en/sqrt(static_cast<double>(this->num_sites()));
+   this->measurements.template get<alps::RealObservable>("(beta * Energy)^2 / N") << this->beta_*this->beta_*en*en/this->num_sites();;
+@@ -402,8 +402,8 @@
+   
+   this->measurements.template get<alps::RealObservable>("Energy") << en;
+   this->measurements.template get<alps::RealObservable>("Energy Density") << en/this->num_sites();
+-  this->measurements.template get<alps::RealVectorObservable>("Bond-type Energy") << bt_en;
+-  this->measurements.template get<alps::RealVectorObservable>("Bond-type Energy Density") << bt_en_density;
++  // this->measurements.template get<alps::RealVectorObservable>("Bond-type Energy") << bt_en;
++  // this->measurements.template get<alps::RealVectorObservable>("Bond-type Energy Density") << bt_en_density;
+   this->measurements.template get<alps::RealObservable>("Energy^2") << en*en;
+   this->measurements.template get<alps::RealObservable>("beta * Energy / sqrt(N)") << this->beta_ *en/sqrt(static_cast<double>(this->num_sites()));
+   this->measurements.template get<alps::RealObservable>("(beta * Energy)^2 / N") << this->beta_*this->beta_*en*en/this->num_sites();;
