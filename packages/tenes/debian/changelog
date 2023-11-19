@@ -1,3 +1,9 @@
+tenes (2.0.0-1) unstable; urgency=low
+
+  * New upstream version 2.0.0
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sun, 19 Nov 2023 11:49:36 +0900
+
 tenes (1.3.4-1) unstable; urgency=low
 
   * New upstream version 1.3.4
