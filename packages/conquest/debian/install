@@ -1,0 +1,4 @@
+bin/Conquest usr/bin
+bin/MakeIonFiles usr/bin
+pseudo-and-pao usr/share/conquest
+testsuite/test_001_bulk_Si_1proc_Diag/* usr/share/conquest/test

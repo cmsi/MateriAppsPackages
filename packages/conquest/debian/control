@@ -1,0 +1,19 @@
+Source: conquest
+Section: scientific
+Priority: optional
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 8.0.0), gfortran, libfftw3-dev, libblas-dev, liblapack-dev, libscalapack-mpi-dev, mpi-default-dev, libxc-dev
+Standards-Version: 3.9.3
+Homepage: https://www.linear-scaling.org/
+
+Package: conquest
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: CONQUEST: Linear Scaling DFT
+ CONQUEST is a linear-scaling DFT (Density Functional Theory) code based
+ on the density matrix minimization method. Since its computational cost,
+ for both memory and computational costs, is only proportional to the
+ number of atoms N of the target systems, the code can employ structure
+ optimization or molecular dynamics on very large-scale systems,
+ including more than hundreds of thousands of atoms. It also has high
+ parallel efficiency and is suitable for massively parallel calculations.

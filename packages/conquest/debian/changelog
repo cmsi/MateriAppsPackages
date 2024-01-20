@@ -1,0 +1,23 @@
+conquest (1.2-1) unstable; urgency=low
+
+  * New upstream 1.2
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 20 Jan 2024 12:05:52 +0900
+
+conquest (1.0.6-1) unstable; urgency=low
+
+  * New upstream 1.0.6-pre
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 20 Oct 2020 17:50:02 +0900
+
+conquest (1.0.5-1) unstable; urgency=low
+
+  * New upstream for 1.0.5-pre
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 22 Jul 2020 10:38:53 +0900
+
+conquest (1.0.2-1) unstable; urgency=low
+
+  * Initial release for 1.0.2-pre
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sun, 29 Mar 2020 19:24:36 +0900
