@@ -1,3 +1,9 @@
+alps (1:20220304~r7871-2) unstable; urgency=low
+
+  * Workaround for boost 1.84.0
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 20 Jan 2024 19:05:49 +0900
+
 alps (1:20220304~r7871-1) unstable; urgency=low
 
   * New upstream snapshot (20220304~r7871)
