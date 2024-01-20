@@ -1,0 +1,19 @@
+Source: alamode
+Section: scientific
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 8.0.0), mpi-default-dev, liblapack-dev, libboost-all-dev, libfftw3-dev, libeigen3-dev, libsymspg-dev
+Standards-Version: 3.9.3
+Homepage: http://alamode.readthedocs.io/
+
+Package: alamode
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends} mpi-default-bin, python3-numpy, python3-matplotlib
+Description: A program package for constructing interatomic force fields
+ which explicitly consider lattice anharmonicity. In combination with a
+ molecular dynamics simulator LAMMPS and an external first-principles
+ package such as VASP and Quantum ESPRESSO, ALAMODE extracts
+ harmonic/anharmonic force constants of solids and calculates phonon
+ dispersion, phonon DOS, Gruneisen parameter, phonon-phonon scattering
+ probability, lattice thermal-conductivity, anharmonic phonons at finite
+ temperature, phonon free energy and so on.

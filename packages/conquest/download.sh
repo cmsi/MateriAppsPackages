@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PACKAGE=openmx
+PACKAGE=conquest
 PACKAGE_DIR=$(cd $(dirname $0) && pwd)
 
 . ${PACKAGE_DIR}/../../script/path.sh

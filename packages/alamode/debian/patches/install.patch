@@ -1,0 +1,37 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,6 +6,8 @@
+ add_subdirectory(anphon)
+ add_subdirectory(tools)
+ 
++install(DIRECTORY example DESTINATION share/alamode)
++
+ #enable_testing()
+ #message(${CMAKE_CURRENT_SOURCE_DIR})
+ #message(${CMAKE_BINARY_DIR})
+--- a/alm/CMakeLists.txt
++++ b/alm/CMakeLists.txt
+@@ -120,6 +120,7 @@
+ if (WITH_HDF5_SUPPORT)
+     target_link_libraries(alm ${hdf5library})
+ endif()
++install(TARGETS alm RUNTIME DESTINATION bin)
+ 
+ if (BUILD_LIBRARIES)
+     set(serial "${alm_version}")
+--- a/anphon/CMakeLists.txt
++++ b/anphon/CMakeLists.txt
+@@ -148,3 +148,4 @@
+ if (fftw3library)
+     target_link_libraries(anphon ${fftw3library})
+ endif()
++install(TARGETS anphon RUNTIME DESTINATION bin)
+--- a/tools/CMakeLists.txt
++++ b/tools/CMakeLists.txt
+@@ -87,3 +87,6 @@
+         ${PROJECT_SOURCE_DIR}/parse_fcsxml.cpp
+         ${PROJECT_SOURCE_DIR}/parse_fcsxml.h)
+ target_link_libraries(parse_fcsxml ${Boost_LIBRARIES})
++
++install(TARGETS analyze_phonons dfc2 qe2alm fc_virtual parse_fcsxml RUNTIME DESTINATION share/alamode/tools)
++install(FILES GenDisplacement.py analyze_phonons.py displace.py extract.py makedisp_qe.py plotband.py plotdos.py scph_to_qefc.py DESTINATION share/alamode/tools)
