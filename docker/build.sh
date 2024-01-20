@@ -30,6 +30,7 @@ RUN apt-get update -qq \
       cdbs \
       cmake \
       curl \
+      debhelper \
       devscripts \
       gfortran \
       git \
