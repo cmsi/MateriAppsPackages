@@ -24,17 +24,13 @@ diff -urN gamess.orig/ddi/compddi gamess/ddi/compddi
     set CFLAGS = "-DLINUX $ARCH -O3 -fstrict-aliasing -I./"
 diff -urN gamess.orig/rungms gamess/rungms
 --- gamess.orig/rungms	2023-07-01 06:04:29.000000000 +0000
-+++ gamess/rungms	2024-01-21 04:42:23.574370012 +0000
-@@ -96,9 +96,9 @@
- #       See also a very old LoadLeveler "ll-gms" for some IBM systems.
- #
- set TARGET=sockets
--set SCR=~/gamess/restart
--set USERSCR=~/gamess/restart
--set GMSPATH=~/gamess
-+set SCR=$HOME/scr
-+set USERSCR=$HOME/scr
-+set GMSPATH=$HOME/share/gamess
- set DEL_OLD=yes
- #
- # Get any MDI-related options and remove them from the argument list
++++ gamess/rungms	2024-01-21 06:04:47.153970008 +0000
+@@ -163,7 +163,7 @@
+ set NCPUS=$3    # number of compute processes to be run
+ # $4 is treated below.
+ set LOGN=$5     # number of cores per logical node
+-if($# > 5) then
++if($#argv > 5) then
+   if($6 > 0) setenv OMP_NUM_THREADS $6 # number of threads
+ endif
+ set FSAVE="$7"  # extra files to save, example: F10, F06 etc.

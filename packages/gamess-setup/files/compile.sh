@@ -13,7 +13,7 @@ if [ -z $PREFIX ]; then
   exit 127
 fi
 
-SHAREDIR="$PREFIX/share"
+SHAREDIR="$PREFIX"
 GAMESSDIR="$SHAREDIR/gamess"
 
 if [ -d "$GAMESSDIR" ]; then
@@ -104,8 +104,8 @@ if [ -x "$GAMESSDIR/gamess.00.x" ]; then
   mkdir -p "$PREFIX/bin"
   rm -f "$PREFIX/bin/rungms"
   ln -s "$GAMESSDIR/rungms" "$PREFIX/bin/rungms"
-  echo "Making scratch directory: $HOME/scr"
-  mkdir -p "$HOME/scr"
+  echo "Making scratch directory: $HOME/gamess/restart"
+  mkdir -p "$HOME/gamess/restart"
   echo "Compilation Done"
 else
   echo "Compilation Failed"
