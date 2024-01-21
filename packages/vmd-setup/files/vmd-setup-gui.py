@@ -70,7 +70,7 @@ class Frame(wx.Frame):
         box_1.Add(self.button_cancel, 0, wx.LEFT | wx.BOTTOM, 5)
         box_1.Add(self.button_install, 0, wx.LEFT | wx.BOTTOM, 5)
         box_1.Add(self.button_start, 0, wx.LEFT | wx.BOTTOM, 5)
-        layout.Add(box_1, 0, wx.ALIGN_BOTTOM | wx.ALIGN_RIGHT | wx.RIGHT | wx.TOP, 10)
+        layout.Add(box_1, 0, wx.ALIGN_RIGHT | wx.RIGHT | wx.TOP, 10)
 
         self.text_log = wx.TextCtrl(self.panel, -1, style=wx.TE_MULTILINE | wx.TE_READONLY, size=(50,10))
         layout.Add(self.text_log, 1, wx.LEFT | wx.RIGHT | wx.TOP | wx.BOTTOM | wx.EXPAND, 10)
@@ -224,7 +224,7 @@ class Frame(wx.Frame):
             path = os.path.dirname(self.text_file.GetValue())
         else:
             path = os.environ['HOME']
-        dialog = wx.FileDialog(self, "Choose a binary archive", path, '', wildCard, wx.OPEN)
+        dialog = wx.FileDialog(self, "Choose a binary archive", path, '', wildCard, wx.FD_OPEN)
         if dialog.ShowModal() == wx.ID_OK:
             self.text_file.SetValue(dialog.GetPath())
             self.radio_local.SetValue(True)
