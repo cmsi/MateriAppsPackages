@@ -1,3 +1,9 @@
+vmd-setup (1.4-3) unstable; urgency=low
+
+  * Fix GUI
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sun, 21 Jan 2024 21:08:43 +0900
+
 vmd-setup (1.4-2) unstable; urgency=low
 
   * Fix for python3
