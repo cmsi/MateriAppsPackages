@@ -1,0 +1,11 @@
+casino-setup (2.12.1-2) unstable; urgency=medium
+
+  * Add graphit script in $HOME/bin
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sun, 02 Feb 2020 15:22:24 +0900
+
+casino-setup (2.12.1-1) unstable; urgency=medium
+
+  * Initial release for CASINO 2.12.1
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sun, 02 Feb 2020 15:22:24 +0900

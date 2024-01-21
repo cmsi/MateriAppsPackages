@@ -1,0 +1,6 @@
+casino-setup		/usr/bin
+*.py			/usr/share/casino-setup
+compile.sh		/usr/share/casino-setup
+help.html		/usr/share/casino-setup
+*.1			/usr/share/man/man1
+*.desktop		/usr/share/applications

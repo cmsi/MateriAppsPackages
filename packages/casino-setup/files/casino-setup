@@ -1,0 +1,8 @@
+#!/bin/sh
+
+DIR=`dirname $0`
+if test -f "$DIR/casino-setup-gui.py"; then
+  python2 $DIR/casino-setup-gui.py $HOME
+else
+  python2 /usr/share/casino-setup/casino-setup-gui.py $HOME
+fi
