@@ -212,7 +212,7 @@ class Frame(wx.Frame):
             path = os.path.dirname(self.text_file.GetValue())
         else:
             path = os.environ['HOME']
-        dialog = wx.FileDialog(self, "Choose a source archive", path, '', wildCard, wx.OPEN)
+        dialog = wx.FileDialog(self, "Choose a source archive", path, '', wildCard, wx.FD_OPEN)
         if dialog.ShowModal() == wx.ID_OK:
             self.text_file.SetValue(dialog.GetPath())
             self.radio_local.SetValue(True)
