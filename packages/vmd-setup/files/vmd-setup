@@ -1,0 +1,11 @@
+#!/bin/sh
+
+DIR=$(dirname $0)
+
+PYTHON="python3"
+
+if test -f "${DIR}/vmd-setup-gui.py"; then
+  ${PYTHON} ${DIR}/vmd-setup-gui.py ${HOME}
+else
+  ${PYTHON} /usr/share/vmd-setup/vmd-setup-gui.py ${HOME}
+fi
