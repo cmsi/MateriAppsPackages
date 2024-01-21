@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 
 # CASINO Setup GUI written by Synge Todo
 
@@ -28,7 +28,7 @@ class Frame(wx.Frame):
         self.radio_download_pw.Bind(wx.EVT_RADIOBUTTON, self.OnChooseRadioDownloadPw)
         self.radio_download_pw.SetValue(True)
         layout.Add(self.radio_download_pw, 0, wx.LEFT | wx.RIGHT | wx.TOP, 10)
-        grid_1 = wx.FlexGridSizer(2, 3)
+        grid_1 = wx.FlexGridSizer(2, 3, 0, 0)
         self.text_username = wx.TextCtrl(self.panel, -1, size = (285, -1))
         self.text_username.Bind(wx.EVT_TEXT, self.OnTextUsername)
         self.text_password = wx.TextCtrl(self.panel, -1, style = wx.TE_PASSWORD)
@@ -45,7 +45,7 @@ class Frame(wx.Frame):
         self.radio_download_url = wx.RadioButton(self.panel, -1, "Download source from temporary URL")
         self.radio_download_url.Bind(wx.EVT_RADIOBUTTON, self.OnChooseRadioDownloadUrl)
         layout.Add(self.radio_download_url, 0, wx.LEFT | wx.RIGHT | wx.TOP, 10)
-        grid_2 = wx.FlexGridSizer(2, 3)
+        grid_2 = wx.FlexGridSizer(2, 3, 0, 0)
         self.text_url = wx.TextCtrl(self.panel, -1, size = (285, -1))
         self.text_url.Bind(wx.EVT_TEXT, self.OnTextUrl)
         grid_2.Add(wx.StaticText(self.panel, -1, '     '), 0)
@@ -56,7 +56,7 @@ class Frame(wx.Frame):
         self.radio_local = wx.RadioButton(self.panel, -1, "Use a source tarball on local storage")
         self.radio_local.Bind(wx.EVT_RADIOBUTTON, self.OnChooseRadioLocal)
         layout.Add(self.radio_local, 0, wx.LEFT | wx.RIGHT | wx.TOP, 10)
-        grid_3 = wx.FlexGridSizer(2, 3)
+        grid_3 = wx.FlexGridSizer(2, 3, 0, 0)
         self.text_file = wx.TextCtrl(self.panel, -1, size = (325, -1), style = wx.TE_READONLY)
         self.button_choose = wx.Button(self.panel, -1, "Choose")
         self.button_choose.Bind(wx.EVT_BUTTON, self.OnChoose)
@@ -78,7 +78,7 @@ class Frame(wx.Frame):
         box_1.Add(self.button_help, 0, wx.LEFT | wx.BOTTOM, 5)
         box_1.Add(self.button_cancel, 0, wx.LEFT | wx.BOTTOM, 5)
         box_1.Add(self.button_install, 0, wx.LEFT | wx.BOTTOM, 5)
-        layout.Add(box_1, 0, wx.ALIGN_BOTTOM | wx.ALIGN_RIGHT | wx.RIGHT | wx.TOP, 10)
+        layout.Add(box_1, 0, wx.ALIGN_RIGHT | wx.RIGHT | wx.TOP, 10)
 
         self.text_log = wx.TextCtrl(self.panel, -1, style=wx.TE_MULTILINE | wx.TE_READONLY, size=(50,10))
         layout.Add(self.text_log, 1, wx.LEFT | wx.RIGHT | wx.TOP | wx.BOTTOM | wx.EXPAND, 10)
@@ -242,14 +242,14 @@ class Frame(wx.Frame):
             path = os.path.dirname(self.text_file.GetValue())
         else:
             path = os.environ['HOME']
-        dialog = wx.FileDialog(self, "Choose a source archive", path, '', wildCard, wx.OPEN)
+        dialog = wx.FileDialog(self, "Choose a source archive", path, '', wildCard, wx.FD_OPEN)
         if dialog.ShowModal() == wx.ID_OK:
             self.text_file.SetValue(dialog.GetPath())
             self.radio_local.SetValue(True)
         dialog.Destroy()
 
     def StartCompile(self, file):
-        casinodir = os.path.join(self.prefix, 'share', 'casino')
+        casinodir = os.path.join(self.prefix, 'casino')
         if (os.path.exists(casinodir)):
             dialog = wx.MessageDialog(None, casinodir + ' already exists.  Clean up and install CASINO anyway?', 'CASINO Setup', wx.OK | wx.CANCEL | wx.ICON_QUESTION)
             if dialog.ShowModal() == wx.ID_OK:
@@ -326,7 +326,7 @@ class Frame(wx.Frame):
 
 if __name__ == '__main__':
     if (len(sys.argv) < 2):
-        print "Usage:", sys.argv[0], "prefix"
+        print("Usage:", sys.argv[0], "prefix")
         sys.exit(127)
     scriptdir = os.path.abspath(os.path.dirname(sys.argv[0]))
     prefix = sys.argv[1]

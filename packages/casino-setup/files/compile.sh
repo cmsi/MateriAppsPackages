@@ -14,7 +14,7 @@ if [ -z $PREFIX ]; then
 fi
 
 BINDIR="$PREFIX/bin"
-SHAREDIR="$PREFIX/share"
+SHAREDIR="$PREFIX"
 CASINODIR="$SHAREDIR/CASINO"
 
 if [ -d "$CASINODIR" ]; then
