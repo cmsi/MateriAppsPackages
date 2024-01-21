@@ -43,9 +43,10 @@ cp -rp ${PACKAGE_DIR}/debian/* debian/
 if [ -d ${PACKAGE_DIR}/debian-${RELEASE} ]; then
   cp -rp ${PACKAGE_DIR}/debian-${RELEASE}/* debian/
 fi
+export DEBIAN_FRONTEND=noninteractive
 sudo apt-get update
-sudo apt-get -y upgrade
-dpkg-checkbuilddeps 2>&1 | sed 's/dpkg-checkbuilddeps.*dependencies: //' | sudo xargs apt-get -y install
+sudo -E apt-get -y upgrade
+dpkg-checkbuilddeps 2>&1 | sed 's/dpkg-checkbuilddeps.*dependencies: //' | sudo -E xargs apt-get -y install
 if [ -f ${PACKAGE_DIR}/setup-extra.sh ]; then
   sh ${PACKAGE_DIR}/setup-extra.sh
 fi
