@@ -1,0 +1,88 @@
+hphi (3.5.1-1) unstable; urgency=low
+
+  * New upstream version 3.5.1
+  * https://github.com/issp-center-dev/HPhi/pull/135
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 16 Aug 2022 20:34:22 +0900
+
+hphi (3.5.0-2) unstable; urgency=low
+
+  * Add support for arm64
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 31 Jan 2022 09:30:22 +0900
+
+hphi (3.5.0-1) unstable; urgency=low
+
+  * New upstream version 3.5.0
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Thu, 30 Sep 2021 15:15:04 +0900
+
+hphi (3.4.0-1) unstable; urgency=low
+
+  * New upstream version 3.4.0
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Thu, 18 Jun 2020 14:42:37 +0900
+
+hphi (3.3.1-1) unstable; urgency=low
+
+  * New upstream version 3.3.1
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 11 Feb 2020 23:59:32 +0900
+
+hphi (3.3.0-1) unstable; urgency=low
+
+  * New upstream version 3.3.0
+  * Add support for Buster, Xenial, Bionic
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 07 Sep 2019 16:15:46 +0900
+
+hphi (3.2.0-1) unstable; urgency=low
+
+  * New upstream (3.2.0)
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 13 May 2019 13:31:06 +0900
+
+hphi (3.1.2-1) unstable; urgency=low
+
+  * New upstream (3.1.2)
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Thu, 01 Nov 2018 10:44:44 +0900
+
+hphi (3.0.0-1) unstable; urgency=low
+
+  * New upstream (3.0.0)
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Fri, 02 Mar 2018 11:14:49 +0900
+
+hphi (2.0.4-1) unstable; urgency=low
+
+  * New upstream (2.0.4)
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Thu, 26 Oct 2017 17:19:32 +0900
+
+hphi (2.0.2-1) unstable; urgency=low
+
+  * New upstream (2.0.2)
+  * Using static link instead of shared libraries
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 12 Jul 2017 15:17:44 +0900
+
+hphi (2.0.1-1) unstable; urgency=low
+
+  * New upstream (2.0.1)
+  * Moved tools (corplot and fourier) into /usr/share/hphi/tool
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sun, 25 Jun 2017 16:04:59 +0900
+
+hphi (2.0.0-1) unstable; urgency=low
+
+  * New upstream (2.0.0)
+  * Added support for Jessie
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 6 May 2017 14:55:38 +0900
+
+hphi (1.1.1-1) unstable; urgency=low
+
+  * Initial release for 1.1.1
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 10 Aug 2016 02:25:46 +0000

@@ -1,0 +1,34 @@
+--- a/src/komega/CMakeLists.txt
++++ b/src/komega/CMakeLists.txt
+@@ -23,4 +23,3 @@
+ if(MPI_Fortran_FOUND)
+   target_link_libraries(komega ${MPI_Fortran_LIBRARIES})
+ endif(MPI_Fortran_FOUND)
+-install(TARGETS komega ARCHIVE DESTINATION lib LIBRARY DESTINATION lib RUNTIME DESTINATION bin)
+--- a/tool/CMakeLists.txt
++++ b/tool/CMakeLists.txt
+@@ -10,19 +10,19 @@
+ add_executable(cTPQ cTPQ.F90)
+ target_link_libraries(greenr2k ${LAPACK_LIBRARIES})
+ 
+-install(TARGETS greenr2k RUNTIME DESTINATION bin)
++install(TARGETS greenr2k cTPQ RUNTIME DESTINATION share/hphi/tool)
+ #
+ # Scripts
+ #
+ configure_file(wout2geom.sh wout2geom.sh COPYONLY)
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/wout2geom.sh DESTINATION bin
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/wout2geom.sh DESTINATION share/hphi/tool
+         PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+ configure_file(respack2wan90.py respack2wan90.py COPYONLY)
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/respack2wan90.py DESTINATION bin
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/respack2wan90.py DESTINATION share/hphi/tool
+         PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+ configure_file(histgram.sh histgram.sh COPYONLY)
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/histgram.sh DESTINATION bin
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/histgram.sh DESTINATION share/hphi/tool
+         PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+ configure_file(AveSSrand.py AveSSrand.py COPYONLY)
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/AveSSrand.py DESTINATION bin
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/AveSSrand.py DESTINATION share/hphi/tool
+         PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
