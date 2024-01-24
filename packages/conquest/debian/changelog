@@ -1,3 +1,9 @@
+conquest (1.2-2) unstable; urgency=low
+
+  * Fix dependency on libxc
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Thu, 25 Jan 2024 00:24:23 +0900
+
 conquest (1.2-1) unstable; urgency=low
 
   * New upstream 1.2

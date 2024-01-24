@@ -8,7 +8,7 @@ Homepage: https://www.linear-scaling.org/
 
 Package: conquest
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: libblas3 | libblas.so.3, libc6, libfftw3-double3, libgcc-s1, libgfortran5, liblapack3 | liblapack.so.3, libopenmpi3 | liblapack.so.3, libscalapack-openmpi2.2 | libscalapack-openmpi2.1 | libscalapack-openmpi2.0, libxc9 | libxc5, ${misc:Depends}
 Description: CONQUEST: Linear Scaling DFT
  CONQUEST is a linear-scaling DFT (Density Functional Theory) code based
  on the density matrix minimization method. Since its computational cost,
