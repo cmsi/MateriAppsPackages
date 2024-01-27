@@ -1,0 +1,20 @@
+--- /dev/null
++++ b/Makefile
+@@ -0,0 +1,2 @@
++default %:
++	make $@ -C CC2
+--- a/CC2/Makefile
++++ b/CC2/Makefile
+@@ -15,10 +15,10 @@
+ APP = new_bfss
+ HEAD = gpr.hpp bsa.hpp optimize.hpp
+ SRC = ${HEAD} main_fss.cc
+-all: ${APP}
++default all: ${APP}
+ new_bfss: main_fss.cc ${HEAD} Makefile
+ 	${CC} $(CCFLAGS) -o new_bfss main_fss.cc $(CCLIBS)
+-clean:
++clean distclean:
+ 	@rm -rf ${APP}
+ doc:
+ 	doxygen Etc/Doxyfile 

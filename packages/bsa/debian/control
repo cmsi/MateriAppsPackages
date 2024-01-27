@@ -1,0 +1,17 @@
+Source: bsa
+Section: scientific
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 8.0.0), liblapack-dev
+Standards-Version: 3.9.3
+Homepage: http://kenjiharada.github.io/BSA/
+
+Package: bsa
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Kernel Method for Finite-Size Scaling Analysis of Critical Phenomena
+ The new method is based on the Gaussian process regression, which is
+ called kernel method. After the advent of kernel methods in the machine
+ learning community, the method of data analysis was drastically changed.
+ Because the kernel method is very flexible for complex real data, the
+ power of the kernel method can also help our scaling analysis.
