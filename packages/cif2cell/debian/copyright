@@ -1,0 +1,7 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: cif2cell
+Source: https://github.com/torbjornbjorkman/cif2cell
+
+Files: *
+Copyright: Torbjörn Björkman
+License: GPL-3+
