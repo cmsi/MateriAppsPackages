@@ -1,0 +1,12 @@
+Source: c-tools
+Section: scientific
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 8.0.0), qtbase5-dev, qtbase5-dev-tools, liblapack-dev
+Standards-Version: 3.9.3
+Homepage:
+
+Package: c-tools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: C-Tools can produce input files of various applications for density functional theory (DFT) calculations via user-friendly parameter adjustment using three-dimensional computer graphics (3DCG) and graphical user interfaces (GUI). Input-file conversion between different applications is also possible.  Supported DFT codes are xTAPP, OpenMX, and VASP.

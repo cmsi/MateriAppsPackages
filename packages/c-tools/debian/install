@@ -1,0 +1,5 @@
+sample			/usr/share/c-tools
+src/defaults.*ml	/usr/libexec/c-tools
+src/kpath.xml		/usr/libexec/c-tools
+debian/c-tools.desktop	/usr/share/applications
+debian/script/c-tools	/usr/bin

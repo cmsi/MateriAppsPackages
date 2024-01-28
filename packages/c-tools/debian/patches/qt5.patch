@@ -1,0 +1,69 @@
+--- a/src/dtmodel.h
++++ b/src/dtmodel.h
+@@ -11,7 +11,7 @@
+ #ifndef __DTMODEL_H_INCLUDED
+ #define __DTMODEL_H_INCLUDED
+ 
+-#include <QtGui/QtGui>
++#include <QtWidgets/QtWidgets>
+ #include "dtlattice.h"
+ #include "dtudf.h"
+ #include "dtxtapp.h"
+--- a/src/glrecplattice.h
++++ b/src/glrecplattice.h
+@@ -11,7 +11,7 @@
+ #ifndef __GLRECPLATTICE_H_INCLUDED
+ #define __GLRECPLATTICE_H_INCLUDED
+ 
+-#include <QtGui/QtGui>
++#include <QtWidgets/QtWidgets>
+ #include <QtOpenGL/QGLWidget>
+ #include "glbase.h"
+ 
+--- a/src/glunitlattice.h
++++ b/src/glunitlattice.h
+@@ -11,7 +11,7 @@
+ #ifndef __GLUNITLATTICE_H_INCLUDED
+ #define __GLUNITLATTICE_H_INCLUDED
+ 
+-#include <QtGui/QtGui>
++#include <QtWidgets/QtWidgets>
+ #include <QtOpenGL/QGLWidget>
+ #include "glcell.h"
+ #include "glatoms.h"
+--- a/src/main.cc
++++ b/src/main.cc
+@@ -39,7 +39,7 @@
+   - symbol.h	å≥ëfãLçÜÉNÉâÉX
+ */
+ 
+-#include <QtGui/QApplication>
++#include <QtWidgets/QApplication>
+ #include "window.h"
+ 
+ int main( int argc, char* argv[] )
+--- a/src/qtexception.h
++++ b/src/qtexception.h
+@@ -11,7 +11,7 @@
+ #ifndef __EXCEPTION_H_INCLUDED
+ #define __EXCEPTION_H_INCLUDED
+ 
+-#include <QtCore/QString>
++#include <QtWidgets/QtWidgets>
+ #include "qtmisc.h"
+ 
+ struct MyException
+--- a/src/qtwidgets.h
++++ b/src/qtwidgets.h
+@@ -11,10 +11,7 @@
+ #ifndef __QTWIDGETS_H_INCLUDED
+ #define __QTWIDGETS_H_INCLUDED
+ 
+-#include <QtCore/QString>
+-#include <QtGui/QtGui>
+-#include <QtGui/QSlider>
+-#include <QtGui/QGridLayout>
++#include <QtWidgets/QtWidgets>
+ 
+ #include <vector>
+ using namespace std;

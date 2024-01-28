@@ -1,0 +1,4 @@
+#!/bin/sh
+
+/usr/libexec/c-tools/c-tools "$@"
+exit $?

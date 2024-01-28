@@ -1,0 +1,40 @@
+--- a/src/Makefile.inc
++++ b/src/Makefile.inc
+@@ -29,12 +29,12 @@
+ #ICON   = 
+ 
+ ### for Linux, debian 6
+-#QT4    =  /usr
+-#CC     =  g++
+-#CFLAGS = -O3 -Wall
+-#INCS   = -I/usr/include/stlport -I/usr/include/qt4 -I/usr/X11R6/include
+-#LIBS   = -lQtCore -lQtGui -lQtOpenGL -lQtXml -lGLU -lstlport
+-#ICON   = 
++QT4    =  /usr
++CC     =  g++
++CFLAGS = -O3 -fPIC -Wall
++INCS   = -I$(shell qmake -query QT_INSTALL_HEADERS) -I/usr/X11R6/include
++LIBS   = -lQt5Core -lQt5Widgets -lQt5Gui -lQt5OpenGL -lQt5Xml -lGLU -lGL -llapack -lblas
++ICON   = 
+ 
+ ### for Mac
+ #QT4    =  /usr/local/Trolltech/Qt-4.8.4
+@@ -43,12 +43,12 @@
+ #INCS   = -I$(QT4)/include -I/usr/X11R6/include
+ #LIBS   = -F$(QT4)/lib -L$(QT4)/lib -framework QtXml -framework QtOpenGL -framework QtGui -framework QtCore -framework OpenGL
+ #ICON   =
+-QT4    =  $(HOME)/Qt-4.8.7
+-CC     =  g++
+-CFLAGS = -O3 -Wall -static
+-INCS   = -I$(QT4)/include -I/usr/X11/include
+-LIBS   = -F$(QT4)/lib -L$(QT4)/lib -lQtCore -lQtGui -lQtOpenGL -lQtXml -framework OpenGL -framework CoreFoundation -framework Foundation -framework CoreServices -framework Security -framework ApplicationServices -framework IOKit -framework Cocoa -framework Carbon -lz -llapack -lblas
+-ICON   = 
++#QT4    =  $(HOME)/Qt-4.8.7
++#CC     =  g++
++#CFLAGS = -O3 -Wall -static
++#INCS   = -I$(QT4)/include -I/usr/X11/include
++#LIBS   = -F$(QT4)/lib -L$(QT4)/lib -lQtCore -lQtGui -lQtOpenGL -lQtXml -framework OpenGL -framework CoreFoundation -framework Foundation -framework CoreServices -framework Security -framework ApplicationServices -framework IOKit -framework Cocoa -framework Carbon -lz -llapack -lblas
++#ICON   = 
+ 
+ #########################################
+ ### do not edit lines below

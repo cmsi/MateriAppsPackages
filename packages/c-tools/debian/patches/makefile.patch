@@ -1,0 +1,28 @@
+--- /dev/null
++++ b/Makefile
+@@ -0,0 +1,4 @@
++All:
++	make All -C src
++%:
++	make $@ -C src
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -56,11 +56,17 @@
+ $(ICON): icon.rc icon.ico
+ 	windres.exe -i icon.rc -o icon.o
+ 
+-clean:
++clean distclean:
+ 	rm -f *.moc.cpp *.exe *.exe.stackdump *.o *~ *.bak $(TARGET)
+ 
+ depend:
+ 	touch Makefile.dep
+ 	makedepend -fMakefile.dep -Y -- *.cc 2> /dev/null
+ 
++test: $(TARGET)
++
++install: $(TARGET)
++	install -d $(DESTDIR)/usr/libexec/c-tools
++	install $(TARGET) $(DESTDIR)/usr/libexec/c-tools
++
+ include Makefile.dep
