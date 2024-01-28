@@ -1,0 +1,45 @@
+Source: espresso
+Section: science
+Priority: optional
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper,
+               gfortran,
+               libblas-dev,
+               libfftw3-dev,
+               liblapack-dev,
+               libscalapack-mpi-dev,
+               mpi-default-dev
+Standards-Version: 4.2.0
+Homepage: https://www.quantum-espresso.org/
+
+Package: quantum-espresso
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Recommends: quantum-espresso-data
+Description: Electronic-Structure Calculations and Materials Modeling
+ Quantum ESPRESSO is an integrated suite of Open-Source computer codes
+ for electronic-structure calculations and materials modeling at the
+ nanoscale. It is based on density-functional theory, plane waves, and
+ pseudopotentials.
+
+Package: quantum-espresso-data
+Architecture: all
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Electronic-Structure Calculations and Materials Modeling (Data)
+ Quantum ESPRESSO is an integrated suite of Open-Source computer codes
+ for electronic-structure calculations and materials modeling at the
+ nanoscale. It is based on density-functional theory, plane waves, and
+ pseudopotentials.
+ .
+ This package contains a limited set of pseudo-potentials and example files.
+
+Package: quantum-espresso-dev
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Electronic-Structure Calculations and Materials Modeling (Development)
+ Quantum ESPRESSO is an integrated suite of Open-Source computer codes
+ for electronic-structure calculations and materials modeling at the
+ nanoscale. It is based on density-functional theory, plane waves, and
+ pseudopotentials.
+ .
+ This package contains Quantum ESPRESSO libraries and include files.

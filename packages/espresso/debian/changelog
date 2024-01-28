@@ -1,0 +1,69 @@
+espresso (7.1-3) unstable; urgency=medium
+
+  * Enable OpenMP
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Fri, 02 Sep 2022 07:18:32 +0000
+
+espresso (7.1-2) unstable; urgency=medium
+
+  * Fix installation in PP subdirectory
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 16 Aug 2022 17:40:02 +0900
+
+espresso (7.1-1) unstable; urgency=medium
+
+  * New upstream version 7.1
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 16 Aug 2022 13:57:39 +0900
+
+espresso (6.7-1) unstable; urgency=medium
+
+  * New upstream version 6.7
+  * Import 6.7-2 from sid
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 17 May 2021 14:48:39 +0900
+
+espresso (6.6-1) unstable; urgency=medium
+
+  * New upstream version 6.6
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 20 Oct 2020 17:56:18 +0900
+
+espresso (6.5-1) unstable; urgency=medium
+
+  * New upstream version 6.5
+  * Import 6.4-1 from sid
+  * Workaround for gcc 6.3
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 01 Feb 2020 09:54:00 +0900
+
+espresso (6.3-2) unstable; urgency=medium
+
+  * Add changelog.sid
+  * Add -ffpe-summary=none option
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 26 Feb 2019 09:47:42 +0900
+
+espresso (6.3-1) unstable; urgency=medium
+
+  * Import 6.3-4 from sid
+  * Remove Elpa support
+  * Install PDF userguide instead of HTML
+  * Skip tests
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 19 Feb 2019 12:36:07 +0900
+
+espresso (6.2.1-2) unstable; urgency=medium
+
+  * Add environment_variables in /usr/share/espresso/examples
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 20 Jun 2018 19:44:00 +0900
+
+espresso (6.2.1-1) unstable; urgency=medium
+
+  * Import 6.2.1-1 for sid
+  * Remove Elpa support for the moment
+  * debian/quantum-espresso-data.install: Add examples again
+  * debian/quantum-espresso-test-suite.install: Add test suite
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Fri, 02 Mar 2018 00:11:10 +0900
