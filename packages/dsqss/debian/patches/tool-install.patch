@@ -1,0 +1,42 @@
+--- a/tool/cmake/install.sh.in
++++ b/tool/cmake/install.sh.in
+@@ -2,15 +2,6 @@
+ 
+ cd @CMAKE_CURRENT_BINARY_DIR@
+ 
+-if ! @PYTHON_EXECUTABLE@ -m pip --version >/dev/null 2>/dev/null ;then
+-  set -e
+-  wget https://bootstrap.pypa.io/get-pip.py -O get-pip.py
+-  PIP_USER=0 @PYTHON_EXECUTABLE@ get-pip.py --prefix=@CMAKE_INSTALL_PREFIX@
+-fi
+-
+-set -e
+-PIP_USER=0 @PYTHON_EXECUTABLE@ -m pip install -U pip --prefix=@CMAKE_INSTALL_PREFIX@ 
+-PIP_USER=0 @PYTHON_EXECUTABLE@ -m pip install wheel --prefix=@CMAKE_INSTALL_PREFIX@ --no-warn-script-location
+ DSQSS_VERSION=$(@PYTHON_EXECUTABLE@ setup.py --version)
+ @PYTHON_EXECUTABLE@ setup.py bdist_wheel --universal
+ mkdir -p temp
+@@ -18,6 +9,8 @@
+ 
+ # To reinstall dsqss forcely, remove old dsqss package
+ # `pip uninstall dsqss` removes ALL libraries and binaries 
+-rm -rf @DSQSS_PYTHONPATH@/dsqss*
++rm -rf ${DESTDIR}@DSQSS_PYTHONPATH@/dsqss*
+ 
+-PIP_USER=0 @PYTHON_EXECUTABLE@ -m pip install ../dist/dsqss-${DSQSS_VERSION}-py2.py3-none-any.whl --prefix=@CMAKE_INSTALL_PREFIX@ --no-warn-script-location
++PIP_USER=0 @PYTHON_EXECUTABLE@ -m pip install ../dist/dsqss-${DSQSS_VERSION}-py2.py3-none-any.whl --prefix=${DESTDIR}@CMAKE_INSTALL_PREFIX@ --no-warn-script-location
++mkdir -p ${DESTDIR}@CMAKE_INSTALL_PREFIX@/lib/python@python_version_mm@/dist-packages/
++mv ${DESTDIR}@CMAKE_INSTALL_PREFIX@/lib/python@python_version_mm@/site-packages/dsqss* ${DESTDIR}@CMAKE_INSTALL_PREFIX@/lib/python@python_version_mm@/dist-packages/
+--- a/tool/CMakeLists.txt
++++ b/tool/CMakeLists.txt
+@@ -7,10 +7,6 @@
+ endforeach(script_name ${dla_scripts})
+ 
+ set(DSQSS_PYTHONPATH "${CMAKE_INSTALL_PREFIX}/lib/python${python_version_mm}/site-packages")
+-configure_file(cmake/dsqssvars.sh.in ${CMAKE_CURRENT_BINARY_DIR}/dsqssvars-${DSQSS_VERSION}.sh @ONLY)
+ configure_file(cmake/install.sh.in ${CMAKE_CURRENT_BINARY_DIR}/install.sh @ONLY)
+ 
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/dsqssvars-${DSQSS_VERSION}.sh
+-        DESTINATION share/dsqss
+-        )
+ install(CODE "execute_process(COMMAND sh ${CMAKE_CURRENT_BINARY_DIR}/install.sh)")

@@ -1,0 +1,14 @@
+--- a/sample/CMakeLists.txt
++++ b/sample/CMakeLists.txt
+@@ -1,9 +1,9 @@
+ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/dla
+-  DESTINATION share/dsqss/${DSQSS_VERSION}/samples
++  DESTINATION share/dsqss/samples
+   )
+ 
+ if(ENABLE_MPI)
+ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/pmwa
+-  DESTINATION share/dsqss/${DSQSS_VERSION}/samples
++  DESTINATION share/dsqss/samples
+   )
+ endif(ENABLE_MPI)

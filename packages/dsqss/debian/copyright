@@ -1,0 +1,7 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: dsqss
+Source: <https://github.com/qmc/dsqss>
+
+Files: *
+Copyright: 2011-2021 Yasuyuki Kato, Naoki Kawashima, Kouta Sakakura, Takafumi Suzuki, Kenji Harada, Akiko Masaki, Yuichi Motoyama, and Kazuyoshi Yoshimi
+License: GPL-3+
