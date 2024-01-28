@@ -22,6 +22,8 @@ for c in ${CODENAMES}; do
       docker run --rm --name ${c}.$$ ${IMAGE}:${LABEL} gcc --version | head -1
       docker run --rm --name ${c}.$$ ${IMAGE}:${LABEL} cmake --version | head -1
       docker run --rm --name ${c}.$$ ${IMAGE}:${LABEL} git --version | head -1
+      docker run --rm --name ${c}.$$ ${IMAGE}:${LABEL} python3 --version 2> /dev/null | head -1
+      docker run --rm --name ${c}.$$ ${IMAGE}:${LABEL} python --version 2> /dev/null | head -1
     fi
   done
 done
