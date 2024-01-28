@@ -1,0 +1,6 @@
+DDMRG /usr/bin
+*.txt /usr/share/ddmrg/example
+system.ini /usr/share/ddmrg/example
+preset /usr/share/ddmrg/data
+system /usr/share/ddmrg/data
+lib /usr/share/ddmrg/data

@@ -1,0 +1,9 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: ddmrg
+
+Files: *
+Copyright: 2010-2018, Shigetoshi Sota, Takami Tohyama, Hiroaki Matsueda, Katsuhiro Morita, and Seiji Yunoki
+License: 
+ This DDMRG binary package is built and distributed for trial use on
+ MateriApps LIVE! For extensive use or production run, please make
+ contact with the DDMRG developers and receive the recent source code.

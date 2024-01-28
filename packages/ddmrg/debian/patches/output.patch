@@ -1,0 +1,14 @@
+--- a/source/ddmrg_target.f
++++ b/source/ddmrg_target.f
+@@ -65,9 +65,8 @@
+      &                  0.d0,1.d0,0.d0)
+ 
+         if(myid_dmrg.eq.key_rank) then
+-          write(iso,'(1x,a)')
+-     &     '#   <omega>     < qx >     < qy >     < Re part >
+-     &      < Im part > '
++          write(iso,'(1x,a,5x,a,5x,a,5x,a,6x,a)')
++     &     '#   <omega>','< qx >','< qy >','< Re part >','< Im part >'
+           if(idmrg.eq.ndmrg) then
+             open(51,file=file_dphys_op)
+           end if

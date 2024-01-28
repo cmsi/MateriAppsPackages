@@ -1,0 +1,11 @@
+ddmrg (2.0.0-2) unstable; urgency=low
+
+  * Patch to ddmrg_target.f
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Fri, 12 Oct 2018 11:59:18 +0900
+
+ddmrg (2.0.0-1) unstable; urgency=low
+
+  * Initial release for 2.0.0
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 09 Oct 2018 12:42:20 +0900

@@ -1,0 +1,21 @@
+Source: ddmrg
+Section: scientific
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 8.0.0), mpi-default-dev, liblapack-dev
+Standards-Version: 3.9.3
+Homepage: http://www.r-ccs.riken.jp/labs/cms/DMRG/Dynamical_DMRG.html
+
+Package: ddmrg
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends} mpi-default-bin
+Description: 
+ DDMRG (Dynamical DMRG) is a program for analyzing the dynamical
+ properties of one-and two-dimensional quantum lattice models for
+ strongly correlated electron systems (e.g. Hubbard model) and quantum
+ spin systems (e.g. Heinseberg model) by using the density matrix
+ renormalization group method. DDMRG can be applied for the
+ calculation of various static and dynamic physical quantities. DDMRG
+ is compatible with large scale parallel computing and it enables us
+ to study state-of-the-art quantum dynamics by setting simple input
+ files.
