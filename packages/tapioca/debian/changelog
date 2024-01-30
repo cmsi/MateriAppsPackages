@@ -1,0 +1,77 @@
+tapioca (1.7.3-3) unstable; urgency=low
+
+  * Fixed makefiles
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 19 Jun 2018 08:30:44 +0900
+
+tapioca (1.7.3-2) unstable; urgency=low
+
+  * Support for Stretch
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 16 Jun 2018 22:39:15 +0900
+
+tapioca (1.7.3-1) unstable; urgency=low
+
+  * New upstream release 1.7.3
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 09 Aug 2016 10:36:39 +0000
+
+tapioca (1.6.11-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 20 Jan 2016 14:49:18 +0900
+
+tapioca (1.6.10-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 25 Nov 2015 22:01:05 +0900
+
+tapioca (1.6.9-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 25 Nov 2015 18:41:29 +0900
+
+tapioca (1.6.2-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 28 Apr 2015 17:03:33 +0900
+
+tapioca (1.5.0-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 09 Mar 2015 10:32:09 +0900
+
+tapioca (1.4.2-2) unstable; urgency=low
+
+  * Added missing config files
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 12 Mar 2014 13:36:33 +0900
+
+tapioca (1.4.2-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 04 Mar 2014 07:21:33 +0900
+
+tapioca (1.3.3-3) unstable; urgency=low
+
+  * Fixed copyright more.
+
+ -- Synge Todo <wistaria@issp.u-tokyo.ac.jp>  Fri, 20 Sep 2013 23:52:12 +0900
+
+tapioca (1.3.3-2) unstable; urgency=low
+
+  * Fixed copyright.
+
+ -- Synge Todo <wistaria@issp.u-tokyo.ac.jp>  Fri, 20 Sep 2013 21:28:23 +0900
+
+tapioca (1.3.3-1) unstable; urgency=low
+
+  * Initial debian package
+
+ -- Synge Todo <wistaria@issp.u-tokyo.ac.jp>  Fri, 20 Sep 2013 00:50:08 +0900

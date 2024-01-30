@@ -1,0 +1,12 @@
+Source: tapioca
+Section: scientific
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 8.0.0), libqt4-dev
+Standards-Version: 3.9.3
+Homepage:
+
+Package: tapioca
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: tapioca: graphical user interface for xTAPP first-principles plane-wave pseudo-potential code

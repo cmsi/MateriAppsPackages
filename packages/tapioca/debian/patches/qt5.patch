@@ -1,0 +1,224 @@
+--- a/src/main.cc
++++ b/src/main.cc
+@@ -69,7 +69,7 @@
+   - symbol.h	å≥ëfãLçÜÉNÉâÉX
+ */
+ 
+-#include <QtGui/QApplication>
++#include <QtWidgets/QApplication>
+ #include "window.h"
+ #include <unistd.h>
+ 
+--- a/src/glview.h
++++ b/src/glview.h
+@@ -11,7 +11,7 @@
+ #ifndef __GLVIEW_H_INCLUDED
+ #define __GLVIEW_H_INCLUDED
+ 
+-#include <QtGui/QtGui>
++#include <QtWidgets/QtWidgets>
+ #include <QtOpenGL/QGLWidget>
+ #include "gllattice.h"
+ #include "glfield.h"
+--- a/src/qtwidgets.h
++++ b/src/qtwidgets.h
+@@ -11,10 +11,7 @@
+ #ifndef __QTWIDGETS_H_INCLUDED
+ #define __QTWIDGETS_H_INCLUDED
+ 
+-#include <QtCore/QString>
+-#include <QtGui/QtGui>
+-#include <QtGui/QSlider>
+-#include <QtGui/QGridLayout>
++#include <QtWidgets/QtWidgets>
+ 
+ #include <vector>
+ using namespace std;
+--- a/src/dtmodel.h
++++ b/src/dtmodel.h
+@@ -11,7 +11,7 @@
+ #ifndef __DTMODEL_H_INCLUDED
+ #define __DTMODEL_H_INCLUDED
+ 
+-#include <QtGui/QtGui>
++#include <QtWidgets/QtWidgets>
+ #include "dtlattice.h"
+ #include "dtfield.h"
+ #include "dttapp.h"
+--- a/src/qtatoms.h
++++ b/src/qtatoms.h
+@@ -11,8 +11,7 @@
+ #ifndef __QTTABLE_H_INCLUDED
+ #define __QTTABLE_H_INCLUDED
+ 
+-#include <QtGui/QtGui>
+-#include <QtGui/QTableWidget>
++#include <QtWidgets/QtWidgets>
+ 
+ #include "qtwidgets.h"
+ 
+--- a/src/qtexception.h
++++ b/src/qtexception.h
+@@ -11,7 +11,7 @@
+ #ifndef __EXCEPTION_H_INCLUDED
+ #define __EXCEPTION_H_INCLUDED
+ 
+-#include <QtCore/QString>
++#include <QtWidgets/QtWidgets>
+ #include "qtmisc.h"
+ 
+ struct MyException
+--- a/src/qtxtapp.h
++++ b/src/qtxtapp.h
+@@ -12,7 +12,7 @@
+ #define __QTXTAPP_H_INCLUDED
+ 
+ #include "qtwidgets.h"
+-#include <QtGui/QTableWidget>
++#include <QtWidgets/QtWidgets>
+ 
+ class DTModel;
+ 
+--- a/src/gllattice.h
++++ b/src/gllattice.h
+@@ -11,7 +11,7 @@
+ #ifndef __GLLATTICE_H_INCLUDED
+ #define __GLLATTICE_H_INCLUDED
+ 
+-#include <QtGui/QtGui>
++#include <QtWidgets/QtWidgets>
+ #include "glcell.h"
+ #include "glatoms.h"
+ #include "glbonds.h"
+--- a/src/glfield.h
++++ b/src/glfield.h
+@@ -11,7 +11,7 @@
+ #ifndef __GLFIELD_H_INCLUDED
+ #define __GLFIELD_H_INCLUDED
+ 
+-#include <QtGui/QtGui>
++#include <QtWidgets/QtWidgets>
+ #include "glcrosec.h"
+ #include "glisosurf.h"
+ #include "glfog.h"
+--- a/src/glview2d.h
++++ b/src/glview2d.h
+@@ -11,7 +11,7 @@
+ #ifndef __GLVIEW2D_H_INCLUDED
+ #define __GLVIEW2D_H_INCLUDED
+ 
+-#include <QtGui/QtGui>
++#include <QtWidgets/QtWidgets>
+ #include <QtOpenGL/QGLWidget>
+ #include "glband.h"
+ #include "gldos.h"
+--- a/src/glband.h
++++ b/src/glband.h
+@@ -11,7 +11,7 @@
+ #ifndef __GLBAND_H_INCLUDED
+ #define __GLBAND_H_INCLUDED
+ 
+-#include <QtGui/QtGui>
++#include <QtWidgets/QtWidgets>
+ #include <QtOpenGL/QGLWidget>
+ 
+ class DTModel;
+--- a/src/gldos.h
++++ b/src/gldos.h
+@@ -11,7 +11,7 @@
+ #ifndef __GLDOS_H_INCLUDED
+ #define __GLDOS_H_INCLUDED
+ 
+-#include <QtGui/QtGui>
++#include <QtWidgets/QtWidgets>
+ #include <QtOpenGL/QGLWidget>
+ 
+ class DTModel;
+--- a/src/glbrillouin.h
++++ b/src/glbrillouin.h
+@@ -11,7 +11,7 @@
+ #ifndef __GLBRILLOUIN_H_INCLUDED
+ #define __GLBRILLOUIN_H_INCLUDED
+ 
+-#include <QtGui/QtGui>
++#include <QtWidgets/QtWidgets>
+ #include <QtOpenGL/QGLWidget>
+ #include "glbase.h"
+ 
+--- a/src/glcrosec.h
++++ b/src/glcrosec.h
+@@ -11,7 +11,7 @@
+ #ifndef __GLCROSEC_H_INCLUDED
+ #define __GLCROSEC_H_INCLUDED
+ 
+-#include <QtGui/QtGui>
++#include <QtWidgets/QtWidgets>
+ #include "glbase.h"
+ #include "vector2d.h"
+ #include "vector3d.h"
+--- a/src/gleps.h
++++ b/src/gleps.h
+@@ -11,7 +11,7 @@
+ #ifndef GLEPS_H_INCLUDED
+ #define GLEPS_H_INCLUDED
+ 
+-#include <QtGui/QtGui>
++#include <QtWidgets/QtWidgets>
+ 
+ #include <stack>
+ using namespace std;
+--- a/src/gloption.h
++++ b/src/gloption.h
+@@ -14,7 +14,7 @@
+ #include <vector>
+ using namespace std;
+ 
+-#include <QtCore/QString>
++#include <QtWidgets/QtWidgets>
+ #include "glmisc.h"
+ #include "position.h"
+ 
+--- a/src/qtctrl.h
++++ b/src/qtctrl.h
+@@ -11,7 +11,7 @@
+ #ifndef __QTCTRL_H_INCLUDED
+ #define __QTCTRL_H_INCLUDED
+ 
+-#include <QtGui/QtGui>
++#include <QtWidgets/QtWidgets>
+ 
+ class DTModel;
+ class GLView;
+--- a/src/qtgraphics.h
++++ b/src/qtgraphics.h
+@@ -11,7 +11,7 @@
+ #ifndef __QTGRAPHICS_H_INCLUDED
+ #define __QTGRAPHICS_H_INCLUDED
+ 
+-#include <QtGui/QtGui>
++#include <QtWidgets/QtWidgets>
+ 
+ class DTModel;
+ class QTGLLattice;
+--- a/src/qtlattice.h
++++ b/src/qtlattice.h
+@@ -11,7 +11,7 @@
+ #ifndef __QTLATTICE_H_INCLUDED
+ #define __QTLATTICE_H_INCLUDED
+ 
+-#include <QtGui/QtGui>
++#include <QtWidgets/QtWidgets>
+ 
+ class DTModel;
+ class QTCell;
+--- a/src/qttable.h
++++ b/src/qttable.h
+@@ -6,7 +6,7 @@
+ #ifndef __QTTABLE_H_INCLUDED
+ #define __QTTABLE_H_INCLUDED
+ 
+-#include <QtGui/QtGui>
++#include <QtWidgets/QtWidgets>
+ #include <QtGui/QTableWidget>
+ 
+ #include "qtwidgets.h"
