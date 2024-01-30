@@ -1,0 +1,16 @@
+Source: respack
+Section: scientific
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), libblas-dev
+Standards-Version: 3.9.3
+Homepage: https://sites.google.com/view/kazuma7k6r
+
+Package: respack
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends} mpi-default-bin
+Description: RESPACK is a free software of ab initio many-body 
+ perturbation codes including calculations for response function
+ with random-phase approximation, Wannier function, and
+ matrix-element evaluations of frequency-dependent screened
+ direct and exchange interactions.

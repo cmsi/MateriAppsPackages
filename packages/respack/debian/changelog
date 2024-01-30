@@ -1,0 +1,29 @@
+respack (20200113-1) unstable; urgency=low
+
+  * New upstream version 20200113
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sun, 16 Feb 2020 13:44:14 +0900
+
+respack (20190226-3) unstable; urgency=low
+
+  * Rename wfn2respack to wfn2respack.respack as well
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 26 Feb 2019 18:53:16 +0900
+
+respack (20190226-2) unstable; urgency=low
+
+  * Rename strconv to strconv.respack
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 26 Feb 2019 18:34:24 +0900
+
+respack (20190226-1) unstable; urgency=low
+
+  * New upstream 20190226
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 26 Feb 2019 17:06:06 +0900
+
+respack (20171018-1) unstable; urgency=low
+
+  * Initial release for 20171018
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 18 Dec 2017 09:01:40 +0900

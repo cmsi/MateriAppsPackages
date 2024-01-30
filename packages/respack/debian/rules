@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+
+export DH_VERBOSE=1
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/cmake.mk
+
+DEB_RELEASE ?= $(shell lsb_release -c -s)
+ifeq ($(DEB_RELEASE), wheezy)
+    DEB_CMAKE_EXTRA_FLAGS = -DCMAKE_Fortran_FLAGS="-ffree-line-length-none"
+else
+    DEB_CMAKE_EXTRA_FLAGS = -DCMAKE_Fortran_FLAGS="-ffree-line-length-none -ffpe-summary=none"
+endif

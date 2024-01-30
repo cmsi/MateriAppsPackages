@@ -1,0 +1,194 @@
+--- a/sample/xtapp/SrVO3.sc.6x6x6/SrVO3.sh
++++ b/sample/xtapp/SrVO3.sc.6x6x6/SrVO3.sh
+@@ -3,21 +3,20 @@
+ set -x 
+ 
+ #xtapp
+-#rm -f fort.* SrVO3.lpt SrVO3.rho SrVO3.str SrVO3.wfn *.log
+-#rm -f fort.10 ; ln -s SrVO3.cg fort.10
+-#mpirun -np 1 inipot > log.SrVO3-inipot 
+-#mpirun -np 1 cgmrpt > log.SrVO3-cgmrpt 
+-#rm -f fort.10 ; ln -s SrVO3.vb fort.10
+-#mpirun -np 1 inipot > log.SrVO3-inipot-vb 
+-#mpirun -np 1 vbpef  > log.SrVO3-vbpef 
+-#vbpef2gp-lsda SrVO3.band 
++rm -f fort.* SrVO3.lpt SrVO3.rho SrVO3.str SrVO3.wfn *.log
++rm -f fort.10 ; ln -s SrVO3.cg fort.10
++mpirun -np 1 inipot > log.SrVO3-inipot
++mpirun -np 1 cgmrpt > log.SrVO3-cgmrpt
++rm -f fort.10 ; ln -s SrVO3.vb fort.10
++mpirun -np 1 inipot > log.SrVO3-inipot-vb
++mpirun -np 1 vbpef  > log.SrVO3-vbpef
++vbpef2gp-lsda SrVO3.band
+ 
+ #interface 
+-#./xtapp2respack.sh -b ./wfn2respack -s ./strconv SrVO3
++xtapp2respack.sh SrVO3
+ 
+ #respack 
+-#mpirun -np 1 calc_wannier < input.in > log.SrVO3-wannier
+-#mpirun -np 1 calc_chiqw < input.in   > log.SrVO3-chiqw
+-#mpirun -np 1 calc_w3d < input.in     > log.SrVO3-calc_w3d
+-#mpirun -np 1 calc_j3d < input.in     > log.SrVO3-calc_j3d
+-
++mpirun -np 1 calc_wannier < input.in > log.SrVO3-wannier
++mpirun -np 1 calc_chiqw < input.in   > log.SrVO3-chiqw
++mpirun -np 1 calc_w3d < input.in     > log.SrVO3-calc_w3d
++mpirun -np 1 calc_j3d < input.in     > log.SrVO3-calc_j3d
+--- a/sample/xtapp/Al.fcc.6x6x6/Al.sh
++++ b/sample/xtapp/Al.fcc.6x6x6/Al.sh
+@@ -3,21 +3,20 @@
+ set -x 
+ 
+ #xtapp
+-#rm -f fort.* Al.lpt Al.rho Al.str Al.wfn *.log
+-#rm -f fort.10 ; ln -s Al.cg fort.10
+-#mpirun -np 1 inipot > log.Al-inipot 
+-#mpirun -np 1 cgmrpt > log.Al-cgmrpt 
+-#rm -f fort.10 ; ln -s Al.vb fort.10
+-#mpirun -np 1 inipot > log.Al-inipot-vb 
+-#mpirun -np 1 vbpef > log.Al-vbpef 
+-#vbpef2gp-lsda Al.band 
++rm -f fort.* Al.lpt Al.rho Al.str Al.wfn *.log
++rm -f fort.10 ; ln -s Al.cg fort.10
++mpirun -np 1 inipot > log.Al-inipot
++mpirun -np 1 cgmrpt > log.Al-cgmrpt
++rm -f fort.10 ; ln -s Al.vb fort.10
++mpirun -np 1 inipot > log.Al-inipot-vb
++mpirun -np 1 vbpef > log.Al-vbpef
++vbpef2gp-lsda Al.band
+ 
+-#interface 
+-#./xtapp2respack.sh -b ./wfn2respack -s ./strconv Al 
+-
+-#respack 
+-#mpirun -np 1 calc_wannier < input.in > log.Al-wannier
+-#mpirun -np 1 calc_chiqw < input.in > log.Al-chiqw
+-#mpirun -np 1 calc_w3d < input.in > log.Al-calc_w3d
+-#mpirun -np 1 calc_j3d < input.in > log.Al-calc_j3d
++#interface
++xtapp2respack.sh Al
+ 
++#respack
++mpirun -np 1 calc_wannier < input.in > log.Al-wannier
++mpirun -np 1 calc_chiqw < input.in > log.Al-chiqw
++mpirun -np 1 calc_w3d < input.in > log.Al-calc_w3d
++mpirun -np 1 calc_j3d < input.in > log.Al-calc_j3d
+--- a/sample/xtapp/La2CuO4.bct.6x6x6/La2CuO4.sh
++++ b/sample/xtapp/La2CuO4.bct.6x6x6/La2CuO4.sh
+@@ -1,23 +1,22 @@
+ #!/bin/sh 
+ 
+-set -x 
++set -x
+ 
+ #xtapp
+-#rm -f fort.* La2CuO4.lpt La2CuO4.rho La2CuO4.str La2CuO4.wfn *.log
+-#rm -f fort.10 ; ln -s La2CuO4.cg fort.10
+-#mpirun -np 1 inipot > log.La2CuO4-inipot 
+-#mpirun -np 1 cgmrpt > log.La2CuO4-cgmrpt 
+-#rm -f fort.10 ; ln -s La2CuO4.vb fort.10
+-#mpirun -np 1 inipot > log.La2CuO4-inipot-vb 
+-#mpirun -np 1 vbpef  > log.La2CuO4-vbpef 
+-#vbpef2gp-lsda La2CuO4.band 
++rm -f fort.* La2CuO4.lpt La2CuO4.rho La2CuO4.str La2CuO4.wfn *.log
++rm -f fort.10 ; ln -s La2CuO4.cg fort.10
++mpirun -np 1 inipot > log.La2CuO4-inipot
++mpirun -np 1 cgmrpt > log.La2CuO4-cgmrpt
++rm -f fort.10 ; ln -s La2CuO4.vb fort.10
++mpirun -np 1 inipot > log.La2CuO4-inipot-vb
++mpirun -np 1 vbpef  > log.La2CuO4-vbpef
++vbpef2gp-lsda La2CuO4.band
+ 
+-#interface 
+-#./xtapp2respack.sh -b ./wfn2respack -s ./strconv La2CuO4
+-
+-#respack 
+-#mpirun -np 1 calc_wannier < input.in > log.La2CuO4-wannier
+-#mpirun -np 1 calc_chiqw < input.in   > log.La2CuO4-chiqw
+-#mpirun -np 1 calc_w3d < input.in     > log.La2CuO4-calc_w3d
+-#mpirun -np 1 calc_j3d < input.in     > log.La2CuO4-calc_j3d
++#interface
++xtapp2respack.sh La2CuO4
+ 
++#respack
++mpirun -np 1 calc_wannier < input.in > log.La2CuO4-wannier
++mpirun -np 1 calc_chiqw < input.in   > log.La2CuO4-chiqw
++mpirun -np 1 calc_w3d < input.in     > log.La2CuO4-calc_w3d
++mpirun -np 1 calc_j3d < input.in     > log.La2CuO4-calc_j3d
+--- a/sample/xtapp/TiO2.ort.6x6x6/TiO2.sh
++++ b/sample/xtapp/TiO2.ort.6x6x6/TiO2.sh
+@@ -1,20 +1,19 @@
+ #!/bin/sh 
+ 
+-set -x 
++set -x
+ 
+ #xtapp
+-#rm -f fort.* TiO2.lpt TiO2.rho TiO2.str TiO2.wfn *.log
+-#rm -f fort.10 ; ln -s TiO2.cg fort.10
+-#mpirun -np 1 inipot > log.TiO2-inipot 
+-#mpirun -np 1 cgmrpt > log.TiO2-cgmrpt 
+-#rm -f fort.10 ; ln -s TiO2.vb fort.10
+-#mpirun -np 1 inipot > log.TiO2-inipot-vb 
+-#mpirun -np 1 vbpef  > log.TiO2-vbpef 
+-#vbpef2gp-lsda TiO2.band 
++rm -f fort.* TiO2.lpt TiO2.rho TiO2.str TiO2.wfn *.log
++rm -f fort.10 ; ln -s TiO2.cg fort.10
++mpirun -np 1 inipot > log.TiO2-inipot
++mpirun -np 1 cgmrpt > log.TiO2-cgmrpt
++rm -f fort.10 ; ln -s TiO2.vb fort.10
++mpirun -np 1 inipot > log.TiO2-inipot-vb
++mpirun -np 1 vbpef  > log.TiO2-vbpef
++vbpef2gp-lsda TiO2.band
+ 
+ #interface 
+-#./xtapp2respack.sh -b ./wfn2respack -s ./strconv TiO2 
+-
+-#respack 
+-#mpirun -np 1 calc_wannier < input.in > log.TiO2-wannier
++xtapp2respack.sh TiO2
+ 
++#respack
++mpirun -np 1 calc_wannier < input.in > log.TiO2-wannier
+--- a/sample/xtapp/Si.fcc.6x6x6/Si.sh
++++ b/sample/xtapp/Si.fcc.6x6x6/Si.sh
+@@ -1,23 +1,22 @@
+ #!/bin/sh 
+ 
+-set -x 
++set -x
+ 
+ #xtapp
+-#rm -f fort.* Si.lpt Si.rho Si.str Si.wfn *.log
+-#rm -f fort.10 ; ln -s Si.cg fort.10
+-#mpirun -np 1 inipot > log.Si-inipot 
+-#mpirun -np 1 cgmrpt > log.Si-cgmrpt 
+-#rm -f fort.10 ; ln -s Si.vb fort.10
+-#mpirun -np 1 inipot > log.Si-inipot-vb 
+-#mpirun -np 1 vbpef  > log.Si-vbpef 
+-#vbpef2gp-lsda Si.band 
++rm -f fort.* Si.lpt Si.rho Si.str Si.wfn *.log
++rm -f fort.10 ; ln -s Si.cg fort.10
++mpirun -np 1 inipot > log.Si-inipot
++mpirun -np 1 cgmrpt > log.Si-cgmrpt
++rm -f fort.10 ; ln -s Si.vb fort.10
++mpirun -np 1 inipot > log.Si-inipot-vb
++mpirun -np 1 vbpef  > log.Si-vbpef
++vbpef2gp-lsda Si.band
+ 
+-#interface 
+-#./xtapp2respack.sh -b ./wfn2respack -s ./strconv Si 
++#interface
++xtapp2respack.sh Si
+ 
+ #respack 
+-#mpirun -np 1 calc_wannier < input.in > log.Si-wannier
+-#mpirun -np 1 calc_chiqw < input.in   > log.Si-chiqw
+-#mpirun -np 1 calc_w3d < input.in     > log.Si-calc_w3d
+-#mpirun -np 1 calc_j3d < input.in     > log.Si-calc_j3d
+-
++mpirun -np 1 calc_wannier < input.in > log.Si-wannier
++mpirun -np 1 calc_chiqw < input.in   > log.Si-chiqw
++mpirun -np 1 calc_w3d < input.in     > log.Si-calc_w3d
++mpirun -np 1 calc_j3d < input.in     > log.Si-calc_j3d

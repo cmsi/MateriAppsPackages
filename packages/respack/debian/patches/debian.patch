@@ -1,0 +1,44 @@
+--- a/src/chiqw/CMakeLists.txt
++++ b/src/chiqw/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.10)
++cmake_minimum_required(VERSION 2.8)
+ if(${CMAKE_PROJECT_NAME} STREQUAL "Project")
+   message(FATAL_ERROR "cmake should be executed not for 'src' subdirectory, but for the top directory of RESPACK.")
+ endif(${CMAKE_PROJECT_NAME} STREQUAL "Project")
+--- a/src/gw/CMakeLists.txt
++++ b/src/gw/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.10)
++cmake_minimum_required(VERSION 2.8)
+ if(${CMAKE_PROJECT_NAME} STREQUAL "Project")
+   message(FATAL_ERROR "cmake should be executed not for 'src' subdirectory, but for the top directory of RESPACK.")
+ endif(${CMAKE_PROJECT_NAME} STREQUAL "Project")
+--- a/util/xtapp2respack/CMakeLists.txt
++++ b/util/xtapp2respack/CMakeLists.txt
+@@ -2,9 +2,9 @@
+   message(FATAL_ERROR "cmake should be executed not for 'src' subdirectory, but for the top directory of RESPACK.")
+ endif(${CMAKE_PROJECT_NAME} STREQUAL "Project")
+ 
+-add_executable(strconv strconv.F90 subr_fmtconv.F90 subr_readstr.F90)
+-add_executable(wfn2respack wfn2respack.F90)
+-install(TARGETS strconv wfn2respack RUNTIME DESTINATION bin)
++add_executable(strconv.respack strconv.F90 subr_fmtconv.F90 subr_readstr.F90)
++add_executable(wfn2respack.respack wfn2respack.F90)
++install(TARGETS strconv.respack wfn2respack.respack RUNTIME DESTINATION bin)
+ 
+ install(FILES xtapp2respack.sh DESTINATION bin
+         PERMISSIONS
+--- a/util/xtapp2respack/xtapp2respack.sh
++++ b/util/xtapp2respack/xtapp2respack.sh
+@@ -7,8 +7,8 @@
+     exit 1
+ fi
+ 
+-WFN2RESPACK=wfn2respack
+-STRCONV=strconv
++WFN2RESPACK=wfn2respack.respack
++STRCONV=strconv.respack
+ 
+ while [ $# -gt 0 ]; do
+     case $1 in
