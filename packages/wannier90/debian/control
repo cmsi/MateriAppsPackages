@@ -1,0 +1,16 @@
+Source: wannier90
+Section: scientific
+Priority: optional
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 8.0.0), gfortran, libblas-dev, liblapack-dev, mpi-default-dev
+Standards-Version: 3.9.3
+Homepage: http://www.wannier.org
+
+Package: wannier90
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Wannier90: A tool for obtaining maximally-localised Wannier functions
+ Wannier90 is an open-source code (released under GPLv2) for generating
+ maximally-localized Wannier functions and using them to compute
+ advanced electronic properties of materials with high efficiency and
+ accuracy.
