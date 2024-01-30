@@ -1,0 +1,123 @@
+--- a/src/mVMC/CMakeLists.txt
++++ b/src/mVMC/CMakeLists.txt
+@@ -22,28 +22,28 @@
+ 
+ link_directories(${CMAKE_CURRENT_SOURCE_DIR}/../pfapack)
+ 
+-add_executable(vmcdry.out vmcdry.c)
+-target_link_libraries(vmcdry.out StdFace m)
+-add_executable(vmc.out ${SOURCES_vmcmain} ${SOURCES_sfmt})
+-target_link_libraries(vmc.out StdFace)
+-target_link_libraries(vmc.out pfapack)
++add_executable(vmcdry vmcdry.c)
++target_link_libraries(vmcdry StdFace m)
++add_executable(vmc ${SOURCES_vmcmain} ${SOURCES_sfmt})
++target_link_libraries(vmc StdFace)
++target_link_libraries(vmc pfapack)
+ if(PFAFFIAN_BLOCKED)
+-  target_link_libraries(vmc.out pfupdates blis pthread)
++  target_link_libraries(vmc pfupdates blis pthread)
+ endif(PFAFFIAN_BLOCKED)
+-target_link_libraries(vmc.out ${LAPACK_LIBRARIES} m)
++target_link_libraries(vmc ${LAPACK_LIBRARIES} m)
+ 
+ if(USE_SCALAPACK)
+   string(REGEX REPLACE "-L[ ]+" "-L" sc_libs "${SCALAPACK_LIBRARIES}")
+   string(REGEX REPLACE "[ ]+" ";" sc_libs "${sc_libs}")
+   foreach(sc_lib IN LISTS sc_libs)
+-    target_link_libraries(vmc.out ${sc_lib})
++    target_link_libraries(vmc ${sc_lib})
+   endforeach(sc_lib)
+   message(STATUS "SCALAPACK_LIBRARIES: ${SCALAPACK_LIBRARIES}")
+ endif(USE_SCALAPACK)
+ 
+ if(MPI_FOUND)
+-  target_link_libraries(vmc.out ${MPI_C_LIBRARIES})
++  target_link_libraries(vmc ${MPI_C_LIBRARIES})
+ endif(MPI_FOUND)
+-install(TARGETS vmcdry.out RUNTIME DESTINATION bin)
+-install(TARGETS vmc.out RUNTIME DESTINATION bin)
++install(TARGETS vmcdry RUNTIME DESTINATION bin)
++install(TARGETS vmc RUNTIME DESTINATION bin)
+ add_definitions(-D_mVMC)
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -14,7 +14,7 @@
+ endif(NOT CMAKE_BUILD_TYPE)
+ message(STATUS "Build type: " ${CMAKE_BUILD_TYPE})
+ 
+-option(BUILD_SHARED_LIBS "Build shared libraries" ON)
++option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
+ 
+ option(GIT_SUBMODULE_UPDATE "execute `git submodule update` automatically" ON)
+ enable_language(C Fortran)
+--- a/src/pfapack/fortran/CMakeLists.txt
++++ b/src/pfapack/fortran/CMakeLists.txt
+@@ -10,8 +10,3 @@
+ INCLUDE_DIRECTORIES(${MPI_Fortran_INCLUDE_PATH})
+ ADD_LIBRARY(pfapack ${SOURCES_PFAPACK})
+ TARGET_LINK_LIBRARIES(pfapack ${MPI_Fortran_LIBRARIES} ${LAPACK_LIBRARIES})
+-INSTALL(TARGETS pfapack
+-    ARCHIVE DESTINATION lib
+-    LIBRARY DESTINATION lib
+-    RUNTIME DESTINATION bin)
+-
+--- a/tool/CMakeLists.txt
++++ b/tool/CMakeLists.txt
+@@ -10,13 +10,13 @@
+ add_executable(greenr2k greenr2k.F90)
+ target_link_libraries(greenr2k key2lower ${LAPACK_LIBRARIES})
+ 
+-install(TARGETS greenr2k RUNTIME DESTINATION bin)
++install(TARGETS greenr2k RUNTIME DESTINATION share/mvmc/tool)
+ #
+ # Scripts
+ #
+ configure_file(wout2geom.sh wout2geom.sh COPYONLY)
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/wout2geom.sh DESTINATION bin
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/wout2geom.sh DESTINATION share/mvmc/tool
+         PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+ configure_file(respack2wan90.py respack2wan90.py COPYONLY)
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/respack2wan90.py DESTINATION bin
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/respack2wan90.py DESTINATION share/mvmc/tool
+         PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+--- a/src/ComplexUHF/CMakeLists.txt
++++ b/src/ComplexUHF/CMakeLists.txt
+@@ -20,4 +20,4 @@
+ 
+ add_executable(UHF ${SOURCES_UHF} ${SOURCES_sfmt})
+ target_link_libraries(UHF ${LAPACK_LIBRARIES} m)
+-install(TARGETS UHF RUNTIME DESTINATION bin)
++install(TARGETS UHF RUNTIME DESTINATION share/mvmc/tool)
+--- a/src/StdFace/src/CMakeLists.txt
++++ b/src/StdFace/src/CMakeLists.txt
+@@ -17,20 +17,20 @@
+ add_library(StdFace STATIC ChainLattice.c HoneycombLattice.c SquareLattice.c StdFace_main.c StdFace_ModelUtil.c TriangularLattice.c Ladder.c Kagome.c Orthorhombic.c Pyrochlore.c Wannier90.c FCOrtho.c setmemory.c)
+ 
+ if (UHF)
+-   add_executable(uhf_dry.out dry.c)
+-   target_link_libraries(uhf_dry.out StdFace m)
+-   install(TARGETS uhf_dry.out RUNTIME DESTINATION bin)
++   add_executable(uhf_dry dry.c)
++   target_link_libraries(uhf_dry StdFace m)
++   install(TARGETS uhf_dry RUNTIME DESTINATION bin)
+ endif(UHF)
+ 
+ if (MVMC)
+-   add_executable(mvmc_dry.out dry.c)
+-   target_link_libraries(mvmc_dry.out StdFace m)
+-   install(TARGETS mvmc_dry.out RUNTIME DESTINATION bin)
++   add_executable(mvmc_dry dry.c)
++   target_link_libraries(mvmc_dry StdFace m)
++   install(TARGETS mvmc_dry RUNTIME DESTINATION bin)
+ endif(MVMC)
+ 
+ if (HPHI)
+-   add_executable(hphi_dry.out dry.c)
+-   target_link_libraries(hphi_dry.out StdFace m)
+-   install(TARGETS hphi_dry.out RUNTIME DESTINATION bin)
++   add_executable(hphi_dry dry.c)
++   target_link_libraries(hphi_dry StdFace m)
++   install(TARGETS hphi_dry RUNTIME DESTINATION bin)
+ endif(HPHI)
+ 

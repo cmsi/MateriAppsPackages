@@ -1,0 +1,21 @@
+Source: mvmc
+Section: scientific
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 8.0.0), autotools-dev, mpi-default-dev, liblapack-dev
+Standards-Version: 3.9.3
+Homepage: https://github.com/QLMS/Hphi
+
+Package: mvmc
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends} mpi-default-bin
+Description: low-energy solver for quantum lattice models
+ A low-energy solver for a wide range of quantum lattice models
+ (multi-orbital Hubbard model, Heisenberg model, Kondo-lattice model)
+ by using variational Monte Carlo method. User can obtain
+ high-accuracy wave functions for ground states of above models. Users
+ flexibly choose the correlation factors in wavefunctions such as
+ Gutzwiller, Jastrow, and doublon-holon binding factors and optimize
+ more the ten thousand variational parameters. It is also possible to
+ obtain the low-energy excited states by specifying the quantum number
+ using the quantum number projection.

@@ -1,0 +1,53 @@
+mvmc (1.2.0-1) unstable; urgency=low
+
+  * New upstream release 1.2.0
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 21 Mar 2022 11:33:48 +0900
+
+mvmc (1.1.1-1) unstable; urgency=low
+
+  * New upstream release 1.1.1
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 12 Feb 2020 00:13:48 +0900
+
+mvmc (1.1.0-1) unstable; urgency=low
+
+  * New upstream release 1.1.0
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 23 Dec 2019 00:51:35 +0900
+
+mvmc (1.0.3-2) unstable; urgency=low
+
+  * Move tools (greenr2k, wout2geom.sh, respack2wan90.py,UHF) into /usr/share/mvmc/tool
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Thu, 08 Nov 2018 10:36:16 +0900
+
+mvmc (1.0.3-1) unstable; urgency=low
+
+  * New upstream release 1.0.3
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 19 Sep 2018 10:06:05 +0900
+
+mvmc (1.0.2-2) unstable; urgency=low
+
+  * Include UHF
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 28 Aug 2018 15:58:16 +0900
+
+mvmc (1.0.2-1) unstable; urgency=low
+
+  * New upstream release 1.0.2
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Thu, 02 Nov 2017 15:21:45 +0900
+
+mvmc (1.0.1-2) unstable; urgency=low
+
+  * Use static link instead of shared libraries
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 12 Jul 2017 15:18:18 +0900
+
+mvmc (1.0.1-1) unstable; urgency=low
+
+  * Initial release for mVMC 1.0.1
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 26 Jun 2017 08:39:54 +0900
