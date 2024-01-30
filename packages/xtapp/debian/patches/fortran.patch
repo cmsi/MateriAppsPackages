@@ -1,0 +1,202 @@
+--- a/src/vbchrg.f90
++++ b/src/vbchrg.f90
+@@ -834,7 +834,7 @@
+ 
+        call rg2tsu2(rg(:,:,jrg),aa,tsu2)
+        psum = (0.0d0,0.0d0)
+-       if (srg(irdkpt%irrg(irg))) then
++       if (srg(irdkpt%irrg(irg)).eq.1) then
+           do ib=1,nw
+              do jb=1,wan_n_occ
+                 do ig=bkm,ekm
+--- a/src/wannier.F90
++++ b/src/wannier.F90
+@@ -227,9 +227,9 @@
+      call MPI_FINALIZE(ierr)
+      stop
+   end if
+-  if ( mod(nk,mmm(1,2,1).ne.0) .or. &
+-       mod(nk,mmm(2,2,1).ne.0) .or. &
+-       mod(nk,mmm(3,2,1).ne.0) ) then
++  if ( mod(nk,mmm(1,2,1)).ne.0 .or. &
++       mod(nk,mmm(2,2,1)).ne.0 .or. &
++       mod(nk,mmm(3,2,1)).ne.0 ) then
+      write(6,*) 'mod( bz_mesh, mmm(1:3,2,1) ) must be 0 for wannier'
+      call MPI_FINALIZE(ierr)
+      stop
+--- a/src/makeqg.f90
++++ b/src/makeqg.f90
+@@ -416,7 +416,7 @@
+                       write(6,5) ll1,lq1+1,ii1,i1,ll2,lq2+1,ii2,i2
+ 5                     format(' LL1=',i3,' L1=',i3,' II1=',i3,' I1=',i3/ &
+                            ' LL2=',i3,' L2=',i3,' II2=',i3,' I2=',i3)
+-                      stop'GETQJ'
++                      stop 'GETQJ'
+                    end if
+                    !
+                    read(nfpot,*) nl3v(k2)
+@@ -428,7 +428,7 @@
+                       if (ncf(l3,k2).gt.naco) then
+                          write(6,*) 'NACO TOO SMALL  NACO,NCF=', &
+                               naco,ncf(l3,k2)
+-                         stop'GETQJ'
++                         stop 'GETQJ'
+                       end if
+                       !
+                       ! FOR NO CORE PSEUDIZATION
+@@ -443,7 +443,7 @@
+ 20                          format(' ','(L1,I1,L2,I2,L3)=(',4i4,')'/ &
+                                  'R(',i5,')=',e15.7/ &
+                                  'RIN     =',e15.7)
+-                            stop'GETQJ'
++                            stop 'GETQJ'
+                          end if
+                       end if
+                       !
+@@ -470,7 +470,7 @@
+     end do
+     if (npq.ne.k2) then
+        write(6,*)'ERROR IN INPUT DATA NPQ,K2=',npq,k2
+-       stop'GETQJ'
++       stop 'GETQJ'
+     end if
+     !
+ !$omp parallel do private(sb,q,work,g,z,izs,nnn,dif), &
+@@ -610,7 +610,7 @@
+                                write(6,*)' ERROR IN DATA'
+                                write(6,1100)lq3,l3,k2,l3v(l3,k2)
+ 1100                           format(' ','LQ3=',i3,' L3V(',i3,',',i3,')=',i3)
+-                               stop'GETQJ'
++                               stop 'GETQJ'
+                             end if
+                             nnn=nrin(l3,k2)
+                             !
+@@ -623,7 +623,7 @@
+ 1200                              format(' ','NRIN=',i5/ &
+                                        'Q   =',e15.7/ &
+                                        'QRAD=',e15.7)
+-                                  stop'GETQJ'
++                                  stop 'GETQJ'
+                                end if
+                             end if
+                             !
+--- a/src/bsplpot.F90
++++ b/src/bsplpot.F90
+@@ -917,7 +917,7 @@
+     ! MAKE R(I)
+     if (ndata.ne.nsmpl) then
+        write(6,*)' ERROR ON # OF DATA  NSMPL,NDATA=',nsmpl,ndata
+-       stop' MKQG0'
++       stop 'MKQG0'
+     end if
+     h=log(xend/x1)/dble(ndata-1)
+     h=exp(h)
+@@ -932,7 +932,7 @@
+        write(6,15)r(1),x1,r(2),x2,r(ndata),xend
+ 15     format(' R(1),X1=',2e15.7,' R(2),X2=',2e15.7/ &
+             ,' R(NDATA),XEND=',2e15.7)
+-       stop' MKQG0'
++       stop 'MKQG0'
+     end if
+     !
+     bsapot%ifncpp = .true.
+--- a/src/esm_util.F90
++++ b/src/esm_util.F90
+@@ -208,7 +208,7 @@
+       endif
+     endif
+   enddo
+-  stop'ERROR!! increase ncycle in ordg0_2d(ewald method)'
++  stop 'ERROR!! increase ncycle in ordg0_2d(ewald method)'
+ 1000 continue
+   !
+   return
+--- a/src/esm_2d.F90
++++ b/src/esm_2d.F90
+@@ -87,7 +87,7 @@
+       if(s.le.qqf)then
+         var2d%nkf_2d=var2d%nkf_2d+1
+        if(var2d%nkf_2d > var2d%naf) then
+-           stop' nkf_2d>naf!! something wrong check gsafe'
++           stop 'nkf_2d>naf!! something wrong check gsafe'
+         end if
+         var2d%akk_2d(var2d%nkf_2d)=s
+         var2d%kkg_2d(1,var2d%nkf_2d)=ix
+--- a/src/stropt_cnstr.F90
++++ b/src/stropt_cnstr.F90
+@@ -222,7 +222,7 @@
+         proj=2.d0*proj/dnorm
+       else
+         write(6,*)'THIS CANNOT HAPPEN! ifhpc=',ifhpc
+-        stop'formdg'
++        stop 'formdg'
+       end if
+       !
+       dform(1:3,1:nsi)=dform(1:3,1:nsi)-proj*vnormal(1:3,1:nsi)
+--- a/src/subrpot.f90
++++ b/src/subrpot.f90
+@@ -13,13 +13,13 @@
+   !
+   if ((x(1).le.0.0d0).or.(x(1)*x(n).le.0.0d0)) then
+      write(6,*)' ERROR  N,X(1),X(N)',n,x(1),x(n)
+-     stop'SMPLN'
++     stop 'SMPLN'
+   end if
+   h=log(x(n)/x(1))/dble(n-1)
+   temp=x(1)*exp(h)
+   if (abs(x(2)-temp).gt.1.d-12) then
+      write(6,*)' X(1),X(2),H,EXP(H)=',x(1),x(2),h,exp(h)
+-     stop'SMPLN'
++     stop 'SMPLN'
+   end if
+   sa=0.0d0
+   sb=0.0d0
+--- a/src/bunpu.F90
++++ b/src/bunpu.F90
+@@ -215,7 +215,7 @@
+        end do
+     else
+        write(6,*)'THIS CANNOT HAPPEN!!!!! IAXIS=',iaxis
+-       stop'INTE2D'
++       stop 'INTE2D'
+     end if
+     return
+   end subroutine inte2d
+--- a/src/esm_manage.F90
++++ b/src/esm_manage.F90
+@@ -135,11 +135,11 @@
+     read(27,*)esm%add_elec
+   elseif(esm%iffix.eq.2)then
+     if (mssg.gt.-1) write(6,*)' ef=const. mode does not support'
+-    stop' stop, esm_initialize'
++    stop 'stop, esm_initialize'
+     read(27,*)esm%fix_ef
+   else
+     if (mssg.gt.-1) write(6,'(A,I2,A)')' iffix=',esm%iffix,' dose not support'
+-    stop' stop, esm_initialize'
++    stop 'stop, esm_initialize'
+   endif
+   if (esm%bctype .eq. 4) then
+      read(27,*)esm%v0
+--- a/src/doss.f90
++++ b/src/doss.f90
+@@ -133,7 +133,7 @@
+     if (nks.eq.1 .and. nkr.gt.1) then
+        write(6,*)'ERROR NKR,NKS=',nkr,nks
+        call MPI_ABORT(MPI_COMM_WORLD,1,istat)
+-       stop'DOSS'
++       stop 'DOSS'
+     end if
+ 
+     if (mssg.gt.0) then
+--- a/src/sdoss.f90
++++ b/src/sdoss.f90
+@@ -48,7 +48,7 @@
+ 
+     if (nks.eq.1 .and. nkr.gt.1) then
+        write(6,*)'ERROR NKR,NKS=',nkr,nks
+-       stop'SDOSS'
++       stop 'SDOSS'
+     end if
+ 
+     if (mssg.gt.0) then

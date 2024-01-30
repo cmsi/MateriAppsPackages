@@ -1,0 +1,95 @@
+# main data
+ &TAPPINPUT
+ LATTICE_FACTOR = 10.1,
+ LATTICE_LIST = 0.5,  0.5,  0.0,  0.5,  0.0,
+   0.5,  0.0, 0.5,  0.5,
+ CUTOFF_WAVE_FUNCTION = 3.8,
+ XTRAP_BETA = 0.8,
+ NUMBER_ELEMENT = 1,
+ NUMBER_ATOM = 2,
+ NUMBER_BAND = 8,
+ ELEC_KBT = 1.0E-005,
+ INITIAL_LPT = 1,
+ SCF_CONVERGE = 1.0E-014,
+ SCF_CONVERGE_ENERGY = 1.0E-008,
+ SCF_NUMBER_ITER_1ST = 50,
+ SCF_NUMBER_ITER = 10,
+ CONTROL_UPTIME = 3600.0,
+ XC_TYPE = "PBE"
+ /
+# symmetry data
+ &SYMMETRY
+ SYMMETRY_FORMAT = "reciprocal",
+ NUMBER_SYM_OP = 24
+ /
+    1  0  0    0  1  0    0  0  1     0  0  0 ! rg(3,3), pg(3)
+    0  1  0    0  0  1    1  0  0     0  0  0
+    0  0  1    1  0  0    0  1  0     0  0  0
+    1  0  0    0  0  1    0  1  0     0  0  0
+    0  0  1    0  1  0    1  0  0     0  0  0
+    0  1  0    1  0  0    0  0  1     0  0  0
+   -1 -1 -1    0  1  0    0  0  1     0  0  0
+   -1 -1 -1    0  0  1    0  1  0     0  0  0
+   -1 -1 -1    1  0  0    0  0  1     0  0  0
+   -1 -1 -1    0  0  1    1  0  0     0  0  0
+   -1 -1 -1    1  0  0    0  1  0     0  0  0
+   -1 -1 -1    0  1  0    1  0  0     0  0  0
+    0  1  0   -1 -1 -1    0  0  1     0  0  0
+    0  0  1   -1 -1 -1    0  1  0     0  0  0
+    1  0  0   -1 -1 -1    0  0  1     0  0  0
+    0  0  1   -1 -1 -1    1  0  0     0  0  0
+    1  0  0   -1 -1 -1    0  1  0     0  0  0
+    0  1  0   -1 -1 -1    1  0  0     0  0  0
+    0  1  0    0  0  1   -1 -1 -1     0  0  0
+    0  0  1    0  1  0   -1 -1 -1     0  0  0
+    1  0  0    0  0  1   -1 -1 -1     0  0  0
+    0  0  1    1  0  0   -1 -1 -1     0  0  0
+    1  0  0    0  1  0   -1 -1 -1     0  0  0
+    0  1  0    1  0  0   -1 -1 -1     0  0  0
+# atom data
+   4.0 14.0 ! zo, zn
+     1  0.00000000000E+00  0.00000000000E+00  0.00000000000E+00 ! atom_kind, pos_a, pos_b, pos_c (in lattice coordiate)
+     1  0.25000000000E+00  0.25000000000E+00  0.25000000000E+00
+# k-points data
+ &SMPL_KPT
+ DOS_MODE = "COS",
+ DOS_BAND_LOWER = 1,
+ DOS_BAND_UPPER = 8,
+ DOS_MESH = 5,  5,  5,
+ BZ_MESH = 8,
+ BZ_NUMBER_TILE = 1,
+ CUTOFF_DOS_COS = 30.0
+ /
+     5     5     5
+     2     2     2
+# struct_opt data
+ &STRUCT_OPT
+ CONVERGE_ENERGY = 1.0E-008,
+ CONVERGE_FORCE = 1.0E-003,
+ SEARCH_1D_FRATIO = 0.1,
+ DISPLACEMENT_MAX = 0.5,
+ NUMBER_CYCLE = 5,
+ REFRESH_CYCLE = 10,
+ SEARCH_1D_MAX_STEP = 5
+ /
+# str_opt_constr data
+   2
+  0.00000000000E+00  0.00000000000E+00  0.00000000000E+00
+  0.00000000000E+00  0.00000000000E+00  0.00000000000E+00
+  0.00000000000E+00  0.00000000000E+00  0.00000000000E+00
+     0
+# trace band data
+ &TRACE_BAND
+ DISTRIB_MODE = "sphere",
+ DAVIDSON_FLAG = 5,
+ DAVIDSON_NUMBER_DIAG = 40,
+ DIAG_CONVERGE = 1.0E-005,
+ DISTRIB_NUMBER_SPHERE = 1,
+ NUMBER_TRACE_BLOCK = 7
+ /
+    G      X      K      G      L      K      W      X
+   1.00000000  1.00000000  0.75000000  0.00000000  0.50000000  0.75000000  0.75000000  0.50000000 ! ak(1)
+   0.00000000  0.50000000  0.37500000  0.00000000  0.50000000  0.37500000  0.25000000  0.00000000 ! ak(2)
+   0.00000000  0.50000000  0.37500000  0.00000000  0.50000000  0.37500000  0.50000000  0.50000000 ! ak(3)
+        10      5     10     10     10      5      5
+  0.00000000000E+00  0.00000000000E+00  0.00000000000E+00  0.00000000000E+00  0.10000000000E+01     1 ! rzero(3),rmin,rmax,ndiv

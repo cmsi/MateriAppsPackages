@@ -1,0 +1,56 @@
+# symmetry data
+&symmetry
+symmetry_format = "reciprocal",
+number_sym_op = 6,
+has_inversion = 0,
+denom_trans = 3
+/
+1  0  0  0  1  0  0  0  1  0  0  0
+-1  1  0 -1  0  0  0  0  1  0  0  2
+0 -1  0  1 -1  0  0  0  1  0  0  1
+0  1  0  1  0  0  0  0 -1  0  0  0
+1 -1  0  0 -1  0  0  0 -1  0  0  1
+-1  0  0 -1  1  0  0  0 -1  0  0  2
+# atom data
+4  14
+6  8
+1   0.4699  0.0000  0.666666666666
+1   0.0000  0.4699  0.333333333333
+1  -0.4699 -0.4699  0.0
+2   0.4141  0.2681  0.785466666666
+2  -0.2681  0.1460  0.452133333333
+2  -0.1460 -0.4141  0.1188
+2   0.2681  0.4141  0.214533333333
+2   0.1460 -0.2681  0.547866666666
+2  -0.4141 -0.1460  0.8812
+# k-points data
+&smpl_kpt
+dos_mode = "COS",
+dos_mesh = 2, 2, 2,
+bz_mesh = 12,
+bz_number_tile = 1
+/
+8  8  9
+4  4  6
+# main data
+&tappinput
+lattice_factor = 9.2850,
+lattice_list = 1.0, 0.0,  0.0, -0.5,  0.866025403784439,  0.0,  0.0,  0.0,   1.1001,
+cutoff_wave_function = 6.0,
+number_element = 2,
+number_atom = 9,
+number_band = 28,
+store_wfn = 1,
+scf_number_iter_1st = 30,
+scf_number_iter = 30,
+xc_type = "PBE",
+control_uptime = 7200.0
+/
+# struct_opt data
+&struct_opt
+converge_force = 1.0d-4
+/
+# str_opt_constr data
+1
+0
+

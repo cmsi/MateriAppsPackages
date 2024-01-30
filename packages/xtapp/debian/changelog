@@ -1,0 +1,136 @@
+xtapp (20180420-2) unstable; urgency=low
+
+  * Add -ffpe-summary=none option
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 27 Feb 2019 09:02:05 +0900
+
+xtapp (20180420-1) unstable; urgency=low
+
+  * New upstream release 180420
+  * Fix Makefile
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 19 Jun 2018 09:35:19 +0900
+
+xtapp (170619-3) unstable; urgency=low
+
+  * Support for Stretch
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Thu, 02 Nov 2017 00:41:26 +0900
+
+xtapp (170619-2) unstable; urgency=low
+
+  * Fix for linking FFTW3 on Jessie
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Thu, 26 Oct 2017 13:48:43 +0900
+
+xtapp (170619-1) unstable; urgency=low
+
+  * New upstream release 170619
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Thu, 26 Oct 2017 09:28:09 +0900
+
+xtapp (160715-1) unstable; urgency=low
+
+  * New upstream release 160715
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Fri, 05 Aug 2016 14:46:58 +0000
+
+xtapp (150401-2) unstable; urgency=low
+
+  * Add unit 58 in giounit_open
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 19 Jan 2016 13:53:07 +0900
+
+xtapp (150401-1) unstable; urgency=low
+
+  * New upstream release 150401
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 01 Apr 2015 14:35:00 +0900
+
+xtapp (140916-4) unstable; urgency=low
+
+  * Fixed XTAPP_PS_DIR in check scripts
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 28 Jan 2015 19:11:19 +0900
+
+xtapp (140916-3) unstable; urgency=low
+
+  * Added AL check script (al.sh and al.cg)
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 28 Jan 2015 18:36:55 +0900
+
+xtapp (140916-2) unstable; urgency=low
+
+  * Added missing binaries: pe2dos tetrapdos hmatr2bnd wannier
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 17 Sep 2014 21:22:18 +0900
+
+xtapp (140916-1) unstable; urgency=low
+
+  * New upstream release 140916
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 16 Sep 2014 19:08:47 +0900
+
+xtapp (140129-5) unstable; urgency=low
+
+  * Inported patch for src/moldyn.F90
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 07 Jul 2014 15:04:54 +0900
+
+xtapp (140129-4) unstable; urgency=low
+
+  * Include sample OpenDX networks in /usr/share/xtapp/opendx
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 10 Mar 2014 14:47:21 +0900
+
+xtapp (140129-3) unstable; urgency=low
+
+  * Fixed check/sample input/script
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Fri, 07 Mar 2014 16:07:10 +0900
+
+xtapp (140129-2) unstable; urgency=low
+
+  * Fixed giounit_open.C
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Fri, 07 Mar 2014 14:41:48 +0900
+
+xtapp (140129-1) unstable; urgency=low
+
+  * New upstream release
+  * Applied giounit patch
+  * Removed xtapp wrapper
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sun, 02 Mar 2014 12:38:09 +0900
+
+xtapp (130919-3) unstable; urgency=low
+
+  * Added PDF version of documents.
+
+ -- Synge Todo <wistaria@issp.u-tokyo.ac.jp>  Tue, 25 Sep 2013 15:55:53 +0900
+
+xtapp (130919-2) unstable; urgency=low
+
+  * Added test input parameters and scripts in /usr/share/xtapp/check
+
+ -- Synge Todo <wistaria@issp.u-tokyo.ac.jp>  Mon, 23 Sep 2013 01:29:16 +0900
+
+xtapp (130919-1) unstable; urgency=low
+
+  * Updated upstream source to 130918
+
+ -- Synge Todo <wistaria@issp.u-tokyo.ac.jp>  Fri, 20 Sep 2013 20:53:08 +0900
+
+xtapp (130701-2) unstable; urgency=low
+
+  * Added xtapp script
+  * All the tools have been moved to /usr/libexec/xtapp to avoid name conflict
+  * Removed /usr/share/xtapp/tests
+
+ -- Synge Todo <wistaria@issp.u-tokyo.ac.jp>  Thu, 19 Sep 2013 21:46:40 +0900
+
+xtapp (130701-1) unstable; urgency=low
+
+  * Initial debian package
+
+ -- Synge Todo <wistaria@issp.u-tokyo.ac.jp>  Thu, 19 Sep 2013 09:31:16 +0900

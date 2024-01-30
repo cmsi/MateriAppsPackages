@@ -1,0 +1,310 @@
+Makefile for building Debian package
+--- /dev/null
++++ b/Makefile
+@@ -0,0 +1,12 @@
++tools:
++	make tools -C fldtool
++	make tools -C inputconv
++	make tools -C mdtool
++	make tools -C minmaxband
++	make tools -C wfchg2pdos
++%:
++	make $@ -C fldtool
++	make $@ -C inputconv
++	make $@ -C mdtool
++	make $@ -C minmaxband
++	make $@ -C wfchg2pdos
+--- /dev/null
++++ b/fldtool/Makefile
+@@ -0,0 +1,110 @@
++# Copyright (c) 2000-2013 Yoshihide Yoshimoto
++######################################################################
++# default suffix rules. Do not edit this area.
++FC=f90
++
++.SUFFIXES:
++.SUFFIXES: .o .F90 .f90 .c
++
++tools: wfn2dx wfk2dx lpt2dx rho2dx rok2dx stm2dx rhomm lptmm wfn2ee \
++	wfn2respack rho2chgcar \
++	exrho2dx stm2cci cmprho cmpband wfneig rho2xsf cmpamat cmppdos
++
++.f90.o:
++	${FC} ${F90FLAGS} ${FFLAGS} -c $<
++.F90.o:
++	${FC} ${F90FLAGS} ${FFLAGS} -c $<
++.c.o:
++	${CC} -c $<
++
++#--------------------------------------------------------------------
++# for Intel Linux and Intel Fortran Compiler 11.0
++# tsurugi, nehalem
++#
++FC = gfortran
++FOMP_FLAGS = -fopenmp
++
++DEB_RELEASE ?= $(shell lsb_release -c -s)
++ifneq ($(DEB_RELEASE), wheezy)
++  FFLAGS_EXTRA = -ffpe-summary=none
++endif
++
++ifeq ($(shell uname -m),x86_64)
++  FFLAGS = -O3 -msse3 -fno-inline-functions $(FFLAGS_EXTRA)
++  PFFT3DUZ_SUBR_OBJ = pfft3duz_subr_sse3.o pfft3duz_kern_sse3.o
++  FFT3D_OBJ = pfft3duz.o $(PFFT3DUZ_SUBR_OBJ)
++else
++  FFLAGS = -O3 -fno-inline-functions $(FFLAGS_EXTRA)
++  FFT3D_OBJ = fft3ds.o
++endif
++FFTGRID_H_SRC = fftgrid-scl.h
++
++#
++# -O3 failed with intel icc 12.0.4 20110427
++CC = gcc $(FFLAGS)
++#--------------------------------------------------------------------
++
++fftgrid.h: $(FFTGRID_H_SRC)
++	ln -s $(FFTGRID_H_SRC) fftgrid.h
++
++pfft3dsp.o: pfft3dsp.f90 pfft3dsp_subr.o
++pfft3duz.o: pfft3duz.f90 $(PFFT3DUZ_SUBR_OBJ)
++
++wfn2dx: wfn2dx.F90 outzfldprsk.o $(FFT3D_OBJ) util.o fftgrid.h
++	${FC} ${FFLAGS} -o wfn2dx wfn2dx.F90 outzfldprsk.o $(FFT3D_OBJ) util.o
++wfn2respack: wfn2respack.F90
++	${FC} ${FFLAGS} -o wfn2respack wfn2respack.F90
++wfk2dx: wfk2dx.F90 outzfldprsk.o $(FFT3D_OBJ) fftgrid.h
++	${FC} ${FFLAGS} -o wfk2dx wfk2dx.F90 outzfldprsk.o $(FFT3D_OBJ)
++lpt2dx: lpt2dx.F90 outfldpr.o $(FFT3D_OBJ) util.o fftgrid.h
++	${FC} ${FFLAGS} -o lpt2dx lpt2dx.F90 outfldpr.o $(FFT3D_OBJ) util.o
++rho2dx: rho2dx.f90 outfldpr.o
++	${FC} ${FFLAGS} -o rho2dx rho2dx.f90 outfldpr.o
++rok2dx: rok2dx.F90 outfldprsk.o $(FFT3D_OBJ) fftgrid.h
++	${FC} ${FFLAGS} -o rok2dx rok2dx.F90 outfldprsk.o $(FFT3D_OBJ)
++stm2dx: stm2dx.f90
++	${FC} ${FFLAGS} -o stm2dx stm2dx.f90
++stm2cci: stm2cci.F90
++	${FC} ${FFLAGS} -o stm2cci stm2cci.F90
++rhomm: rhomm.f90
++	${FC} ${FFLAGS} -o rhomm rhomm.f90
++lptmm: lptmm.F90 $(FFT3D_OBJ) util.o
++	${FC} ${FFLAGS} -o lptmm lptmm.F90 $(FFT3D_OBJ) util.o
++wfn2ee: wfn2ee.F90 outfldpr.o
++	${FC} ${FFLAGS} ${FOMP_FLAGS} -o wfn2ee wfn2ee.F90 outfldpr.o
++cmprho: cmprho.f90
++	${FC} ${FFLAGS} -o cmprho cmprho.f90
++cmpband: cmpband.F90
++	${FC} ${FFLAGS} -o cmpband cmpband.F90
++wfneig: wfneig.F90
++	${FC} ${FFLAGS} ${FOMP_FLAGS} -o wfneig wfneig.F90
++exrho2dx: exrho2dx.F90 outfldpr.o $(FFT3D_OBJ) util.o fftgrid.h
++	${FC} ${FFLAGS} -o exrho2dx exrho2dx.F90 outfldpr.o $(FFT3D_OBJ) util.o
++rho2xsf: rho2xsf.F90
++	${FC} ${FFLAGS} -o rho2xsf rho2xsf.F90
++rho2chgcar: rho2chgcar.F90 util.o subr_fmtconv.o subr_readstr.o
++	${FC} ${FFLAGS} -o rho2chgcar rho2chgcar.F90 subr_fmtconv.o subr_readstr.o util.o
++cmpamat: cmpamat.F90
++	${FC} ${FFLAGS} -o cmpamat cmpamat.F90
++cmppdos: cmppdos.F90
++	${FC} ${FFLAGS} -o cmppdos cmppdos.F90
++
++clean distclean:
++	/bin/rm -f core *.o *.f *~ *.bak *.orig TAGS *.rej *.mod *.log \
++	wfn2dx lpt2dx rho2dx rok2dx wfk2dx stm2dx rhomm lptmm wfn2ee stm2cci \
++	wfn2respack rho2chgcar \
++	cmprho cmpband wfneig rho2xsf cmpamat cmppdos a.out \
++	pfft3ds.f90 fft3dsp.f90 fft3dsp_subr.f90 fft3duz.f90 fft3duz_subr.f90 \
++	fftgrid.h
++
++install: tools
++	install -d $(DESTDIR)/usr/bin
++	install \
++	wfn2dx wfk2dx lpt2dx rho2dx rok2dx stm2dx rhomm lptmm wfn2ee \
++	wfn2respack rho2chgcar \
++	exrho2dx stm2cci cmprho cmpband wfneig rho2xsf cmpamat cmppdos \
++	$(DESTDIR)/usr/bin
++
++# Local Variables: ***
++# mode:Makefile ***
++# End:***
+--- /dev/null
++++ b/inputconv/Makefile
+@@ -0,0 +1,57 @@
++# Copyright (c) 2000-2013 Yoshihide Yoshimoto
++######################################################################
++# $Id: Makefile-dist,v 1.1 2012-11-15 01:43:38 yosimoto Exp $
++#-----------------------------------------------
++# default suffix rules. Do not edit this area.
++FC=f90
++
++.SUFFIXES:
++.SUFFIXES: .o .F90 .F .f90 .c
++
++tools: inputconv
++
++.f90.o:
++	${FC} ${F90FLAGS} ${FFLAGS} -c $<
++.F90.o:
++	${FC} ${F90FLAGS} ${FFLAGS} -c $<
++.F.o:
++	${FC} ${FFLAGS} -c $<
++.c.o:
++	${CC} -c $<
++
++#--------------------------------------------------------------------
++# for Intel Linux and Intel Fortran Compiler 11.0
++# tsurugi, nehalem
++#
++FC = gfortran
++
++DEB_RELEASE ?= $(shell lsb_release -c -s)
++ifneq ($(DEB_RELEASE), wheezy)
++  FFLAGS_EXTRA = -ffpe-summary=none
++endif
++
++ifeq ($(shell uname -m),x86_64)
++  FFLAGS = -O3 -msse3 -fno-inline-functions $(FFLAGS_EXTRA)
++  CC = gcc -O3 -msse3 -fno-inline-functions
++else
++  FFLAGS = -O3 -fno-inline-functions $(FFLAGS_EXTRA)
++  CC = gcc -O3 -fno-inline-functions
++endif
++#--------------------------------------------------------------------
++
++inputconv.o: inputconv.F90 xcf_types.o util.o iounit.o types.o chainjob.o
++inputconv: inputconv.o subr_inputconv.o xcf_types.o util.o iounit.o
++	${FC} -o inputconv inputconv.o subr_inputconv.o xcf_types.o \
++	util.o iounit.o types.o chainjob.o
++
++clean distclean:
++	/bin/rm -f core *.o *.f *~ *.bak *.orig TAGS *.rej *.mod *.log \
++	inputconv a.out
++
++install: tools
++	install -d $(DESTDIR)/usr/bin
++	install inputconv $(DESTDIR)/usr/bin
++
++# Local Variables: ***
++# mode:Makefile ***
++# End:***
+--- a/mdtool/Makefile
++++ b/mdtool/Makefile
+@@ -21,10 +21,20 @@
+ # for Intel Linux and Intel Fortran Compiler 11.0
+ # tsurugi, nehalem
+ #
+-FC = ifort
+-FFLAGS = -O3 -msse3 -fno-inline-functions -traceback
++FC = gfortran
+ 
+-CC = icc -O1 -fno-inline-functions
++DEB_RELEASE ?= $(shell lsb_release -c -s)
++ifneq ($(DEB_RELEASE), wheezy)
++  FFLAGS_EXTRA = -ffpe-summary=none
++endif
++
++ifeq ($(shell uname -m),x86_64)
++  FFLAGS = -O3 -msse3 -fno-inline-functions -ffree-line-length-none $(FFLAGS_EXTRA)
++else
++  FFLAGS = -O3 -fno-inline-functions -ffree-line-length-none $(FFLAGS_EXTRA)
++endif
++
++CC = gcc -O3 -fno-inline-functions
+ #--------------------------------------------------------------------
+ 
+ scanmdlog.o: inspectstr.o util.o
+@@ -35,9 +45,14 @@
+ tailmdlog: tailmdlog.o util.o
+ 	${FC} -o tailmdlog tailmdlog.o util.o
+ 
+-clean:
++clean distclean:
+ 	/bin/rm -f core *.o *.f *~ *.bak *.orig TAGS *.rej *.mod *.log \
+ 	scanmdlog tailmdlog a.out
++
++install: tools
++	install -d $(DESTDIR)/usr/bin
++	install scanmdlog tailmdlog $(DESTDIR)/usr/bin
++
+ # Local Variables: ***
+ # mode:Makefile ***
+ # End:***
+--- /dev/null
++++ b/wfchg2pdos/Makefile
+@@ -0,0 +1,58 @@
++# Copyright (c) 2000-2013 Yoshihide Yoshimoto
++######################################################################
++# $Id: Makefile-dist,v 1.3 2013-01-24 07:11:51 yosimoto Exp $
++#-----------------------------------------------
++# default suffix rules. Do not edit this area.
++FC=f90
++
++.SUFFIXES:
++.SUFFIXES: .o .F90 .F .f90 .c
++
++tools: ltzpdos wfchg2pdos
++
++.f90.o:
++	${FC} ${F90FLAGS} ${FFLAGS} -c $<
++.F90.o:
++	${FC} ${F90FLAGS} ${FFLAGS} -c $<
++.F.o:
++	${FC} ${FFLAGS} -c $<
++.c.o:
++	${CC} -c $<
++
++#--------------------------------------------------------------------
++# for Intel Linux and Intel Fortran Compiler 11.0
++# tsurugi, nehalem
++#
++FC = gfortran
++
++DEB_RELEASE ?= $(shell lsb_release -c -s)
++ifneq ($(DEB_RELEASE), wheezy)
++  FFLAGS_EXTRA = -ffpe-summary=none
++endif
++
++ifeq ($(shell uname -m),x86_64)
++  FFLAGS = -O3 -msse3 -fno-inline-functions $(FFLAGS_EXTRA)
++  CC = gcc -O3 -msse3 -fno-inline-functions
++else
++  FFLAGS = -O3 -fno-inline-functions $(FFLAGS_EXTRA)
++  CC = gcc -O3 -fno-inline-functions
++endif
++#--------------------------------------------------------------------
++
++ltzpdos: ltzpdos.o
++	${FC} -o ltzpdos ltzpdos.o
++
++wfchg2pdos: wfchg2pdos.o
++	${FC} -o wfchg2pdos wfchg2pdos.o
++
++clean distclean:
++	/bin/rm -f core *.o *.f *~ *.bak *.orig TAGS *.rej *.mod *.log \
++	ltzpdos wfchg2pdos a.out
++
++install: tools
++	install -d $(DESTDIR)/usr/bin
++	install ltzpdos wfchg2pdos $(DESTDIR)/usr/bin
++
++# Local Variables: ***
++# mode:Makefile ***
++# End:***
+--- a/minmaxband/Makefile
++++ b/minmaxband/Makefile
+@@ -17,10 +17,14 @@
+ minmaxband: minmaxband.o
+ 	${CC} ${CFLAGS} -o minmaxband minmaxband.o
+ 
+-clean:
++clean distclean:
+ 	/bin/rm -f core *.o *~ *.bak *.orig TAGS *.rej \
+ 	minmaxband a.out
+ 
++install: tools
++	install -d $(DESTDIR)/usr/bin
++	install minmaxband $(DESTDIR)/usr/bin
++
+ # Local Variables: ***
+ # mode:Makefile ***
+ # End:***

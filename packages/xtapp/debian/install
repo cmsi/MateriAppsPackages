@@ -1,0 +1,3 @@
+sample	/usr/share/xtapp
+debian/check	/usr/share/xtapp
+debian/opendx	/usr/share/xtapp

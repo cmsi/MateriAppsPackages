@@ -1,0 +1,72 @@
+xtapp-util (20180420-3) unstable; urgency=low
+
+  * Fix for python3
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Fri, 05 Aug 2022 16:12:16 +0900
+
+xtapp-util (20180420-2) unstable; urgency=low
+
+  * Add -ffpe-summary=none option
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 27 Feb 2019 09:02:05 +0900
+
+xtapp-util (20180420-1) unstable; urgency=low
+
+  * New upstream release 180420
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 19 Jun 2018 09:55:00 +0900
+
+xtapp-util (160715-2) unstable; urgency=low
+
+  * Support for Stretch
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Thu, 02 Nov 2017 00:21:08 +0900
+
+xtapp-util (160715-1) unstable; urgency=low
+
+  * New upstream 160715
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 08 Aug 2016 06:30:01 +0000
+
+xtapp-util (150401-4) unstable; urgency=low
+
+  * Fixed segmentation fault in wfk2dx for i686 architecture
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 19 Jan 2016 13:42:52 +0900
+
+xtapp-util (150401-3) unstable; urgency=low
+
+  * Added missing tools: rho2xsf, stm2cci, exrho2dx, wfneig
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 28 Apr 2015 11:03:54 +0900
+
+xtapp-util (150401-2) unstable; urgency=low
+
+  * Added missing tools: disp2fset.py, disp2xti.py
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Thu, 02 Apr 2015 19:08:41 +0900
+
+xtapp-util (150401-1) unstable; urgency=low
+
+  * New upstream release 150401
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 01 Apr 2015 14:58:30 +0900
+
+xtapp-util (140916-1) unstable; urgency=low
+
+  * New upstream release 140916
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 16 Sep 2014 20:18:13 +0900
+
+xtapp-util (130919-1) unstable; urgency=low
+
+  * New upstream release
+  * Changed installed directory from /usr/libexec/xtapp to /usr/bin
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 04 Mar 2014 06:45:31 +0900
+
+xtapp-util (130701-1) unstable; urgency=low
+
+  * Initial version of debian package
+
+ -- Synge Todo <wistaria@issp.u-tokyo.ac.jp>  Thu, 19 Sep 2013 18:04:05 +0900

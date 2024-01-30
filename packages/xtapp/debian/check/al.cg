@@ -1,0 +1,71 @@
+# main data
+&tappinput
+lattice_factor = 7.6375,
+lattice_list = 0.5,  0.5,  0.0,
+               0.5,  0.0,  0.5,
+               0.0,  0.5,  0.5,
+cutoff_wave_function = 5.0,
+number_element = 1,
+number_atom = 1,
+number_band = 6,
+store_wfn = 1,
+scf_number_iter_1st = 40,
+scf_number_iter = 40,
+xc_type = 'PBE',
+control_uptime = 7200.0
+/
+
+# symmetry data
+&symmetry
+symmetry_format = 'reciprocal',
+number_sym_op = 24
+/
+    1  0  0    0  1  0    0  0  1     0  0  0
+    0  1  0    0  0  1    1  0  0     0  0  0
+    0  0  1    1  0  0    0  1  0     0  0  0
+    1  0  0    0  0  1    0  1  0     0  0  0
+    0  0  1    0  1  0    1  0  0     0  0  0
+    0  1  0    1  0  0    0  0  1     0  0  0
+   -1 -1 -1    0  1  0    0  0  1     0  0  0
+   -1 -1 -1    0  0  1    0  1  0     0  0  0
+   -1 -1 -1    1  0  0    0  0  1     0  0  0
+   -1 -1 -1    0  0  1    1  0  0     0  0  0
+   -1 -1 -1    1  0  0    0  1  0     0  0  0
+   -1 -1 -1    0  1  0    1  0  0     0  0  0
+    0  1  0   -1 -1 -1    0  0  1     0  0  0
+    0  0  1   -1 -1 -1    0  1  0     0  0  0
+    1  0  0   -1 -1 -1    0  0  1     0  0  0
+    0  0  1   -1 -1 -1    1  0  0     0  0  0
+    1  0  0   -1 -1 -1    0  1  0     0  0  0
+    0  1  0   -1 -1 -1    1  0  0     0  0  0
+    0  1  0    0  0  1   -1 -1 -1     0  0  0
+    0  0  1    0  1  0   -1 -1 -1     0  0  0
+    1  0  0    0  0  1   -1 -1 -1     0  0  0
+    0  0  1    1  0  0   -1 -1 -1     0  0  0
+    1  0  0    0  1  0   -1 -1 -1     0  0  0
+    0  1  0    1  0  0   -1 -1 -1     0  0  0
+
+# atom data
+ 3  13
+ 1   0.0  0.0  0.0
+
+# k-points data
+&smpl_kpt
+dos_mode = 'COS',
+dos_mesh = 32, 32, 32,
+bz_mesh = 24,
+bz_number_tile = 1
+/
+    13    13    13
+     2     2     2
+
+
+# struct_opt data
+&struct_opt
+number_cycle = 0
+/
+
+# str_opt_constr data
+ 1
+ 0
+

@@ -1,0 +1,14 @@
+Source: xtapp
+Section: scientific
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 8.0.0), texlive-lang-cjk, nkf, mpi-default-dev,
+ libfftw3-dev, liblapack-dev, gfortran, ghostscript
+Standards-Version: 3.9.3
+Homepage: http://xtapp.cp.is.s.u-tokyo.ac.jp
+
+Package: xtapp
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, fftw3
+Description: xTAPP: first-principles plane-wave pseudo-potential code
+  xTAPP is a first-principles plane-wave pseudo-potential code. It computes band structure and electronic states with high precision for a wide range of materials including metals, oxide surfaces, solid interfaces, and so forth. It has support tools and visualization of output and input, is available as a massively parallel computer using OpenMP, MPI, and GPGPU.

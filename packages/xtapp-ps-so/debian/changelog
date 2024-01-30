@@ -1,0 +1,12 @@
+xtapp-ps-so (20180420-1) unstable; urgency=low
+
+  * New upstream 180420
+  * Add ioncore data
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 19 Jun 2018 09:13:04 +0900
+
+xtapp-ps-so (20160420-1) unstable; urgency=low
+
+  * New package for spin-orbit interaction support (development version)
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 08 Aug 2016 08:07:50 +0000

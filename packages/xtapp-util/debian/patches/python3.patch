@@ -1,0 +1,46 @@
+--- a/phonopy/printband.py
++++ b/phonopy/printband.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python
++#! /usr/bin/python3
+ # Copyright (c) 2015 Yoshihide Yoshimoto
+ 
+ import yaml
+@@ -17,9 +17,9 @@
+    q = np.array(ph['q-position'])
+    dq = q - qprev
+    qlen = qlen + math.sqrt(dq[0]*dq[0]+dq[1]*dq[1]+dq[2]*dq[2])
+-   print " {0:13.10f} {1:13.10f} {2:13.10f}".format(q[0],q[1],q[2]),
+-   print "{0:13.10f}".format(qlen),
++   print(" {0:13.10f} {1:13.10f} {2:13.10f}".format(q[0],q[1],q[2]),end='')
++   print("{0:13.10f}".format(qlen),end='')
+    for bnd in ph['band']:
+-       print "{0:13.10f}".format(bnd['frequency']),
+-   print
++       print("{0:13.10f}".format(bnd['frequency']),end='')
++   print()
+    qprev = q
+--- a/phonopy/sym2xti.py
++++ b/phonopy/sym2xti.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python
++#! /usr/bin/python3
+ # originally written by Kazuma Nakamura 2016/6/16
+ # modified by Yoshihide Yoshimoto 2016/6/16, 2016/6/27
+ 
+--- a/phonopy/disp2fset.py
++++ b/phonopy/disp2fset.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python
++#! /usr/bin/python3
+ # Copyright (c) 2015 Yoshihide Yoshimoto
+ 
+ import yaml
+--- a/phonopy/disp2xti.py
++++ b/phonopy/disp2xti.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python
++#! /usr/bin/python3
+ # Copyright (c) 2015 Yoshihide Yoshimoto
+ 
+ import yaml

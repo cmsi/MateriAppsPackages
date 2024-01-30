@@ -1,0 +1,5 @@
+xtapp-ps-extra (140401-2) unstable; urgency=low
+
+  * Moved CAPZ and norm-conserving + PBE from xtapp-ps
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 30 Mar 2015 20:22:27 +0900

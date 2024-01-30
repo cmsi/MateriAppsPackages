@@ -1,0 +1,737 @@
+--- a/src/Makefile-dist
++++ b/src/Makefile-dist
+@@ -52,35 +52,35 @@
+ #--------------------------------
+ # for Intel Linux and Intel Fortran Compiler 11.0
+ #
+-MDOBJ = mdunistd.o paraenv.o
++#MDOBJ = mdunistd.o paraenv.o
+ #
+ # -DINCONSISTENT_THREAD_COMP
+ #    when thread computing is inconsistent, define this
+-DEFINES = ${GDEFS} -DINCONSISTENT_THREAD_COMP
++#DEFINES = ${GDEFS} -DINCONSISTENT_THREAD_COMP
+ 
+-FFLAGS = -O3 -openmp -msse3 -fno-inline-functions -traceback ${DEFINES}
+-F77FLAGS =
+-F90FLAGS =
+-FOPTNON = -O0
++#FFLAGS = -O3 -openmp -msse3 -fno-inline-functions -traceback ${DEFINES}
++#F77FLAGS =
++#F90FLAGS =
++#FOPTNON = -O0
+ 
+ # for NVIDIA CUDA
+ #LDFLAGS = -openmp -L /usr/local/cuda40/cuda/lib64 -lcutil_x86_64 -lcufft -lcuda
+ # for AMD GPU
+-LDFLAGS = -openmp -L /opt/AMDAPPML/clAmdFft-1.8.291/lib64 -lclAmdFft.Runtime
++#LDFLAGS = -openmp -L /opt/AMDAPPML/clAmdFft-1.8.291/lib64 -lclAmdFft.Runtime
+ # for CPU
+ #LDFLAGS = -openmp
+ 
+ # for NVIDIA CUDA
+ #CFLAGS = -openmp -O3 -fno-inline-functions
+ # for AMD GPU
+-CFLAGS = -openmp -O3 -fno-inline-functions -I /opt/AMDAPP/include -I /opt/AMDAPPML/clAmdFft-1.8.291/include
++#CFLAGS = -openmp -O3 -fno-inline-functions -I /opt/AMDAPP/include -I /opt/AMDAPPML/clAmdFft-1.8.291/include
+ # for CPU
+ #CFLAGS = -openmp -O3 -fno-inline-functions
+ #
+ # for multi-thread
+ #LIBLAPACK = -lmkl_lapack95_lp64 # for composerxe-2011
+-LIBLAPACK = -lmkl_lapack
+-LIBBLAS = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread
++#LIBLAPACK = -lmkl_lapack
++#LIBBLAS = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread
+ #
+ # for single-thread
+ ##LIBLAPACK = -lmkl_lapack95_lp64 # for composerxe-2011
+@@ -127,43 +127,41 @@
+ 	${FC} -c ${DEFINES} ${FOPTNON} mdlin.F
+ 
+ # for AMD GPU
+-CC = icc
+-FC_CIF = ifort
+-FFLAG_CIF = 
++#CC = icc
++#FC_CIF = ifort
++#FFLAG_CIF =
+ #--------------------------------
+ #for x86_64 Debian Linux by S. Todo (2014.3)
+ #
+-#ARCH_OBJ = arch_dgemm.o giounit_open.o giounit_util.o
+-#MDOBJ = mdunistd.o paraenv.o
++ARCH_OBJ = arch_dgemm.o giounit_open.o giounit_util.o
++MDOBJ = mdunistd.o paraenv.o
+ #
+ # -DINCONSISTENT_THREAD_COMP
+ #    when thread computing is inconsistent, define this
+ #DEFINES = -O3 ${GDEFS} -DINCONSISTENT_THREAD_COMP
+ 
+-#FFLAGS = -O3 -fopenmp -msse3 -fno-inline-functions ${DEFINES} -I/usr/include
+-#F77FLAGS =
+-#F90FLAGS = -ffree-line-length-none
+-#FOPTNON = -O0
++FFLAGS = -O3 -fopenmp -fno-inline-functions ${DEFINES} -I/usr/include
++F77FLAGS =
++F90FLAGS = -ffree-line-length-none
++FOPTNON = -O0
+ 
+-#LDFLAGS = -fopenmp
+-#CFLAGS = -fopenmp -O3 -fno-inline-functions -I/usr/include
+-#CXXFLAGS = -fopenmp -O3 -fno-inline-functions -I/usr/include
+-
+-#LIBLAPACK = -lfftw3_threads -lfftw3 -llapack
+-#LIBBLAS = -lblas
+-#EXTRALIBS = -lstdc++
++LDFLAGS = -fopenmp
++CFLAGS = -fopenmp -O3 -fno-inline-functions -I/usr/include
++CXXFLAGS = -fopenmp -O3 -fno-inline-functions -I/usr/include
++
++LIBLAPACK = -lfftw3_threads -lfftw3 -llapack
++LIBBLAS = -lblas
++EXTRALIBS = -lstdc++
+ 
+-#XMPI_OBJ = xmpi_univ.o
+-##EIGSYSTM_OBJ = eigsystm.o
+-#EIGSYSTM_OBJ = eigsystm-lapack.o
+-##EIGSYSTM_OBJ = eigsystm-scalapack.o
+-#FFT3D_OBJ = fft3d_fftw.o
+-#FFTGRID_H_SRC = fftgrid-scl-fftw.h
++XMPI_OBJ = xmpi_univ.o
++EIGSYSTM_OBJ = eigsystm-lapack.o
++FFT3D_OBJ = fft3d_fftw.o
++FFTGRID_H_SRC = fftgrid-scl-fftw.h
+ 
+-#CC = gcc
+-#CXX = g++
+-#FC_CIF = gfortran
+-#FFLAG_CIF = 
++CC = gcc
++CXX = g++
++FC_CIF = gfortran
++FFLAG_CIF =
+ #--------------------------------
+ # for K computer
+ #
+@@ -232,11 +230,11 @@
+ #SCGDGOBJ = dvdsnmp.o hploc.o nlprj.o rotwfn.o sorthcl.o \
+ #	exchange.o exchange_kern_cuda.o ${EIGSYSTM_OBJ}
+ # for AMD GPU
+-SCGDGOBJ = dvdsnmp.o hploc.o nlprj.o rotwfn.o sorthcl.o \
+-	exchange.o exchange_kern_opencl_noevent.o ${EIGSYSTM_OBJ}
+-# for CPU
+ #SCGDGOBJ = dvdsnmp.o hploc.o nlprj.o rotwfn.o sorthcl.o \
+-#	exchange.o exchange_kern.o ${EIGSYSTM_OBJ}
++#	exchange.o exchange_kern_opencl_noevent.o ${EIGSYSTM_OBJ}
++# for CPU
++SCGDGOBJ = dvdsnmp.o hploc.o nlprj.o rotwfn.o sorthcl.o \
++	exchange.o exchange_kern.o ${EIGSYSTM_OBJ}
+ #==========================================================
+ ################## FOR ESM METHOD by M.Otani 2006/02/06####################
+ ################## Modified by Y.Ando 2011/01/21 ##########################
+@@ -505,7 +503,7 @@
+ tetrapdos: tetrapdos.F90 subr_tetra.o
+ 	${FC} -o tetrapdos tetrapdos.F90 subr_tetra.o ${LDLIBS}
+ 
+-clean: esm_clean
++clean distclean: esm_clean
+ 	/bin/rm -f core *.o *~ *.bak *.orig TAGS *.rej *.mod *.log \
+ 	vbpef vbstm cgmrpt mdrpt inipot wfn2chg pe2dos tetrapdos \
+ 	hmatr2bnd wannier pefcos atmcdist distpart \
+--- /dev/null
++++ b/src/Makefile
+@@ -0,0 +1,547 @@
++# Copyright (c) 1983-2000 TAPP Consortium
++# Copyright (c) 2000-2017 Yoshihide Yoshimoto
++######################################################################
++# Makefile for xTAPP programs
++######################################################################
++#-----------------------------------------------
++# default suffix rules. Do not edit this area.
++FC=mpif90
++
++.SUFFIXES:
++.SUFFIXES: .o .F .f .F90 .f90 .c .cpp
++
++default: inipot cgmrpt mdrpt vbpef vbstm wfn2chg wannier pefcos \
++	xticonv strconv diffstr iplstr cmpstr pe2dos tetrapdos \
++	hmatr2bnd atmcdist distpart
++
++.F.o:
++	${FC} ${F77FLAGS} ${FFLAGS} -c $<
++.f90.o:
++	${FC} ${F90FLAGS} ${FFLAGS} -c $<
++.F90.o:
++	${FC} ${F90FLAGS} ${FFLAGS} -c $<
++.c.o:
++	${CC} ${CFLAGS} -c $<
++.cpp.o:
++	${CXX} ${CXXFLAGS} -c $<
++#-----------------------------------------------
++
++################################################################
++# Configuration area. Edit the followings.
++################################################################
++
++# cpp path (not necessary if you do not use cpp explicitly)
++CPP = /lib/cpp
++
++# grobal defines
++# -DPWB_SORTED_BY_INDEX
++#    sort plane wave basis set by its index
++# -DCHECK_DATA_CONSISTENCY
++#    check the data consistency among MPI procs
++# -DCOMPAT_PSV_2_3
++#    compatible with psv-2.3 by Y. Suwa
++# -DCOMPAT_OLD_STR_FORMAT
++#    old format for structure optimization result file
++# -DESM
++#    enable ESM method
++#----------------------------------------------------------
++#
++GDEFS = -DPWB_SORTED_BY_INDEX -DESM
++#==========================================================
++# Uncomment your machine's part and comment out all others.
++#--------------------------------
++# for Intel Linux and Intel Fortran Compiler 11.0
++#
++#MDOBJ = mdunistd.o paraenv.o
++#
++# -DINCONSISTENT_THREAD_COMP
++#    when thread computing is inconsistent, define this
++#DEFINES = ${GDEFS} -DINCONSISTENT_THREAD_COMP
++
++#FFLAGS = -O3 -openmp -msse3 -fno-inline-functions -traceback ${DEFINES}
++#F77FLAGS =
++#F90FLAGS =
++#FOPTNON = -O0
++
++# for NVIDIA CUDA
++#LDFLAGS = -openmp -L /usr/local/cuda40/cuda/lib64 -lcutil_x86_64 -lcufft -lcuda
++# for AMD GPU
++#LDFLAGS = -openmp -L /opt/AMDAPPML/clAmdFft-1.8.291/lib64 -lclAmdFft.Runtime
++# for CPU
++#LDFLAGS = -openmp
++
++# for NVIDIA CUDA
++#CFLAGS = -openmp -O3 -fno-inline-functions
++# for AMD GPU
++#CFLAGS = -openmp -O3 -fno-inline-functions -I /opt/AMDAPP/include -I /opt/AMDAPPML/clAmdFft-1.8.291/include
++# for CPU
++#CFLAGS = -openmp -O3 -fno-inline-functions
++#
++# for multi-thread
++#LIBLAPACK = -lmkl_lapack95_lp64 # for composerxe-2011
++#LIBLAPACK = -lmkl_lapack
++#LIBBLAS = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread
++#
++# for single-thread
++##LIBLAPACK = -lmkl_lapack95_lp64 # for composerxe-2011
++#LIBLAPACK = -lmkl_lapack
++#LIBBLAS = -lmkl_intel_lp64 -lmkl_sequential -lmkl_core
++#
++# for scalapack multi-thread
++#LIBLAPACK = -lmkl_scalapack_lp64 -lmkl_blacs_openmpi_lp64 -lmkl_lapack
++#LIBBLAS = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread
++#
++# for Grape-DR multi-thread
++##LIBLAPACK = -lmkl_lapack95_lp64 # for composerxe-2011
++#LIBLAPACK = -lmkl_lapack
++#GDRBASEDIR = /home/yosimoto/gdrlib
++#LIBBLAS = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread \
++#	-L $(GDRBASEDIR)/gdrtb3/singlibMC_tb4/libdgemm2-tst \
++#	-lgdrdgemm-ovl -L $(GDRBASEDIR)/gdrtb3/singlibMC_tb4 \
++#	-lsing -L $(GDRBASEDIR)/gdrtb3/hibutil -lhib
++
++ARCH_OBJ = arch_dgemm.o
++#ARCH_OBJ = arch_gdr.o
++#ARCH_OBJ = arch_nehalem.o
++arch_nehalem.o: arch_nehalem.f90 timeprof.o
++	${FC} -O3 -openmp -fno-inline-functions -unroll=0 -traceback ${DEFINES} -c $<
++
++XMPI_OBJ = xmpi_univ.o
++
++EIGSYSTM_OBJ = eigsystm-lapack.o
++#EIGSYSTM_OBJ = eigsystm-scalapack.o
++
++FFT3D_OBJ = fft3d_mkl.o
++mkl_dfti.o: mkl_dfti.f90
++mkl_dfti.f90:
++	cp ${MKLROOT}/include/mkl_dfti.f90 .
++FFTGRID_H_SRC = fftgrid-scl.h
++
++#FFT3D_OBJ = fft3d_fftw.o
++#FFTGRID_H_SRC = fftgrid-scl-fftw.h
++
++exchange_kern_cuda.o: exchange_kern_cuda.cu exchange_kern_cuda.h
++	nvcc -ccbin=icc -Xcompiler -openmp -I /usr/local/cuda40/cuda/NVIDIA_GPU_Computing_SDK/C/common/inc -m64 -c -arch sm_20 exchange_kern_cuda.cu
++
++mdlin.o: mdlin.F
++	${FC} -c ${DEFINES} ${FOPTNON} mdlin.F
++
++# for AMD GPU
++#CC = icc
++#FC_CIF = ifort
++#FFLAG_CIF =
++#--------------------------------
++#for x86_64 Debian Linux by S. Todo (2014.3)
++#
++ARCH_OBJ = arch_dgemm.o giounit_open.o giounit_util.o
++MDOBJ = mdunistd.o paraenv.o
++#
++# -DINCONSISTENT_THREAD_COMP
++#    when thread computing is inconsistent, define this
++#DEFINES = -O3 ${GDEFS} -DINCONSISTENT_THREAD_COMP
++
++DEB_RELEASE ?= $(shell lsb_release -c -s)
++ifneq ($(DEB_RELEASE), wheezy)
++  FFLAGS = -ffpe-summary=none -O3 -fopenmp -fno-inline-functions ${DEFINES} -I/usr/include
++else
++  FFLAGS = -O3 -fopenmp -fno-inline-functions ${DEFINES} -I/usr/include
++endif
++F77FLAGS =
++F90FLAGS = -ffree-line-length-none
++FOPTNON = -O0
++
++LDFLAGS = -fopenmp
++CFLAGS = -fopenmp -O3 -fno-inline-functions -I/usr/include
++CXXFLAGS = -fopenmp -O3 -fno-inline-functions -I/usr/include
++
++LIBLAPACK = -lfftw3_threads -lfftw3 -llapack
++LIBBLAS = -lblas
++EXTRALIBS = -lstdc++
++
++XMPI_OBJ = xmpi_univ.o
++EIGSYSTM_OBJ = eigsystm-lapack.o
++FFT3D_OBJ = fft3d_fftw.o
++FFTGRID_H_SRC = fftgrid-scl-fftw.h
++
++CC = gcc
++CXX = g++
++FC_CIF = gfortran
++FFLAG_CIF =
++#--------------------------------
++# for K computer
++#
++#FC = mpifrtpx
++#MDOBJ = mdunistd.o paraenv.o
++#
++# -DINCONSISTENT_THREAD_COMP
++#    when thread computing is inconsistent, define this
++#DEFINES = ${GDEFS}
++#
++#FFLAGS = -Kfast,parallel,openmp,ocl ${DEFINES}
++#F77FLAGS =
++#F90FLAGS = -I/home/apps/fftw/3.3/include
++#FOPTNON =
++#LDFLAGS = -Kfast,parallel,openmp -Qt
++#CFLAGS =
++#
++# for scalapack multi-thread
++#LIBLAPACK = -SCALAPACK
++#LIBBLAS = -SSL2BLAMP
++#
++
++#ARCH_OBJ = arch_dgemm.o
++
++#XMPI_OBJ = xmpi_univ.o
++#
++#EIGSYSTM_OBJ = eigsystm.o
++#EIGSYSTM_OBJ = eigsystm-lapack.o
++#EIGSYSTM_OBJ = eigsystm-scalapack.o
++
++##FFT3D_OBJ = pfft3dsp.o pfft3dsp_subr.o
++##FFTGRID_H_SRC = fftgrid-vec.h
++##FOPT_PARA_SUBR = -Kfast,ocl -Qt
++#FFT3D_OBJ = pfft3duz.o pfft3duz_subr_hpcace.o pfft3duz_kern_hpcace.o
++#FFTGRID_H_SRC = fftgrid-scl.h
++#FOPT_PARA_SUBR = -Kfast,auto,threadsafe,ocl -Qt
++#FFT3D_OBJ = fft3d_fftw.o
++#FFTGRID_H_SRC = fftgrid-scl-fftw.h
++#EXTRALIBS = -L/home/apps/fftw/3.3/lib64 -lfftw3_omp -lfftw3
++
++# These routines must keep automatic variables on the stack
++# since these must be thread safe.
++# These routines themselves must not be parallelized.
++#
++#F90SRC_PARA_SUBR= pfft3dsp_subr.f90 pfft3duz_subr_hpcace.f90
++#
++#F90OBJ_PARA_SUBR= $(F90SRC_PARA_SUBR:.f90=.o)
++#$(F90OBJ_PARA_SUBR): $(@:.o=.f90)
++#	${FC} -c ${DEFINES} ${FOPT_PARA_SUBR} $(@:.o=.f90)
++#
++#pfft3dsp.o: pfft3dsp_subr.o
++#pfft3duz.o: pfft3duz_subr_hpcace.o
++
++# avoiding BUGs of the compiler
++#p2s.o: p2s.F util.o subr_tetra.o
++#	${FC} -c ${DEFINES} -O1 p2s.F
++#doss.o: doss.f90 iounit.o meshgen.o
++#	${FC} -c ${DEFINES} -O1 doss.f90
++
++#CC = fccpx -Kfast -Koptmsg=2
++#FC_CIF =
++#FFLAG_CIF =
++#==========================================================
++# uncomment one and commet out others.
++# for NVIDIA CUDA
++#SCGDGOBJ = dvdsnmp.o hploc.o nlprj.o rotwfn.o sorthcl.o \
++#	exchange.o exchange_kern_cuda.o ${EIGSYSTM_OBJ}
++# for AMD GPU
++#SCGDGOBJ = dvdsnmp.o hploc.o nlprj.o rotwfn.o sorthcl.o \
++#	exchange.o exchange_kern_opencl_noevent.o ${EIGSYSTM_OBJ}
++# for CPU
++SCGDGOBJ = dvdsnmp.o hploc.o nlprj.o rotwfn.o sorthcl.o \
++	exchange.o exchange_kern.o ${EIGSYSTM_OBJ}
++#==========================================================
++################## FOR ESM METHOD by M.Otani 2006/02/06####################
++################## Modified by Y.Ando 2011/01/21 ##########################
++ESMMODOBJ = m_fft1d.o esm_gvar.o esm_util.o esm_debinfo.o esm_loc.o \
++	esm_pot.o esm_ewald.o esm_2d.o esm_manage.o
++ESMMNGOBJ = esm_manage.o
++ESMGVOBJ = esm_gvar.o
++#==========================================================
++###################################################################
++# Configuration area is ended. Do not edit the followings.
++###################################################################
++
++LDLIBS=$(MDLIBS) $(EXTRALIBS) $(LIBLAPACK) $(LIBBLAS)
++
++XCOBJ= xc-pbe.o xc-pbesol.o xc-pw91.o xc-ldapw92.o xc-pbe0.o xc-b3lyp.o
++
++COMMONOBJ = types.o xcf_types.o bsplpot.o bspline.o \
++	$(FFT3D_OBJ) \
++	bandchrg.o symchrg.o ioqg-core.o ldaxc.o \
++	gga-wb.o ${XCOBJ} initwfn.o p10vb.o subrpot.o makedd.o makeqg.o \
++	getqy.o util.o converter.o symutil.o chkinput.o \
++	iounit.o utilmpi.o symwfn.o $(ARCH_OBJ) \
++	$(XMPI_OBJ) ${MDOBJ} timeprof.o \
++	subr_input.o read_tappinput.o subr_kpoint.o
++
++CGMRPTOBJ = cgmrpt.o linmin.o ewald.o refforce-ewald.o scfloop.o zxtrap.o \
++	engdffr.o crgen.o ioniclpot.o \
++	chainjob.o doss.o p2s.o initlpt.o atomicchrg.o ${COMMONOBJ} potihxc.o \
++	${SCGDGOBJ} diag_hml.o ldos.o prclpt.o poisson.o sdoss.o p2d.o \
++	meshgen.o replica.o stropt_cnstr.o ${ESMMODOBJ} dftd2.o \
++	dftd3_sg.o dftd3/dftd3.o dftd3/copyc6.o \
++	subr_tetra.o subr_ekinor.o subr_shrtor.o subr_engpart.o
++MDRPTOBJ = mdrpt.o moldyn.o ewald.o refforce-ewald.o scfloop.o zxtrap.o \
++	engdffr.o crgen.o ioniclpot.o \
++	chainjob.o doss.o p2s.o initlpt.o atomicchrg.o mdmuca.o \
++	${COMMONOBJ} potihxc.o ${SCGDGOBJ} diag_hml.o \
++	meshgen.o \
++	ldos.o prclpt.o poisson.o sdoss.o p2d.o replica.o ${ESMMODOBJ} \
++	dftd2.o dftd3_sg.o dftd3/dftd3.o dftd3/copyc6.o \
++	subr_tetra.o subr_ekinor.o subr_shrtor.o subr_engpart.o
++INIPOTOBJ = inipot.o ${COMMONOBJ} replica.o ${ESMMODOBJ}
++ATMCDISTOBJ = atmcdist.o ${COMMONOBJ} atomicchrg.o meshgen.o chainjob.o \
++	zxtrap.o \
++	replica.o ${ESMMODOBJ}
++DISTPARTOBJ = distpart.o ${COMMONOBJ} atomicchrg.o meshgen.o chainjob.o \
++	zxtrap.o \
++	replica.o ${ESMMODOBJ} subr_engpart.o subr_distpart.o
++VBPEFOBJ  = vbpef.o vbband.o bunpu.o crgen.o ${COMMONOBJ} \
++	potihxc.o ${SCGDGOBJ} diag_hml.o \
++	initlpt.o ioniclpot.o atomicchrg.o meshgen.o \
++	chainjob.o zxtrap.o ${ESMMODOBJ}
++VBSTMOBJ = vbstm.o stmitgdos.o sdoss.o doss.o p2s.o p2d.o chainjob.o \
++	initlpt.o crgen.o zxtrap.o ioniclpot.o \
++	atomicchrg.o ${COMMONOBJ} potihxc.o ${SCGDGOBJ} \
++	diag_hml.o meshgen.o ${ESMMODOBJ} \
++	subr_tetra.o
++WFN2CHGOBJ = wfn2chg.o vbchrg.o chainjob.o \
++	crgen.o zxtrap.o bunpu.o ${COMMONOBJ} nlprj.o meshgen.o ${ESMMODOBJ} \
++	subr_engpart.o
++WANNIEROBJ = wannier.o calcwannier.o chainjob.o zxtrap.o wannier_metal.o \
++	${COMMONOBJ} meshgen.o nlprj.o ${ESMMODOBJ}
++PEFCOSOBJ  = pefcos.o ${MDOBJ} util.o \
++	subr_input.o read_tappinput.o chainjob.o xcf_types.o zxtrap.o \
++	timeprof.o iounit.o symutil.o
++PE2DOSOBJ  = pe2dos.o ${MDOBJ} util.o subr_tetra.o p2s.o iounit.o
++HMATR2BNDOBJ  = hmatr2bnd.o ${MDOBJ} util.o wannier_util.o \
++	subr_input.o read_tappinput.o chainjob.o zxtrap.o timeprof.o iounit.o \
++	symutil.o
++
++inipot: ${INIPOTOBJ}
++	${FC} ${LDFLAGS} -o $@ ${INIPOTOBJ} ${LDLIBS}
++
++atmcdist: ${ATMCDISTOBJ}
++	${FC} ${LDFLAGS} -o $@ ${ATMCDISTOBJ} ${LDLIBS}
++
++distpart: ${DISTPARTOBJ}
++	${FC} ${LDFLAGS} -o $@ ${DISTPARTOBJ} ${LDLIBS}
++
++cgmrpt: ${CGMRPTOBJ}
++	${FC} ${LDFLAGS} -o $@ ${CGMRPTOBJ} ${LDLIBS}
++
++mdrpt: ${MDRPTOBJ}
++	${FC} ${LDFLAGS} -o $@ ${MDRPTOBJ} ${LDLIBS}
++
++vbpef: ${VBPEFOBJ}
++	${FC} ${LDFLAGS} -o $@ ${VBPEFOBJ} ${LDLIBS}
++
++vbstm: ${VBSTMOBJ}
++	${FC} ${LDFLAGS} -o $@ ${VBSTMOBJ} ${LDLIBS}
++
++wfn2chg: ${WFN2CHGOBJ}
++	${FC} ${LDFLAGS} -o $@ ${WFN2CHGOBJ} ${LDLIBS}
++
++wannier: ${WANNIEROBJ}
++	${FC} ${LDFLAGS} -o $@ ${WANNIEROBJ} ${LDLIBS}
++
++pefcos: ${PEFCOSOBJ}
++	${FC} ${LDFLAGS} -o $@ ${PEFCOSOBJ} ${LDLIBS}
++
++pe2dos: ${PE2DOSOBJ}
++	${FC} ${LDFLAGS} -o $@ ${PE2DOSOBJ} ${LDLIBS}
++
++hmatr2bnd: ${HMATR2BNDOBJ}
++	${FC} ${LDFLAGS} -o $@ ${HMATR2BNDOBJ} ${LDLIBS}
++
++pefcos.o: pefcos.F subr_input.o chainjob.o util.o config.h
++vbpef.o: vbpef.F90 config90.h util.o iounit.o vbband.o \
++	bsplpot.o makedd.o types.o initlpt.o meshgen.o xcf_types.o \
++	chainjob.o exchange.o chkinput.o subr_input.o ${ESMMNGOBJ}
++vbband.o: vbband.F90 utilmpi.o iounit.o types.o converter.o bsplpot.o \
++	initwfn.o bunpu.o fftgrid.h meshgen.o bandchrg.o \
++	diag_hml.o xcf_types.o exchange.o util.o
++vbstm.o: vbstm.F90 config90.h chainjob.o iounit.o util.o \
++	types.o stmitgdos.o bsplpot.o makedd.o initlpt.o meshgen.o exchange.o \
++	chkinput.o subr_input.o ${ESMMNGOBJ}
++wfn2chg.o: wfn2chg.F90 config90.h chainjob.o iounit.o util.o \
++	types.o vbchrg.o bsplpot.o makedd.o meshgen.o chkinput.o subr_input.o \
++	${ESMMNGOBJ}
++wannier.o: wannier.F90 config90.h chainjob.o iounit.o util.o \
++	types.o bsplpot.o meshgen.o chkinput.o subr_input.o calcwannier.o
++wannier_metal.o: wannier_metal.F90 types.o meshgen.o \
++	fftgrid.h ${FFT3D_OBJ} util.o bsplpot.o converter.o symutil.o
++stmitgdos.o: stmitgdos.F90 util.o sdoss.o bsplpot.o crgen.o \
++	iounit.o diag_hml.o converter.o fftgrid.h meshgen.o
++cgmrpt.o: cgmrpt.F90 config90.h chainjob.o util.o iounit.o engdffr.o \
++	scfloop.o bsplpot.o makedd.o types.o doss.o initlpt.o initwfn.o meshgen.o \
++	ewald.o linmin.o timeprof.o replica.o exchange.o \
++	chkinput.o subr_input.o stropt_cnstr.o ${ESMMNGOBJ} subr_ekinor.o \
++	subr_shrtor.o subr_engpart.o crgen.o
++inipot.o: inipot.F90 config90.h iounit.o bsplpot.o util.o xcf_types.o \
++	replica.o chkinput.o subr_input.o subr_kpoint.o ${ESMMNGOBJ}
++pe2dos.o: pe2dos.F90 subr_tetra.o
++hmatr2bnd.o: hmatr2bnd.F90 subr_input.o chainjob.o util.o wannier_util.o \
++	config90.h
++scfloop.o: scfloop.F90 zxtrap.o chainjob.o util.o doss.o types.o \
++	bandchrg.o crgen.o makedd.o ioniclpot.o converter.o \
++	diag_hml.o ldos.o prclpt.o meshgen.o timeprof.o utilmpi.o exchange.o
++linmin.o: linmin.F90 chainjob.o scfloop.o engdffr.o bsplpot.o meshgen.o \
++	ewald.o stropt_cnstr.o
++ioniclpot.o: ioniclpot.F90 ${FFT3D_OBJ} util.o bsplpot.o potihxc.o fftgrid.h \
++	${ESMMNGOBJ}
++chainjob.o: chainjob.f90 iounit.o zxtrap.o util.o types.o meshgen.o bsplpot.o \
++	symutil.o
++bandchrg.o: bandchrg.F90 ${FFT3D_OBJ} types.o $(XMPI_OBJ) symchrg.o fftgrid.h \
++	timeprof.o subr_kpoint.o
++potihxc.o: potihxc.F90 ${FFT3D_OBJ} gga-wb.o ldaxc.o \
++	fftgrid.h xcf_types.o timeprof.o ${ESMMNGOBJ}
++initwfn.o: initwfn.f90 util.o iounit.o converter.o meshgen.o
++gga-wb.o: gga-wb.F90 ${XCOBJ} ${FFT3D_OBJ} fftgrid.h xcf_types.o timeprof.o
++ldaxc.o: ldaxc.F90 ${XCOBJ} ${FFT3D_OBJ} fftgrid.h xcf_types.o timeprof.o
++diag_hml.o: diag_hml.F90 $(FFT3D_OBJ) converter.o types.o dvdsnmp.o \
++	bsplpot.o utilmpi.o fftgrid.h timeprof.o xcf_types.o meshgen.o util.o
++engdffr.o: engdffr.F90 util.o iounit.o $(FFT3D_OBJ) $(ARCH_OBJ) \
++	bsplpot.o $(XMPI_OBJ) meshgen.o types.o converter.o exchange.o \
++	xcf_types.o fftgrid.h ${ESMMNGOBJ} dftd2.o dftd3_sg.o
++crgen.o: crgen.F90 $(FFT3D_OBJ) util.o bsplpot.o types.o $(XMPI_OBJ) symchrg.o \
++	fftgrid.h timeprof.o
++p10vb.o: p10vb.F iounit.o util.o
++bsplpot.o: bspline.o ioqg-core.o makeqg.o util.o xcf_types.o iounit.o \
++	subr_kpoint.o ${ESMGVOBJ}
++initlpt.o: initlpt.F90 iounit.o util.o ioniclpot.o bsplpot.o atomicchrg.o \
++	potihxc.o meshgen.o converter.o fftgrid.h
++makedd.o: makedd.F90 util.o bsplpot.o types.o converter.o timeprof.o
++makeqg.o: makeqg.f90 getqy.o
++bunpu.o: bunpu.F90 $(FFT3D_OBJ) types.o bsplpot.o crgen.o fftgrid.h
++vbchrg.o: vbchrg.F90 bunpu.o converter.o types.o util.o nlprj.o symwfn.o \
++	meshgen.o subr_engpart.o
++calcwannier.o: calcwannier.f90 types.o subr_kpoint.o meshgen.o wannier_metal.o \
++	makeqg.o bsplpot.o converter.o nlprj.o
++ewald.o: ewald.F90 util.o bsplpot.o refforce-ewald.o timeprof.o ${ESMMNGOBJ}
++doss.o: doss.f90 iounit.o meshgen.o
++moldyn.o: moldyn.F90 types.o bsplpot.o iounit.o converter.o makedd.o \
++	engdffr.o scfloop.o atomicchrg.o mdmuca.o meshgen.o initwfn.o \
++	meshgen.o converter.o ewald.o replica.o fftgrid.h \
++	initlpt.o subr_ekinor.o subr_shrtor.o subr_engpart.o crgen.o
++mdrpt.o: mdrpt.F90 config90.h chainjob.o util.o iounit.o types.o bsplpot.o \
++	moldyn.o mdmuca.o \
++	initlpt.o initwfn.o meshgen.o timeprof.o scfloop.o \
++	replica.o exchange.o chkinput.o subr_input.o ${ESMMNGOBJ}
++mdmuca.o: mdmuca.f90 bspline.o iounit.o replica.o
++atomicchrg.o: atomicchrg.F90 bsplpot.o $(FFT3D_OBJ) fftgrid.h
++sdoss.o: sdoss.f90 doss.o
++converter.o: converter.F90 $(FFT3D_OBJ) fftgrid.h
++meshgen.o: iounit.o util.o subr_kpoint.o
++ldos.o: ldos.f90 bsplpot.o crgen.o bandchrg.o types.o sdoss.o subr_kpoint.o
++prclpt.o: prclpt.F90 util.o poisson.o $(FFT3D_OBJ) symchrg.o potihxc.o
++timeprof.o: timeprof.F90 util.o
++zxtrap.o: zxtrap.f90 timeprof.o
++p2s.o: p2s.F util.o subr_tetra.o
++chkinput.o: chkinput.f90 symutil.o
++read_tappinput.o: read_tappinput.f90 chainjob.o xcf_types.o \
++	calcwannier.o subr_engpart.o
++subr_input.o: subr_input.F90 read_tappinput.o util.o calcwannier.o
++utilmpi.o: utilmpi.F90 timeprof.o
++subr_kpoint.o: subr_kpoint.F90 util.o
++dftd2.o: dftd2.F90 util.o bsplpot.o
++dftd3_sg.o: dftd3_sg.F90 util.o bsplpot.o
++subr_engpart.o: subr_engpart.F90 $(FFT3D_OBJ)
++atmcdist.o: atmcdist.F90 iounit.o bsplpot.o util.o xcf_types.o \
++	replica.o chkinput.o subr_input.o subr_kpoint.o meshgen.o \
++	chainjob.o converter.o atomicchrg.o
++distpart.o: distpart.F90 iounit.o bsplpot.o util.o xcf_types.o \
++	replica.o chkinput.o subr_input.o \
++	chainjob.o converter.o types.o subr_engpart.o subr_distpart.o
++subr_ekinor.o: subr_ekinor.F90 types.o util.o subr_kpoint.o meshgen.o \
++	$(FFT3D_OBJ) $(XMPI_OBJ) symchrg.o timeprof.o
++
++hploc.o: hploc.F90 $(FFT3D_OBJ) fftgrid.h timeprof.o
++nlprj.o: nlprj.f90 util.o $(XMPI_OBJ) $(ARCH_OBJ) bsplpot.o timeprof.o
++rotwfn.o: rotwfn.f90 $(XMPI_OBJ) $(EIGSYSTM_OBJ) $(ARCH_OBJ) timeprof.o
++sorthcl.o: sorthcl.f90 $(ARCH_OBJ) timeprof.o
++dvdsnmp.o: dvdsnmp.F90 $(FFT3D_OBJ) nlprj.o converter.o hploc.o \
++	rotwfn.o sorthcl.o bsplpot.o exchange.o types.o xcf_types.o meshgen.o
++exchange.o: exchange.F90 types.o symwfn.o timeprof.o meshgen.o potihxc.o \
++	xcf_types.o fftgrid-vx.h
++exchange_kern_opencl.o: exchange_kern_opencl.c exchange_kern_opencl.h
++exchange_kern.o: exchange_kern.F90 util.o fftgrid.h $(FFT3D_OBJ)
++fftgrid-vx.h: fftgrid-scl.h
++	ln -s fftgrid-scl.h fftgrid-vx.h
++
++fftgrid.h: $(FFTGRID_H_SRC)
++	ln -s $(FFTGRID_H_SRC) fftgrid.h
++
++fft3d.o: fft3d.f90 timeprof.o
++pfft3d.o: pfft3d.f90 timeprof.o
++fft3ds.o: fft3ds.f90 timeprof.o
++pfft3dsp.o: pfft3dsp.f90 pfft3dsp_subr.o timeprof.o
++pfft3duz.o: pfft3duz.f90 $(PFFT3DUZ_SUBR_OBJ) timeprof.o
++fft3d_mkl.o: fft3d_mkl.F90 timeprof.o mkl_dfti.o
++
++arch_dgemm.o: arch_dgemm.f90 timeprof.o
++arch_univ.o: arch_univ.f90 timeprof.o
++arch_sr11k.o: arch_sr11k.f90 timeprof.o
++arch_ha8k.o: arch_ha8k.f90 timeprof.o
++arch_exp_r128.o: arch_exp_r128.f90 timeprof.o
++
++subr_input_nompi.o: subr_input.F90 util.o
++	${FC} -DNO_MPI -o subr_input_nompi.o -c subr_input.F90
++
++################## FOR ESM METHOD by M.Otani 2006/02/06####################
++################## Modified by Y.Ando 2011/01/21 ##########################
++esm_manage.o: esm_manage.F90 esm_gvar.o bsplpot.o iounit.o meshgen.o esm_debinfo.o esm_util.o esm_2d.o fftgrid.h
++esm_gvar.o: esm_gvar.F90
++esm_loc.o: esm_loc.F90 m_fft1d.o util.o esm_gvar.o
++esm_pot.o: esm_pot.F90 m_fft1d.o esm_gvar.o
++esm_ewald.o: esm_ewald.F90 esm_util.o esm_gvar.o
++esm_util.o: esm_util.F90 esm_gvar.o m_fft1d.o
++esm_2d.o: esm_2d.F90 esm_gvar.o esm_debinfo.o esm_util.o esm_loc.o timeprof.o esm_ewald.o esm_pot.o
++
++xticonv: xticonv.F90 subr_input_nompi.o read_tappinput.o subr_fmtconv.o
++	${FC} -o xticonv xticonv.F90 read_tappinput.o subr_input_nompi.o \
++	subr_fmtconv.o util.o iounit.o ${LDLIBS}
++
++strconv: strconv.F90 subr_fmtconv.o subr_readstr.o
++	${FC} -o strconv strconv.F90 subr_fmtconv.o subr_readstr.o ${LDLIBS}
++
++diffstr: diffstr.F90 subr_readstr.o
++	${FC} -o diffstr diffstr.F90 subr_readstr.o ${LDLIBS}
++
++iplstr: iplstr.F90 subr_readstr.o
++	${FC} -o iplstr iplstr.F90 subr_readstr.o ${LDLIBS}
++
++cmpstr: cmpstr.F90 subr_readstr.o
++	${FC} -o cmpstr cmpstr.F90 subr_readstr.o ${LDLIBS}
++
++tetrapdos: tetrapdos.F90 subr_tetra.o
++	${FC} -o tetrapdos tetrapdos.F90 subr_tetra.o ${LDLIBS}
++
++clean distclean: esm_clean
++	/bin/rm -f core *.o *~ *.bak *.orig TAGS *.rej *.mod *.log \
++	vbpef vbstm cgmrpt mdrpt inipot wfn2chg pe2dos tetrapdos \
++	hmatr2bnd wannier pefcos atmcdist distpart \
++	a.out \
++	pfft3ds.f90 fft3dsp.f90 fft3dsp_subr.f90 fft3duz.f90 fft3duz_subr.f90 \
++	fftgrid.h mkl_dfti.f90 fftgrid-vx.h \
++	xticonv strconv diffstr iplstr cmpstr \
++	dftd3/*.o
++
++################## FOR ESM METHOD by M.Otani 2006/02/06####################
++################## Modified by Y.Ando 2011/01/21 ##########################
++esm_clean:
++	/bin/rm -f esm_manage.mod \
++        esm_util.mod m_2d.mod m_loc.mod m_pot.mod esm_debinfo.o \
++        esm_gvar.o \
++        esm_util.o esm_manage.o esm_2d.o esm_loc.o \
++        esm_pot.o esm_ewald.o
++
++tgz:
++	tar cf xTAPP.tar *.F *.f90 *.F90 config.h \
++	Makefile-dist config90.h
++	gzip -f -9 xTAPP.tar
++
++tags:
++	etags *.F *.f90 *.F90 *.c *.cu
++
++.F.f:
++	${CPP} -P ${DEFINES} $< | sed '/^ *$$/d' > $*.f
++
++install: default
++	install -d $(DESTDIR)/usr/bin
++	install inipot cgmrpt mdrpt vbpef vbstm wfn2chg wannier pefcos xticonv strconv diffstr iplstr cmpstr pe2dos tetrapdos hmatr2bnd atmcdist distpart $(DESTDIR)/usr/bin
++
++# Local Variables: ***
++# mode:Makefile ***
++# End:***
+--- /dev/null
++++ b/sample/example-cu/cu.sh
+@@ -0,0 +1,21 @@
++#!/bin/sh
++
++set -x
++
++XTAPP_PS_DIR=/usr/share/xtapp/pseudo-potential/PS
++
++# export GIOUNIT_DEBUG=1
++
++rm -f fort.* *.log cu.*.ee.dx cu.lpt cu.rho cu.wfn cu.str
++export FORT10=cu.cg
++export FORT28=$XTAPP_PS_DIR/ps-Cu.ichr
++export FORT34=$XTAPP_PS_DIR/ps-Cu
++time inipot > cu-inipot.log
++
++export FORT11=cu.lpt
++export FORT25=cu.rho
++export FORT96=cu.wfn
++export FORT99=cu.str
++time cgmrpt > cu-cgmrpt.log
++
++time wfn2ee cu '1 1 0' '1 0 1' '0 1 1' '-16 -16 -16' '32 32 32'
+--- a/src/util.f90
++++ b/src/util.f90
+@@ -1838,13 +1838,13 @@
+     integer,intent(in):: nf
+     character(len=*):: msg
+     integer,intent(out):: info
+-    character(len=7):: sstat
++    ! character(len=7):: sstat
+ 
+-    inquire(nf,write=sstat)
+-    if (sstat.eq.'NO') then
+-       write(6,'(1x,a)') 'Error: cannot open '//msg//' for write'
+-       info = 1
+-    end if
++    ! inquire(nf,write=sstat)
++    ! if (sstat.eq.'NO') then
++    !    write(6,'(1x,a)') 'Error: cannot open '//msg//' for write'
++    !    info = 1
++    ! end if
+     return
+   end subroutine chknfwrt
+ 

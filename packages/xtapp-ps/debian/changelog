@@ -1,0 +1,24 @@
+xtapp-ps (140401-2) unstable; urgency=low
+
+  * Moved CAPZ and norm-conserving + PBE to new package xtapp-ps-extra
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 30 Mar 2015 20:22:27 +0900
+
+xtapp-ps (140401-1) unstable; urgency=low
+
+  * New upstream 14041
+  * Added CAPZ and norm-conserving + PBE
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Thu, 18 Sep 2014 06:30:52 +0900
+
+xtapp-ps (130903-2) unstable; urgency=low
+
+  * Fixed copyright
+
+ -- Synge Todo <wistaria@issp.u-tokyo.ac.jp>  Sun, 22 Sep 2013 01:19:40 +0900
+
+xtapp-ps (130903-1) unstable; urgency=low
+
+  * Initial version of debian package
+
+ -- Synge Todo <wistaria@issp.u-tokyo.ac.jp>  Thu, 19 Sep 2013 22:17:00 +0900

@@ -1,0 +1,37 @@
+--- /dev/null
++++ b/Makefile
+@@ -0,0 +1,6 @@
++default:
++	make default -C doc
++	make default -C src
++%:
++	make $@ -C doc
++	make $@ -C src
+--- a/src/Makefile-dist
++++ b/src/Makefile-dist
+@@ -534,6 +535,10 @@
+ .F.f:
+ 	${CPP} -P ${DEFINES} $< | sed '/^ *$$/d' > $*.f
+ 
++install: default
++	install -d $(DESTDIR)/usr/bin
++	install inipot cgmrpt mdrpt vbpef vbstm wfn2chg wannier pefcos xticonv strconv diffstr iplstr cmpstr pe2dos tetrapdos hmatr2bnd atmcdist distpart $(DESTDIR)/usr/bin
++
+ # Local Variables: ***
+ # mode:Makefile ***
+ # End:***
+--- a/doc/Makefile
++++ b/doc/Makefile
+@@ -3,9 +3,11 @@
+ 	example-pt-111-co-atmeng.pdf \
+ 	formalism.pdf inputformat.pdf programs.pdf tutorial.pdf
+ 
+-clean:
++clean distclean:
+ 	rm -f *.aux *.dvi *.log *.toc *.pdf
+ 
++install:
++
+ develop.pdf:
+ 	platex --kanji=euc develop.tex
+ 	platex --kanji=euc develop.tex
