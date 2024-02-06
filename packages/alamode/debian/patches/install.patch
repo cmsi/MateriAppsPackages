@@ -28,10 +28,11 @@
 +install(TARGETS anphon RUNTIME DESTINATION bin)
 --- a/tools/CMakeLists.txt
 +++ b/tools/CMakeLists.txt
-@@ -87,3 +87,6 @@
+@@ -87,3 +87,7 @@
          ${PROJECT_SOURCE_DIR}/parse_fcsxml.cpp
          ${PROJECT_SOURCE_DIR}/parse_fcsxml.h)
  target_link_libraries(parse_fcsxml ${Boost_LIBRARIES})
 +
 +install(TARGETS analyze_phonons dfc2 qe2alm fc_virtual parse_fcsxml RUNTIME DESTINATION share/alamode/tools)
 +install(FILES GenDisplacement.py analyze_phonons.py displace.py extract.py makedisp_qe.py plotband.py plotdos.py scph_to_qefc.py DESTINATION share/alamode/tools)
++install(FILES interface/__init__.py interface/LAMMPS.py interface/OpenMX.py interface/QE.py interface/VASP.py interface/xTAPP.py DESTINATION share/alamode/tools/interface)
