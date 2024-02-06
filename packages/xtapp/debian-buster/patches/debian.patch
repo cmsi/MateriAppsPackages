@@ -72,7 +72,7 @@
 -#F77FLAGS =
 -#F90FLAGS = -ffree-line-length-none
 -#FOPTNON = -O0
-+FFLAGS = -O3 -fopenmp -fno-inline-functions -fallow-argument-mismatch ${DEFINES} -I/usr/include
++FFLAGS = -O3 -fopenmp -fno-inline-functions ${DEFINES} -I/usr/include
 +F77FLAGS =
 +F90FLAGS = -ffree-line-length-none
 +FOPTNON = -O0
@@ -141,7 +141,7 @@
  	hmatr2bnd wannier pefcos atmcdist distpart \
 --- /dev/null
 +++ b/src/Makefile
-@@ -0,0 +1,541 @@
+@@ -0,0 +1,547 @@
 +# Copyright (c) 1983-2000 TAPP Consortium
 +# Copyright (c) 2000-2017 Yoshihide Yoshimoto
 +######################################################################
@@ -192,7 +192,7 @@
 +#
 +GDEFS = -DPWB_SORTED_BY_INDEX -DESM
 +#==========================================================
-+# Uncomment your machine's part and comment out all others. 
++# Uncomment your machine's part and comment out all others.
 +#--------------------------------
 +# for Intel Linux and Intel Fortran Compiler 11.0
 +#
@@ -248,7 +248,7 @@
 +#ARCH_OBJ = arch_gdr.o
 +#ARCH_OBJ = arch_nehalem.o
 +arch_nehalem.o: arch_nehalem.f90 timeprof.o
-+	${FC} -O3 -openmp -msse3 -fno-inline-functions -unroll=0 -traceback ${DEFINES} -c $<
++	${FC} -O3 -openmp -fno-inline-functions -unroll=0 -traceback ${DEFINES} -c $<
 +
 +XMPI_OBJ = xmpi_univ.o
 +
@@ -284,7 +284,12 @@
 +#    when thread computing is inconsistent, define this
 +#DEFINES = -O3 ${GDEFS} -DINCONSISTENT_THREAD_COMP
 +
-+FFLAGS = -O3 -fopenmp -fno-inline-functions -fallow-argument-mismatch ${DEFINES} -I/usr/include
++DEB_RELEASE ?= $(shell lsb_release -c -s)
++ifneq ($(DEB_RELEASE), wheezy)
++  FFLAGS = -ffpe-summary=none -O3 -fopenmp -fno-inline-functions ${DEFINES} -I/usr/include
++else
++  FFLAGS = -O3 -fopenmp -fno-inline-functions ${DEFINES} -I/usr/include
++endif
 +F77FLAGS =
 +F90FLAGS = -ffree-line-length-none
 +FOPTNON = -O0
@@ -319,7 +324,7 @@
 +#FFLAGS = -Kfast,parallel,openmp,ocl ${DEFINES}
 +#F77FLAGS =
 +#F90FLAGS = -I/home/apps/fftw/3.3/include
-+#FOPTNON = 
++#FOPTNON =
 +#LDFLAGS = -Kfast,parallel,openmp -Qt
 +#CFLAGS =
 +#
@@ -366,8 +371,8 @@
 +#	${FC} -c ${DEFINES} -O1 doss.f90
 +
 +#CC = fccpx -Kfast -Koptmsg=2
-+#FC_CIF = 
-+#FFLAG_CIF = 
++#FC_CIF =
++#FFLAG_CIF =
 +#==========================================================
 +# uncomment one and commet out others.
 +# for NVIDIA CUDA
@@ -594,7 +599,7 @@
 +	rotwfn.o sorthcl.o bsplpot.o exchange.o types.o xcf_types.o meshgen.o
 +exchange.o: exchange.F90 types.o symwfn.o timeprof.o meshgen.o potihxc.o \
 +	xcf_types.o fftgrid-vx.h
-+exchange_kern_opencl.o: exchange_kern_opencl.c exchange_kern_opencl.h 
++exchange_kern_opencl.o: exchange_kern_opencl.c exchange_kern_opencl.h
 +exchange_kern.o: exchange_kern.F90 util.o fftgrid.h $(FFT3D_OBJ)
 +fftgrid-vx.h: fftgrid-scl.h
 +	ln -s fftgrid-scl.h fftgrid-vx.h
@@ -654,7 +659,8 @@
 +	a.out \
 +	pfft3ds.f90 fft3dsp.f90 fft3dsp_subr.f90 fft3duz.f90 fft3duz_subr.f90 \
 +	fftgrid.h mkl_dfti.f90 fftgrid-vx.h \
-+	xticonv strconv diffstr iplstr cmpstr
++	xticonv strconv diffstr iplstr cmpstr \
++	dftd3/*.o
 +
 +################## FOR ESM METHOD by M.Otani 2006/02/06####################
 +################## Modified by Y.Ando 2011/01/21 ##########################
