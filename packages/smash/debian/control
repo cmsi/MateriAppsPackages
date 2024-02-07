@@ -1,0 +1,17 @@
+Source: smash
+Section: scientific
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 8.0.0), autotools-dev, mpi-default-dev, liblapack-dev, gfortran
+Standards-Version: 3.9.3
+Homepage: http://smash-qc.sourceforge.net
+
+Package: smash
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Scalable Molecular Analysis Solver for High-performance
+ computing systems (SMASH) is open-source software for massively
+ parallel quantum chemistry calculations written in the Fortran 90/95
+ language with MPI and OpenMP. Hartree-Fock and Density Functional
+ Theory (DFT) calculations can be performed on 100,000 CPU cores of
+ K Computer with high parallel efficiency.

@@ -1,0 +1,139 @@
+--- a/visual/cube-generator.F90
++++ b/visual/cube-generator.F90
+@@ -16,7 +16,7 @@
+ ! Cube file generator for SMASH
+ !
+ !------------------
+-  module modparam
++  module cmodparam
+ !------------------
+ !
+ ! maximum sizes for AOs (basis functions), MOs, atoms, shells
+@@ -30,10 +30,10 @@
+ 
+ 
+ !------------------
+-  module modbasis
++  module cmodbasis
+ !------------------
+ !
+-      use modparam
++      use cmodparam
+       integer :: nshell, nao, nprim
+       integer :: locprim(mxshell+1), locbf(mxshell+1), locatom(mxshell)
+       integer :: mprim(mxshell),  mbf(mxshell), mtype(mxshell)
+@@ -44,8 +44,8 @@
+ !------------------------
+   program cube_generator
+ !------------------------
+-      use modparam
+-      use modbasis
++      use cmodparam
++      use cmodbasis
+       implicit none
+       integer,parameter :: numperang=5
+       integer :: ii, jj, kk, ilen, monum, maxxyz(3), minxyz(3), lenxyz(3), numxyz(3)
+@@ -279,7 +279,7 @@
+ !
+ ! Normalize basis functions
+ !
+-      use modbasis, only : nshell, mtype, ex, coeff, locprim, mprim
++      use cmodbasis, only : nshell, mtype, ex, coeff, locprim, mprim
+       implicit none
+       integer :: ishell
+ !
+@@ -298,7 +298,7 @@
+ !
+ ! Normalize basis functions
+ !
+-      use modparam, only : mxprim, mxshell
++      use cmodparam, only : mxprim, mxshell
+       implicit none
+       integer,intent(in) :: ishell, locprim(mxshell+1), mprim(mxshell), mtype(mxshell)
+       integer :: iloc, iprim, jprim, nprimi, nangi
+@@ -345,8 +345,8 @@
+ !---------------------------------------------------------------------
+   subroutine calcorbital2(orbital,cmo,coord,xbohr,ybohr,zbohr,monum)
+ !---------------------------------------------------------------------
+-      use modparam
+-      use modbasis
++      use cmodparam
++      use cmodbasis
+       implicit none
+       integer,intent(in) :: monum
+       integer :: ish, ii, iatom, numprim, numbf, ibf, iprim
+--- a/visual/vtk-generator.F90
++++ b/visual/vtk-generator.F90
+@@ -16,7 +16,7 @@
+ ! Vtk file generator for SMASH
+ !
+ !------------------
+-  module modparam
++  module vmodparam
+ !------------------
+ !
+ ! maximum sizes for AOs (basis functions), MOs, atoms, shells
+@@ -29,10 +29,10 @@
+ 
+ 
+ !------------------
+-  module modbasis
++  module vmodbasis
+ !------------------
+ !
+-      use modparam
++      use vmodparam
+       integer :: nshell, nao, nprim
+       integer :: locprim(mxshell+1), locbf(mxshell+1), locatom(mxshell)
+       integer :: mprim(mxshell),  mbf(mxshell), mtype(mxshell)
+@@ -43,8 +43,8 @@
+ !------------------------
+   program vtk_generator
+ !------------------------
+-      use modparam
+-      use modbasis
++      use vmodparam
++      use vmodbasis
+       implicit none
+       integer,parameter :: numperang=4
+       integer :: ii, jj, kk, ilen, monum, maxxyz(3), minxyz(3), lenxyz(3), numxyz(3)
+@@ -298,7 +298,7 @@
+ !
+ ! Normalize basis functions
+ !
+-      use modbasis, only : nshell, mtype, ex, coeff, locprim, mprim
++      use vmodbasis, only : nshell, mtype, ex, coeff, locprim, mprim
+       implicit none
+       integer :: ishell
+ !
+@@ -317,7 +317,7 @@
+ !
+ ! Normalize basis functions
+ !
+-      use modparam, only : mxprim, mxshell
++      use vmodparam, only : mxprim, mxshell
+       implicit none
+       integer,intent(in) :: ishell, locprim(mxshell+1), mprim(mxshell), mtype(mxshell)
+       integer :: iloc, iprim, jprim, nprimi, nangi
+@@ -364,8 +364,8 @@
+ !-----------------------------------------------------------
+   subroutine calcorbital(orbital,cmo,coord,xx,yy,zz,monum)
+ !-----------------------------------------------------------
+-      use modparam
+-      use modbasis
++      use vmodparam
++      use vmodbasis
+       implicit none
+       integer,intent(in) :: monum
+       integer :: ish, ii, iatom, numprim, numbf, ibf, iprim
+@@ -596,8 +596,8 @@
+ !---------------------------------------------------------------------
+   subroutine calcorbital2(orbital,cmo,coord,xx,yy,zz,monum)
+ !---------------------------------------------------------------------
+-      use modparam
+-      use modbasis
++      use vmodparam
++      use vmodbasis
+       implicit none
+       integer,intent(in) :: monum
+       integer :: ish, ii, iatom, numprim, numbf, ibf, iprim

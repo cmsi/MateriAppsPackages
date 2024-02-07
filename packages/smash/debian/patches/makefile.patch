@@ -1,0 +1,65 @@
+--- a/Makefile
++++ b/Makefile
+@@ -11,6 +11,7 @@
+ OBJM= $(addprefix obj/,$(MOD:.F90=.o))
+ OBJS= $(OBJM) $(OBJ)
+ OBJDIR= obj
++PREFIX=$(DESTDIR)/usr
+ .SUFFIXES:
+ .SUFFIXES: .F .F90 .o
+ 
+@@ -25,5 +26,22 @@
+ 
+ $(OBJ): $(addprefix src/,$(MOD))
+ 
+-clean :
+-	rm -f $(OBJDIR)/*.mod $(OBJDIR)/*.o bin/smash
++cube-generator:
++	(cd visual && make cube-generator)
++
++vtk-generator:
++	(cd visual && make vtk-generator)
++
++install: smash cube-generator vtk-generator
++	mkdir -p $(PREFIX)/bin $(PREFIX)/share/smash/visual
++	cp bin/smash $(PREFIX)/bin
++	cp visual/cube-generator $(PREFIX)/bin/smash-cube-generator
++	cp visual/vtk-generator $(PREFIX)/bin/smash-vtk-generator
++	cp visual/mo-view.pvsm visual/cube-generator_manual visual/vtk-generator_manual $(PREFIX)/share/smash/visual
++	cp -rp example $(PREFIX)/share/smash
++	chmod 755 $(PREFIX)/bin/smash $(PREFIX)/bin/smash-cube-generator $(PREFIX)/bin/smash-vtk-generator
++	chmod 644 $(PREFIX)/share/smash/example/*
++	chmod 644 $(PREFIX)/share/smash/visual/*
++
++clean distclean:
++	rm -f $(OBJDIR)/*.mod $(OBJDIR)/*.o bin/smash visual/cube-generator visual/vtk-generator visual/*.o visual/*.mod
+--- /dev/null
++++ b/example/anthracene.inp
+@@ -0,0 +1,27 @@
++job runtype=energy method=b3lyp basis=6-31G
++control check=anthracene.chk
++geom
++C     0.000000    0.000000    1.405719
++C     0.000000    1.222957    0.721398
++C     0.000000   -1.222957    0.721398
++C     0.000000    1.222957   -0.721398
++C     0.000000   -1.222957   -0.721398
++C     0.000000    0.000000   -1.405719
++C     0.000000    2.473347    1.407594
++C     0.000000    3.658216    0.711102
++C     0.000000    3.658216   -0.711102
++C     0.000000    2.473347   -1.407594
++C     0.000000   -2.473347    1.407594
++C     0.000000   -3.658216    0.711102
++C     0.000000   -3.658216   -0.711102
++C     0.000000   -2.473347   -1.407594
++H     0.000000    0.000000    2.496860
++H     0.000000    0.000000   -2.496860
++H     0.000000    2.472553    2.496880
++H     0.000000    2.472553   -2.496880
++H     0.000000   -2.472553    2.496880
++H     0.000000   -2.472553   -2.496880
++H     0.000000    4.604568    1.247237
++H     0.000000   -4.604568    1.247237
++H     0.000000    4.604568   -1.247237
++H     0.000000   -4.604568   -1.247237

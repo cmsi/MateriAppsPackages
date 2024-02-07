@@ -1,0 +1,21 @@
+--- a/Makefile
++++ b/Makefile
+@@ -9,6 +9,7 @@
+ MOD = module.F90 modulefmt.F90 modulerys.F90
+ OBJ = $(addprefix obj/,$(SRC:.F90=.o))
+ OBJM= $(addprefix obj/,$(MOD:.F90=.o))
++MODM= obj/modecp.mod
+ OBJS= $(OBJM) $(OBJ)
+ OBJDIR= obj
+ PREFIX=$(DESTDIR)/usr
+@@ -24,7 +25,9 @@
+ $(OBJDIR)/%.o : src/%.F90
+ 	$(F90) $(OPT) -J$(OBJDIR) -o $@ -c $<
+ 
+-$(OBJ): $(addprefix src/,$(MOD))
++$(MODM): obj/module.o
++
++$(OBJ): $(addprefix src/,$(MOD)) $(MODM)
+ 
+ cube-generator:
+ 	(cd visual && make cube-generator)

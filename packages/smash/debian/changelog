@@ -1,0 +1,29 @@
+smash (2.2.0-1) unstable; urgency=low
+
+  * New upstream release 2.2.0
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Thu, 02 Nov 2017 16:04:30 +0900
+
+smash (2.1.0-1) unstable; urgency=low
+
+  * New upstream release 2.1.0
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 01 Oct 2016 10:50:47 +0900
+
+smash (2.0.0-1) unstable; urgency=low
+
+  * New upstream release 2.0.0
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 10 Aug 2016 00:23:57 +0000
+
+smash (1.1.0-1) wheezy; urgency=low
+
+  * New upstream release
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 25 Nov 2015 23:30:27 +0900
+
+smash (1.0.1-1) wheezy; urgency=low
+
+  * Initial release for 1.0.1
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 15 Sep 2014 18:18:04 +0900
