@@ -1,0 +1,14 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -64,6 +64,11 @@
+ set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} ${EXTERNAL_FLAGS}")
+ set(CMAKE_C_FLAGS       "${CMAKE_C_FLAGS} ${EXTERNAL_FLAGS}")
+ 
++include(CheckFortranCompilerFlag)
++check_fortran_compiler_flag("-fallow-argument-mismatch" FortranArgumentMismatchFlag)
++if(FortranArgumentMismatchFlag)
++  set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -fallow-argument-mismatch")
++endif()
+ 
+ # Generate configure header
+ configure_file(

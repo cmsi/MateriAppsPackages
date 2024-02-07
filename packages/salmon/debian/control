@@ -1,0 +1,17 @@
+Source: salmon
+Section: scientific
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), cmake, mpi-default-dev, liblapack-dev
+Standards-Version: 3.9.3
+Homepage: http://salmon-tddft.jp
+
+Package: salmon-tddft
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends} mpi-default-bin
+Description: SALMON is an open-source computer program for ab-initio
+ quantum-mechanical calculations of electron dynamics at the nanoscale
+ that takes place in various situations of light-matter interactions.
+ It is based on time-dependent density functional theory, solving
+ time-dependent Kohn-Sham equation in real time and real space with
+ norm-conserving pseudopotentials.
