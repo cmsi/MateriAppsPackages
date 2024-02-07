@@ -1,0 +1,19 @@
+Source: physbo
+Section: science
+Priority: optional
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper, dh-python, python3-all, python3-setuptools, python3-numpy, python3-scipy, cython3
+Standards-Version: 4.1.4
+Homepage: https://www.pasums.issp.u-tokyo.ac.jp/physbo/
+X-Python3-Version: >= 3.2
+
+Package: physbo
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: PHYSBO
+ PHYSBO (optimization tools for PHYSics based on Bayesian Optimization)
+ is a Python library for fast and scalable Bayesian optimization
+ (Bayesian Optimization). It is based on COMBO (Common Bayesian
+ Optimization) and has been developed mainly for researchers in the
+ materials science field.
