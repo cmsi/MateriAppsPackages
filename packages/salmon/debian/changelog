@@ -1,3 +1,9 @@
+salmon (2.2.0-1) unstable; urgency=low
+
+  * New upstream version 2.2.0
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 07 Feb 2024 17:14:05 +0900
+
 salmon (2.1.0-1) unstable; urgency=low
 
   * New upstream version 2.1.0

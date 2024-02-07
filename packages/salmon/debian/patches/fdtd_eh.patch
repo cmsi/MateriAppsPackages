@@ -1,0 +1,18 @@
+--- a/src/maxwell/fdtd_eh.f90
++++ b/src/maxwell/fdtd_eh.f90
+@@ -225,7 +225,6 @@
+     implicit none
+     type(s_fdtd_system),intent(inout) :: fs
+     type(ls_fdtd_eh),   intent(inout) :: fe
+-    procedure(integer)  :: access,system
+     integer             :: istatus
+     integer             :: nsg_p          !yn_restart='y': nproc_size_global used in the previous calc.
+     integer             :: nt_em_p        !yn_restart='y': nt_em             used in the previous calc.
+@@ -3217,7 +3216,6 @@
+     implicit none
+     type(s_fdtd_system),intent(inout) :: fs
+     type(ls_fdtd_eh),   intent(inout) :: fe
+-    procedure(integer) :: system
+     integer            :: istatus
+     integer            :: iter,ii,ix,iy,iz
+     integer            :: is5(5),ie5(5)

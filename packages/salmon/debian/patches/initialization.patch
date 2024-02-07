@@ -1,0 +1,11 @@
+--- a/src/common/initialization.f90
++++ b/src/common/initialization.f90
+@@ -1102,7 +1102,7 @@
+   if(yn_fftw=='y') then
+     call fftw_mpi_init()
+   end if
+-#ENDIF
++#endif
+ 
+   return
+ end subroutine prep_dgf
