@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=OVITO
+Comment=Open Visualization Tool
+Exec=ovito
+Type=Application
+Terminal=false
+Categories=Education;Math;Science;

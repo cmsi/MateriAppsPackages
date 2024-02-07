@@ -1,0 +1,7 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: https://ovito.svn.sourceforge.net/
+Upstream-Author: Alexander Stukowski
+
+Files: *
+Copyright: 2007-2020 Alexander Stukowski
+License: GPL-3

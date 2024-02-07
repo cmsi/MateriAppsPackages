@@ -1,0 +1,19 @@
+Source: ovito
+Section: science
+Priority: optional
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: cmake, debhelper (>= 9), qt6-base-dev, libqt6svg6-dev, libboost-dev, libavcodec-dev, libavdevice-dev, libavfilter-dev, libavformat-dev, libavutil-dev, libswscale-dev, libnetcdf-dev, libhdf5-dev, libhdf5-serial-dev, libssh-dev
+Standards-Version: 3.9.3
+Homepage: http://www.ovito.org/
+
+Package: ovito
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: OVITO - open visualization tool
+ OVITO is a scientific visualization and analysis software for
+ atomistic and particle simulation data. It helps scientists gain
+ better insights into materials phenomena and physical processes. The
+ program is freely available for all major platforms under an open
+ source license. It has served in a growing number of computational
+ simulation studies as a powerful tool to analyze, understand and
+ illustrate simulation results.
