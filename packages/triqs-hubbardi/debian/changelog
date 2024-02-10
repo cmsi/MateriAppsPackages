@@ -1,0 +1,23 @@
+triqs-hubbardi (3.2.0-1) unstable; urgency=low
+
+  * New upstream version 3.2.0
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 10 Feb 2024 14:35:18 +0900
+
+triqs-hubbardi (3.1.0-1) unstable; urgency=low
+
+  * New upstream version 3.1.0
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 19 Mar 2022 18:10:29 +0900
+
+triqs-hubbardi (20171122-2) unstable; urgency=low
+
+  * Enable tests
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sun, 29 Jul 2018 13:58:43 +0000
+
+triqs-hubbardi (20171122-1) unstable; urgency=low
+
+  * Initial release for 20171122 (d919676f472bd5855751159bb91d1737ee9a46ea)
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 24 Jul 2018 16:11:53 +0900

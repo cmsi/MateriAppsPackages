@@ -1,0 +1,12 @@
+Source: triqs-cthyb
+Section: scientific
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 8.0.0), triqs, libboost-dev, libgmp-dev, libfftw3-dev, python3-dev
+Standards-Version: 3.9.3
+Homepage: https://triqs.github.io/cthyb
+
+Package: triqs-cthyb
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, triqs
+Description: The hybridization-expansion solver based on the triqs library

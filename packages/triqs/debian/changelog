@@ -1,0 +1,42 @@
+triqs (3.2.0-1) unstable; urgency=low
+
+  * New upstream version 3.2.0
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 10 Feb 2024 14:31:07 +0900
+
+triqs (3.1.0-2) unstable; urgency=low
+
+  * Change install path of python modules
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 21 Mar 2022 10:33:16 +0900
+
+triqs (3.1.0-1) unstable; urgency=low
+
+  * New upstream version 3.1.0
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 19 Mar 2022 18:10:29 +0900
+
+triqs (1.4.x.20190220-1) unstable; urgency=low
+
+  * New upstream version 1.4.x.20190220
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 13 Nov 2019 19:48:34 +0900
+
+triqs (1.4.2-3) unstable; urgency=low
+
+  * Fix test for i386
+  * Revert HDF5 version check using h5utils package
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sun, 29 Jul 2018 21:31:12 +0900
+
+triqs (1.4.2-2) unstable; urgency=low
+
+  * Fixed python module path
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 24 Jul 2018 16:06:47 +0900
+
+triqs (1.4.2-1) unstable; urgency=low
+
+  * Initial release for 1.4.2
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 24 Jul 2018 09:12:03 +0900

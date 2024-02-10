@@ -1,0 +1,29 @@
+triqs-cthyb (3.2.1-1) unstable; urgency=low
+
+  * New upstream version 3.2.1
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 10 Feb 2024 14:35:18 +0900
+
+triqs-cthyb (3.1.0-1) unstable; urgency=low
+
+  * New upstream version 3.1.0
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 19 Mar 2022 18:10:29 +0900
+
+triqs-cthyb (1.4.2-3) unstable; urgency=low
+
+  * Enable test
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sun, 29 Jul 2018 13:58:43 +0000
+
+triqs-cthyb (1.4.2-2) unstable; urgency=low
+
+  * Fixed python module path
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 24 Jul 2018 16:06:47 +0900
+
+triqs-cthyb (1.4.2-1) unstable; urgency=low
+
+  * Initial release for 1.4.2
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 24 Jul 2018 13:02:03 +0900

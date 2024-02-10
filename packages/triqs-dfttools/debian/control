@@ -1,0 +1,19 @@
+Source: triqs-dfttools
+Section: scientific
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 8.0.0), triqs, libgmp-dev, libfftw3-dev, python3-dev
+Standards-Version: 3.9.3
+Homepage: https://triqs.github.io/dft_tools
+
+Package: triqs-dfttools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, triqs
+Description: This TRIQS-based-based application is aimed at ab-initio calculations for
+ correlated materials, combining realistic DFT band-structure calculations with the
+ dynamical mean-field theory. Together with the necessary tools to perform the DMFT
+ self-consistency loop for realistic multi-band problems, the package provides a
+ full-fledged charge self-consistent interface to the Wien2K package. In addition,
+ if Wien2k is not available, it provides a generic interface for one-shot DFT+DMFT
+ calculations, where only the single-particle Hamiltonian in orbital space has to be
+ provided.

@@ -1,0 +1,18 @@
+Source: triqs
+Section: scientific
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 8.0.0), gfortran, cmake, mpi-default-dev, libhdf5-dev, h5utils, liblapack-dev, libboost-mpi-dev, libfftw3-dev, libgmp-dev, libboost-serialization-dev, libboost-system-dev, python3-dev, python3-mako, python3-h5py, python3-scipy, python3-mpi4py
+Standards-Version: 3.9.3
+Homepage: https://triqs.github.io
+
+Package: triqs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, python3-mako, python3-h5py, python3-scipy, python3-mpi4py
+Description: TRIQS (Toolbox for Research on Interacting Quantum Systems)
+ is a scientific project providing a set of C++ and Python libraries to
+ develop new tools for the study of interacting quantum systems.
+ .
+ The goal of this toolkit is to provide high level, efficient and simple
+ to use libraries in C++ and Python, and to promote the use of modern
+ programming techniques.
