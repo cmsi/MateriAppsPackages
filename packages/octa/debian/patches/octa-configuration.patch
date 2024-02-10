@@ -1,0 +1,72 @@
+--- a/SCRIPTS/octa_configuration.sh
++++ b/SCRIPTS/octa_configuration.sh
+@@ -1,24 +1,15 @@
+ #!/bin/bash
+ 
+-ZOCTA_HOME=""
+-ZPF_ENGINE=""
+-if [ $# -ge 1 ]; then
+-  if [ "$1" != "" ]; then
+-    if [ -d $1 ]; then
+-      ZPF_ENGINE=$1
+-    fi
+-  fi
+-fi
++SCRIPT_DIR=$(cd $(dirname $0); pwd)
++ZOCTA_HOME="$1"
++ZPF_FILES="$ZOCTA_HOME/gourmet"
++ZPF_ENGINE="$ZOCTA_HOME/engines"
+ 
+-ZPF_FILES=`pwd`
+-if [ "$ZPF_FILES" != "" ]; then
+-  ZOCTA_HOME=`cd ..;pwd`
+-fi
+-ZPF_ARCH=`sh ${ZPF_FILES}/bin/pfgetsystem`
++ZPF_ARCH=`sh ${SCRIPT_DIR}/../GOURMET/bin/pfgetsystem`
+ ZSCRIPTKEY="+-GOURMET STARTUP FILE-+"
+ 
+-# Create PF_FILES environment file.
+-PROFILE=${ZPF_FILES}/bin/gourmet_profile.sh
++ZPROFILE=${ZPF_FILES}/bin/gourmet_profile.sh
++PROFILE=gourmet_profile.sh
+ 
+ # Erase previous gourmet
+ if [ -f "${PROFILE}" ]; then
+@@ -39,7 +30,7 @@
+ if [ -f transmitter ]; then
+   rm -f transmitter
+ fi
+-# Create a script "bin/gourmet_profile.sh".
++# Create a script "gourmet_profile.sh".
+ expr "#!/bin/bash" > "$PROFILE"
+ expr "#$ZSCRIPTKEY" >> "$PROFILE"
+ expr "export OCTA_HOME=$ZOCTA_HOME" >> "$PROFILE"
+@@ -58,7 +49,7 @@
+ ###############################################################
+ # Create a script "gourmet".
+ expr "#!/bin/bash" > gourmet
+-expr ". $PROFILE" >> gourmet
++expr ". $ZPROFILE" >> gourmet
+ expr '' >> gourmet
+ ###############################################################
+ # Create "dat_man"
+@@ -90,7 +81,7 @@
+ expr 'if [ "$1" != "-" ]; then' >> gourmetterm
+ expr '#----- terminal -----------' >> gourmetterm
+ #expr 'export LANG=C' >> gourmetterm
+-expr 'type kterm >& /dev/null' >> gourmetterm
++expr 'type kterm > /dev/null 2>&1' >> gourmetterm
+ expr 'if [ $? = "0" ]; then' >> gourmetterm
+ expr '  kterm&' >> gourmetterm
+ expr 'else' >> gourmetterm
+@@ -103,8 +94,8 @@
+ ###############################################################
+ #----- APPEND COMMON CONFIGURATION -----
+ #echo "$ZPF_FILES/bin/$ZPF_ARCH/gourmet_configuration.txt"
+-if [ -f "$ZPF_FILES/bin/$ZPF_ARCH/gourmet_configuration.txt" ]; then
+-  cat "$ZPF_FILES/bin/$ZPF_ARCH/gourmet_configuration.txt" >> gourmet
++if [ -f "$SCRIPT_DIR/gourmet_configuration.txt" ]; then
++  cat "$SCRIPT_DIR/gourmet_configuration.txt" >> gourmet
+ fi
+ ###############################################################
+ expr '#----- START GOURMET -----' >> gourmet

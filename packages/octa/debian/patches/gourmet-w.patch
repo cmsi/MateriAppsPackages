@@ -1,0 +1,121 @@
+--- a/GOURMET/include/pfexception.h
++++ b/GOURMET/include/pfexception.h
+@@ -86,8 +86,8 @@
+ 
+ // See "pferror.h"
+ #ifdef THROW_EXCEPTION
+-void CheckPfFunction(int PfFunction,char *file,int line) throw(PFException);
+-void PFError(int err, const char *info) throw(PFException);
++void CheckPfFunction(int PfFunction,char *file,int line);
++void PFError(int err, const char *info);
+ #endif
+ 
+ #endif
+--- a/GOURMET/include/udfobject.h
++++ b/GOURMET/include/udfobject.h
+@@ -258,7 +258,7 @@
+ 	bool empty() const	{ return _array.empty();}
+ //////////// VECTOR_INTERFACE //////////////////////
+ 	void reserve(size_t n)	{ _array.reserve(n);}
+-	size_t capacity() const { _array.capacity();}
++	size_t capacity() const { return _array.capacity();}
+ // interface to vector member
+     T & operator[](size_t pos)				{ return _array[pos];}
+ 	const T & operator[](size_t pos) const	{ return _array[pos];}
+@@ -374,7 +374,7 @@
+ 	bool empty() const	{ return _array.empty();}
+ //////////// VECTOR_INTERFACE //////////////////////
+ 	void reserve(size_t n)	{ _array.reserve(n);}
+-	size_t capacity() const { _array.capacity();}
++	size_t capacity() const { return _array.capacity();}
+ // interface to vector member
+     T & operator[](size_t pos)				{ return _array[pos];}
+ 	const T & operator[](size_t pos) const	{ return _array[pos];}
+--- a/GOURMET/src/apilib/inc/pfexception.h
++++ b/GOURMET/src/apilib/inc/pfexception.h
+@@ -86,8 +86,8 @@
+ 
+ // See "pferror.h"
+ #ifdef THROW_EXCEPTION
+-void CheckPfFunction(int PfFunction,char *file,int line) throw(PFException);
+-void PFError(int err, const char *info) throw(PFException);
++void CheckPfFunction(int PfFunction,char *file,int line);
++void PFError(int err, const char *info);
+ #endif
+ 
+ #endif
+--- a/GOURMET/src/apilib/inc/udfobject.h
++++ b/GOURMET/src/apilib/inc/udfobject.h
+@@ -258,7 +258,7 @@
+ 	bool empty() const	{ return _array.empty();}
+ //////////// VECTOR_INTERFACE //////////////////////
+ 	void reserve(size_t n)	{ _array.reserve(n);}
+-	size_t capacity() const { _array.capacity();}
++	size_t capacity() const { return _array.capacity();}
+ // interface to vector member
+     T & operator[](size_t pos)				{ return _array[pos];}
+ 	const T & operator[](size_t pos) const	{ return _array[pos];}
+@@ -374,7 +374,7 @@
+ 	bool empty() const	{ return _array.empty();}
+ //////////// VECTOR_INTERFACE //////////////////////
+ 	void reserve(size_t n)	{ _array.reserve(n);}
+-	size_t capacity() const { _array.capacity();}
++	size_t capacity() const { return _array.capacity();}
+ // interface to vector member
+     T & operator[](size_t pos)				{ return _array[pos];}
+ 	const T & operator[](size_t pos) const	{ return _array[pos];}
+--- a/GOURMET/src/apilib/src/pfexception.cpp
++++ b/GOURMET/src/apilib/src/pfexception.cpp
+@@ -149,7 +149,7 @@
+ }
+ 
+ #ifdef THROW_EXCEPTION 
+-void CheckPfFunction(int status,char *file,int line) throw(PFException)
++void CheckPfFunction(int status,char *file,int line)
+ {
+   if (PFFailure(status)){
+ 	throw	PFException(status);
+@@ -157,7 +157,7 @@
+ }
+ 
+ /* force to throw C++ Exception */
+-void PFError(int status, const char *info) throw(PFException)
++void PFError(int status, const char *info)
+ {
+ 	throw PFException(status, info);
+ }
+--- a/GOURMET/src/apilib/src/udfmanager.cpp
++++ b/GOURMET/src/apilib/src/udfmanager.cpp
+@@ -59,13 +59,9 @@
+ 
+ UDFManager::~UDFManager()
+ {
+-	try {
+ 		if (fd->isOpen())
+ 			fd->close();
+ 		delete fd;
+-	} catch (PFException &e) {
+-		throw *new UDFManagerException(e.GetErrorMessage());
+-	}
+ }
+ 
+ // methods for UDF header information
+--- a/GOURMET/src/mgrcore/src/CacheManager.cpp
++++ b/GOURMET/src/mgrcore/src/CacheManager.cpp
+@@ -73,7 +73,7 @@
+ // function :	destructor
+ // return value: none
+ CacheManager::~CacheManager()
+-{ try{
++{
+ 	_attr->clear();
+ 	_define->clear();
+ 	if(_fsmgr) delete _fsmgr;
+@@ -87,7 +87,6 @@
+ #ifdef CMGR_DEBUG
+ 	debugPrint("~CacheManager");
+ #endif
+- }catch(...){ throw CoreLibraryException("~CacheManager"); }
+ }
+ 
+ // function : The target UDF file is specified.

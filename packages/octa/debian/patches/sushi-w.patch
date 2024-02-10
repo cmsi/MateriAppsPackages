@@ -1,0 +1,29 @@
+--- a/ENGINES/SUSHI10.54/Susi/include/seed2udf/udfobject.h
++++ b/ENGINES/SUSHI10.54/Susi/include/seed2udf/udfobject.h
+@@ -201,7 +201,7 @@
+ 
+ class UDFstring : public UDFObject {
+ public:
+-	UDFstring(const char *name="", char *val="");
++	UDFstring(const char *name="", const char *val="");
+ 
+ 	string GetValue();
+ #ifdef USE_CONVERT
+@@ -261,7 +261,7 @@
+ 	bool empty() const	{ return _array.empty();}
+ //////////// VECTOR_INTERFACE //////////////////////
+ 	void reserve(size_t n)	{ _array.reserve(n);}
+-	size_t capacity() const { _array.capacity();}
++	size_t capacity() const { return _array.capacity();}
+ // interface to vector member
+     T & operator[](size_t pos)				{ return _array[pos];}
+ 	const T & operator[](size_t pos) const	{ return _array[pos];}
+@@ -377,7 +377,7 @@
+ 	bool empty() const	{ return _array.empty();}
+ //////////// VECTOR_INTERFACE //////////////////////
+ 	void reserve(size_t n)	{ _array.reserve(n);}
+-	size_t capacity() const { _array.capacity();}
++	size_t capacity() const { return _array.capacity();}
+ // interface to vector member
+     T & operator[](size_t pos)				{ return _array[pos];}
+ 	const T & operator[](size_t pos) const	{ return _array[pos];}

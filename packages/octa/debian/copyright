@@ -1,0 +1,126 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: http://octa.jp
+
+Files: *
+Copyright: OCTA Licensing Committee
+License: Terms of Use for OCTA
+ With respect to the Advanced Material Design Platform Program 
+ completed on April 1, 2002, OCTA Licensing Committee shall grant a 
+ licensee who accepts any and all terms and conditions prescribed 
+ below, free of charge, to download each version of OCTA from the 
+ site to which the Committee entrusts the administration (the OCTA 
+ download page as specified at http://octa.jp) and to use it. 
+ .
+ (Use of OCTA) 
+ .
+ 1. When the licensee intends to download OCTA from this page or use 
+ it, it is recommended for the licensee to complete user registration 
+ for the page.
+ .
+ 2. The licensee may freely perform any analysis by using OCTA 
+ downloaded from this page as well as freely design or make use for 
+ research the analysis results obtained by using OCTA. When the 
+ licensee makes public such analysis results or research results, 
+ the licensee shall use effort to specify that OCTA was used.
+ Example: Refer to "http://octa.jp".
+ .
+ 3. When the licensee discovers an error or other defect in OCTA 
+ software downloaded from this page, the licensee shall use effort to 
+ report it to the Committee. The Committee may freely use the 
+ information on such defect in OCTA discovered by the licensee without 
+ any payment to the licensee. 
+ .
+ 4. Any licensee to whom OCTA has been redistributed shall be entitled 
+ to use OCTA only when such licensee agrees to the same terms of use 
+ as set forth in each of the preceding paragraphs. This includes, 
+ but is not limited to, assignment, lease, making transmittable and 
+ public transmission of copies to a specific person. The same shall 
+ apply hereinafter. 
+ .
+ (Alteration to OCTA) 
+ .
+ 5. The licensee may alter the downloaded OCTA without restriction 
+ under and subject to any and all the conditions in the following 
+ items: 
+ (1) In the case when the licensee intends to make public or 
+ redistribute code which has been altered from OCTA, the licensee 
+ shall report it to the Committee prior to such publication or 
+ redistribution; 
+ (2) In the case when the licensee desires to make public code which 
+ the licensee has altered as OCTA series, the licensee shall have 
+ prior approval of the Committee; 
+ (3) In the case when the licensee intends to develop code for the 
+ High-Functioning Material Design Platform for the purpose of profit, 
+ by using the whole or a part of OCTA, the licensee shall have prior 
+ approval of the Committee;
+ (4) In the case when the licensee intends to make public or 
+ redistribute any altered code, the licensee shall be required in 
+ the publication or redistribution to enable such altered code, 
+ including software in the part independently enhanced or function 
+ separately and independently added by the licensee, together with 
+ its source code, to be downloaded and used free of charge.  In such 
+ publication or redistribution, the licensee shall make it clear to 
+ any licensee of the altered code that only those who agree to the 
+ same terms of use for OCTA shall be entitled to download and use 
+ such code free of charge. 
+ .
+ (Copyright) 
+ .
+ 6. Except as otherwise provided in these Terms of Use, the copyright 
+ in or on OCTA shall be reserved by the Committee or the copyright 
+ holder of OCTA, regardless of whether it is an original one 
+ downloaded from this page or the copy or alteration thereof.
+ (This includes, but not limited to, the right listed in each of the 
+ following items:) 
+ (1) Right to grant a license of OCTA to a third party; 
+ (2) Right to lease or assign OCTA to a third party. 
+ .
+ 7. Copyright in the part added and/or altered to OCTA by the licensee 
+ shall be vested to the said licensee. 
+ .
+ 8. The licensee shall not delete, erase or falsify any copyright 
+ notice on OCTA made by the Committee whether it is on an original 
+ one or on any part added or altered thereto.
+ .
+ (Discharge) 
+ .
+ 9. In the use of OCTA, the licensee acknowledges that OCTA will be 
+ provided on an as-is basis with some errors, that the Committee 
+ does not guarantee that OCTA is defect-free or fits for the 
+ licensee's particular purpose or is merchantable, and that security 
+ holes have been fixed.
+ When the Committee obtains information on any failure in the program 
+ from the licensee or any other person, it will use effort to solve 
+ or fix such failure in accordance with the schedule deliberately 
+ determined by the Committee. 
+ .
+ 10. The preceding paragraph shall provide any and all responsibility 
+ of the Committee for OCTA, including any subsequent versions thereof, 
+ which was made available for the licensee to download from this page 
+ as well as any responsibility for this page, and except as explicitly 
+ provided in each of the preceding paragraphs, the Committee and any 
+ individual or entity as a member thereof shall not be liable for any 
+ damage, whether direct or indirect,  suffered by the licensee or any 
+ third person resulting from the use of OCTA by the licensee, even 
+ where the occurrence of such damage had been predicted. 
+ .
+ (Infringement of Right)
+ .
+ 11. When the Committee determines that OCTA has infringed any third 
+ person's right, it shall be entitled to seek the licensee to 
+ terminate the use of the relevant part of the OCTA. 
+ .
+ 12.  In this case, the Committee and any individual or entity as 
+ member thereof shall not be liable for any damage suffered from 
+ such unavailability of OCTA by the licensee as well as from such 
+ infringement of right. 
+ .
+ (Settlement of Dispute) 
+ .
+ 13. The licensee agrees that the Tokyo District Court shall have 
+ competent and exclusive jurisdiction for the first instance over 
+ any dispute arising in connection with the use of OCTA downloaded 
+ from this page and with these Terms of Use. Any agreement and 
+ promise between the licensee and the Committee under these Terms of 
+ Use shall be executed on and interpreted in accordance with the 
+ laws of Japan. 

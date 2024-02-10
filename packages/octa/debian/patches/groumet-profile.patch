@@ -1,0 +1,37 @@
+--- a/GOURMET/src/build5/Makefile.in
++++ b/GOURMET/src/build5/Makefile.in
+@@ -10,6 +10,7 @@
+ DYLD_LIBRARY_PATH=@DYLD_LIBRARY_PATH@
+ ARCH = @ARCH@
+ 
++MKDIR_P = @MKDIR_P@
+ INSTALL = @INSTALL@
+ 
+ BINDIR = $(GOURMET_HOME)/bin
+@@ -26,23 +27,14 @@
+ 	@echo "export GOURMET_JAVA_ROOT=${JAVA_HOME}"     >> $(TARGET)
+ 	@echo "export GOURMET_PYTHON=${GOURMET_PYTHON}"   >> $(TARGET)
+ 	@echo "export GOURMET_PYTHONHOME_BASE=${PYTHON_PREFIX}" >> $(TARGET)
+-	@if [ -n "$(CLASSPATH)" ]; then \
+-	  echo "export CLASSPATH=${CLASSPATH}"            >> $(TARGET); \
+-	fi
+-	@if [ $(ARCH) = 'macosx' ]; then \
+-	  if [ -n "$(DYLD_LIBRARY_PATH)" ]; then \
+-	    echo "export DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH}" >> $(TARGET); \
+-	  fi \
+-	else \
+-	  if [ -n "$(LD_LIBRARY_PATH)" ]; then \
+-	    echo "export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}" >> $(TARGET); \
+-	  fi \
+-	fi
++	@echo "export CLASSPATH=:${GOURMET_HOME}/lib/${ARCH}/jogl-v2-linux/jogl-all.jar:${GOURMET_HOME}/lib/${ARCH}/jogl-v2-linux/gluegen-rt.jar" >> $(TARGET)
++	@echo "export LD_LIBRARY_PATH=:${GOURMET_HOME}/lib/${ARCH}/jogl-v2-linux" >> $(TARGET)
+ 	@echo "#-- ENVIRONMENT VARIABLE FOR OCTA ENGINES --" >> $(TARGET)
+ 	@echo "export PF_ENGINE=${ENGINE_HOME}"           >> $(TARGET)
+ 	@echo "created $(TARGET)"
+ 
+ install:
++	$(MKDIR_P) '$(DESTDIR)$(BINDIR)'
+ 	$(INSTALL) $(TARGET) '$(DESTDIR)$(BINDIR)'
+ 
+ clean:

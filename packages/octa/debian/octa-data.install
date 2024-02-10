@@ -1,0 +1,15 @@
+usr/share/octa/gourmet/action3
+usr/share/octa/gourmet/dot.gourmet
+usr/share/octa/gourmet/platform_linux.ini
+usr/share/octa/gourmet/python3
+usr/share/octa/engines/action3
+usr/share/octa/engines/python3
+usr/share/octa/engines/udf
+GOURMET/tutorial/* usr/share/octa/tutorial/gourmet
+ENGINES/COGNAC923/sample/* usr/share/octa/tutorial/cognac
+ENGINES/COGNAC923/python/silk/sample/* usr/share/octa/tutorial/silk
+ENGINES/MUFFIN5/sample/* usr/share/octa/tutorial/muffin
+ENGINES/PASTA/PASTA/sample/* usr/share/octa/tutorial/pasta
+ENGINES/PASTA/FORK/sample/* usr/share/octa/tutorial/pasta/fork
+ENGINES/PASTA/tools/sample/* usr/share/octa/tutorial/pasta/tools
+ENGINES/SUSHI10.54/sample/* usr/share/octa/tutorial/sushi

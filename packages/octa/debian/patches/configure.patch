@@ -1,0 +1,146 @@
+--- a/GOURMET/src/configure
++++ b/GOURMET/src/configure
+@@ -16021,19 +16021,19 @@
+ 
+ CURRENTDIR=`pwd`
+ #GOURMET_HOME=${CURRENTDIR%/*}
+-GOURMET_HOME=`cd ${CURRENTDIR} && cd .. && pwd`
++#GOURMET_HOME=`cd ${CURRENTDIR} && cd .. && pwd`
+ 
+-if test "${prefix}" == "/usr"; then
+-  prefix=${GOURMET_HOME}
+-else
++#if test "${prefix}" == "/usr"; then
++#  prefix=${GOURMET_HOME}
++#else
+   GOURMET_HOME=${prefix}
+-fi
++#fi
+ 
+-if ! test -d "${GOURMET_HOME}"; then
+-  { { $as_echo "$as_me:$LINENO: error: Not a directory: ${GOURMET_HOME}" >&5
+-$as_echo "$as_me: error: Not a directory: ${GOURMET_HOME}" >&2;}
+-   { (exit 1); exit 1; }; }
+-fi
++#if ! test -d "${GOURMET_HOME}"; then
++#  { { $as_echo "$as_me:$LINENO: error: Not a directory: ${GOURMET_HOME}" >&5
++#$as_echo "$as_me: error: Not a directory: ${GOURMET_HOME}" >&2;}
++#   { (exit 1); exit 1; }; }
++#fi
+ if test "${GOURMET_HOME}" == ""; then
+   { { $as_echo "$as_me:$LINENO: error: Bad install location" >&5
+ $as_echo "$as_me: error: Bad install location" >&2;}
+@@ -16045,7 +16045,7 @@
+    { (exit 1); exit 1; }; }
+ fi
+ 
+-OCTA_HOME=`cd ${GOURMET_HOME} && cd .. && pwd`
++OCTA_HOME=`dirname ${GOURMET_HOME}`
+ 
+ ENGINE_HOME=""
+ withval="";
+@@ -16061,18 +16061,18 @@
+   no)
+     ;;
+   *)
+-    if test -d "$with_engine"; then
++    # if test -d "$with_engine"; then
+       ENGINE_HOME=$with_engine
+-    fi
++    # fi
+     ;;
+ esac
+ if test "$ENGINE_HOME" == ""; then
+   #ENGINE_HOME=${OCTA_HOME}/PF_ENGINE_${YEAR_VERSION}
+   ENGINE_HOME=${OCTA_HOME}/ENGINES
+ fi
+-if ! test -d ${ENGINE_HOME}; then
+-  ENGINE_HOME=""
+-fi
++# if ! test -d ${ENGINE_HOME}; then
++#   ENGINE_HOME=""
++# fi
+ 
+ 
+ 
+--- a/GOURMET/src/java/jar/Makefile.in
++++ b/GOURMET/src/java/jar/Makefile.in
+@@ -5,6 +5,7 @@
+ FIND        = @FIND@
+ RM          = @RM@
+ 
++MKDIR_P = @MKDIR_P@
+ INSTALL = @INSTALL@
+ INSTALL_DIR=@GOURMET_HOME@/bin
+ JAR_MOD1 = gourmet.jar
+@@ -43,6 +44,7 @@
+ 	$(RM) -f Makefile
+ 
+ install :
+-	$(INSTALL) $(TARGET) $(INSTALL_DIR)
++	$(MKDIR_P) '$(DESTDIR)$(INSTALL_DIR)'
++	$(INSTALL) $(TARGET) '$(DESTDIR)$(INSTALL_DIR)'
+ 
+ 
+--- a/GOURMET/src/config.h.in
++++ b/GOURMET/src/config.h.in
+@@ -177,6 +177,9 @@
+ /* Define to the one symbol short name of this package. */
+ #undef PACKAGE_TARNAME
+ 
++/* Define to the home page for this package. */
++#undef PACKAGE_URL
++
+ /* Define to the version of this package. */
+ #undef PACKAGE_VERSION
+ 
+--- /dev/null
++++ b/Makefile
+@@ -0,0 +1,47 @@
++# OCTA_HOME = /usr/share/octa
++# PF_FILES = $(OCTA_HOME)/gourmet
++# PF_ENGINE = $(OCTA_HOME)/engines
++# PF_ARCH = linux_64
++
++ENGINE_DIR = SUSHI10.54 COGNAC923/python/analysis/src COGNAC923/src kapsel3.32 MUFFIN5/src/muffin5 MUFFIN5/src/muffin5/muffin_udf MUFFIN5/src/turban PASTA/FORK/src PASTA/PASTA/src PASTA/tools/src
++ENGINES = cognac92 corr2gw fluid fork gt2et gt2gw kapsel micelle muffin5 muffin5udf pasta potage3 smooth spcf surface sushi turban
++
++default:
++	(cd GOURMET/src && make)
++	ln -sf $(CURDIR)/GOURMET/src/build1/libplatform.a $(CURDIR)/GOURMET/lib/$(PF_ARCH)
++	for i in $(ENGINE_DIR); do \
++	  make -C ENGINES/$$i PF_FILES=$(CURDIR)/GOURMET PF_ENGINE=$(PF_ENGINE) PF_ENGINEARCH=$(PF_ARCH) TARGET_ENV=$(PF_ARCH) GOURMET_PYTHON=python3; \
++	done
++
++install:
++	make -C GOURMET/src install DESTDIR=$(DESTDIR)
++	cp -f GOURMET/bin/*.sh GOURMET/bin/pfgetsystem $(DESTDIR)$(PF_FILES)/bin
++	mkdir -p $(DESTDIR)/usr/bin
++	(cd $(DESTDIR)/usr/bin && sh $(CURDIR)/SCRIPTS/octa_configuration.sh $(OCTA_HOME))
++	cp -rp GOURMET/platform_linux.ini GOURMET/dot.gourmet GOURMET/python3 GOURMET/action3 $(DESTDIR)$(PF_FILES)
++	mkdir -p $(DESTDIR)$(PF_ENGINE)/bin/$(PF_ARCH)
++	mkdir -p $(DESTDIR)$(PF_ENGINE)/lib/$(PF_ARCH)
++	mkdir -p $(DESTDIR)$(PF_ENGINE)/action3
++	mkdir -p $(DESTDIR)$(PF_ENGINE)/python3
++	mkdir -p $(DESTDIR)$(PF_ENGINE)/udf
++	cp -r ENGINES/action3/* $(DESTDIR)$(PF_ENGINE)/action3
++	cp -r ENGINES/python3/* $(DESTDIR)$(PF_ENGINE)/python3
++	cp -r ENGINES/udf/* $(DESTDIR)$(PF_ENGINE)/udf
++	for i in $(ENGINE_DIR); do \
++	  make -C ENGINES/$$i PF_FILES=$(CURDIR)/GOURMET PF_ENGINE=$(DESTDIR)$(PF_ENGINE) PF_ENGINEARCH=$(PF_ARCH) TARGET_ENV=$(PF_ARCH) install; \
++	done
++	for i in $(ENGINES); do \
++	  ln -s $(PF_ENGINE)/bin/$(PF_ARCH)/$$i $(DESTDIR)$(OCTA_HOME)/../../bin/$$i; \
++	done
++
++distclean:
++	-make -C GOURMET/src distclean
++	rm -f GOURMET/lib/$(PF_ARCH)/libplatform.a
++	-for i in $(ENGINE_DIR); do \
++	  make -C ENGINES/$$i PF_FILES=$(CURDIR)/GOURMET PF_ENGINE=$(PF_ENGINE) PF_ENGINEARCH=$(PF_ARCH) TARGET_ENV=$(PF_ARCH) clean; \
++	done
++	-for i in $(ENGINE_DIR); do \
++	  make -C ENGINES/$$i PF_FILES=$(CURDIR)/GOURMET PF_ENGINE=$(PF_ENGINE) PF_ENGINEARCH=$(PF_ARCH) TARGET_ENV=$(PF_ARCH) distclean; \
++	done
++	find ENGINES -name bin | xargs rm -rf
++	find ENGINES -name *.o | xargs rm -f

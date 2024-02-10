@@ -1,0 +1,3 @@
+usr/share/octa/gourmet/include
+usr/share/octa/gourmet/lib/*/*.a
+usr/share/octa/gourmet/lib/*/*.la

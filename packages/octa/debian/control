@@ -1,0 +1,55 @@
+Source: octa
+Section: science
+Priority: optional
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9), openjdk-11-jdk, libgl1-mesa-dev, libglu1-mesa-dev, libz-dev, libjpeg-dev, libpng-dev, python3-dev
+Standards-Version: 3.9.3
+Homepage: http://octa.jp
+
+Package: octa
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}, openjdk-11-jre-headless, openjdk-11-jre
+Description: OCTA is an integrated simulation system for soft materials.
+ OCTA consists of four simulation engines(COGNAC, PASTA, SUSHI, MUFFIN) and a
+ simulation platform (GOURMET). The simulation engines can carry out the
+ simulations of molecular dynamics, reptation dynamics, interfacial dynamics,
+ gel dynamics, two-fluid dynamics etc, and the simulation platform gives a
+ common graphical user interface to all engines, providing an environment for
+ various engines to work together.
+ This package contains gourmet and engine runtimes.
+
+Package: octa-dev
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}, octa
+Description: OCTA is an integrated simulation system for soft materials.
+ OCTA consists of four simulation engines(COGNAC, PASTA, SUSHI, MUFFIN) and a
+ simulation platform (GOURMET). The simulation engines can carry out the
+ simulations of molecular dynamics, reptation dynamics, interfacial dynamics,
+ gel dynamics, two-fluid dynamics etc, and the simulation platform gives a
+ common graphical user interface to all engines, providing an environment for
+ various engines to work together.
+ This package contains static libraries and header files.
+
+Package: octa-data
+Architecture: all
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: OCTA is an integrated simulation system for soft materials.
+ OCTA consists of four simulation engines(COGNAC, PASTA, SUSHI, MUFFIN) and a
+ simulation platform (GOURMET). The simulation engines can carry out the
+ simulations of molecular dynamics, reptation dynamics, interfacial dynamics,
+ gel dynamics, two-fluid dynamics etc, and the simulation platform gives a
+ common graphical user interface to all engines, providing an environment for
+ various engines to work together.
+ This package contains data files and samples.
+
+Package: octa-doc
+Architecture: all
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: OCTA is an integrated simulation system for soft materials.
+ OCTA consists of four simulation engines(COGNAC, PASTA, SUSHI, MUFFIN) and a
+ simulation platform (GOURMET). The simulation engines can carry out the
+ simulations of molecular dynamics, reptation dynamics, interfacial dynamics,
+ gel dynamics, two-fluid dynamics etc, and the simulation platform gives a
+ common graphical user interface to all engines, providing an environment for
+ various engines to work together.
+ This package contains documents.

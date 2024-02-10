@@ -1,0 +1,38 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+DH_VERBOSE = 1
+export DH_OPTIONS=-v
+
+# see FEATURE AREAS in dpkg-buildflags(1)
+#export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+# see ENVIRONMENT in dpkg-buildflags(1)
+# package maintainers to append CFLAGS
+#export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
+# package maintainers to append LDFLAGS
+#export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
+
+export OCTA_HOME = /usr/share/octa
+export PF_FILES = $(OCTA_HOME)/gourmet
+export PF_ENGINE = $(OCTA_HOME)/engines
+
+DEB_HOST_ARCH_CPU = $(shell dpkg-architecture -qDEB_HOST_ARCH_CPU)
+export PF_ARCH = linux
+export BUILD_FLAG =
+ifeq ($(DEB_HOST_ARCH_CPU), amd64)
+  export PF_ARCH = linux_64
+endif
+ifeq ($(DEB_HOST_ARCH_CPU), arm64)
+  export PF_ARCH = linux_64
+  export BUILD_FLAG = --build=arm
+endif
+
+%:
+	dh $@ 
+
+override_dh_update_autotools_config:
+	/bin/true
+
+override_dh_auto_configure:
+	(cd GOURMET/src && ./configure $(BUILD_FLAG) --prefix=$(PF_FILES) --with-engine=$(PF_ENGINE) --with-python=python3 --with-java-home --with-jogl-lib=$(CURDIR)/GOURMET/lib/$(PF_ARCH)/jogl-v2-linux --with-jogl-jar=$(CURDIR)/GOURMET/lib/$(PF_ARCH)/jogl-v2-linux)
