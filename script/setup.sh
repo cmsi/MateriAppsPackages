@@ -46,6 +46,9 @@ fi
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get update
 sudo -E apt-get -y upgrade
+if [ -f ${PACKAGE_DIR}/setup-extra.sh ]; then
+  sh ${PACKAGE_DIR}/setup-extra.sh
+fi
 dpkg-checkbuilddeps 2>&1 | sed 's/dpkg-checkbuilddeps.*dependencies: //' | sudo -E xargs apt-get -y install
 if [ -f ${PACKAGE_DIR}/setup-extra.sh ]; then
   sh ${PACKAGE_DIR}/setup-extra.sh
