@@ -1,0 +1,8 @@
+#!/usr/bin/make -f
+
+export PYBUILD_NAME = dcore
+export PYBUILD_DISABLE_python3.12 = 1
+
+%:
+	dh $@ --buildsystem=pybuild
+

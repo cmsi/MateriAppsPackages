@@ -1,0 +1,17 @@
+Source: dcore
+Section: scientific
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 8.0.0), dh-python, python3-all-dev, python3-setuptools, python3-matplotlib, triqs, triqs-dfttools
+Standards-Version: 3.9.3
+Homepage: https://issp-center-dev.github.io/DCore
+
+Package: dcore
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, triqs, triqs-dfttools
+Description: DCore -- Integrated DMFT software for correlated electrons
+ DCore is aimed at model calculations and ab-initio calculations by the dynamical mean-field
+ theory (DMFT). This package consists of programs with text-based and hdf5-based interface.
+ These programs enable users to perform DMFT calculations and analyze results without writing
+ computer code. The current version is built on TRIQS Python libraries. We will add supports
+ for impurity solvers based on ALPSCore libraries in future.
