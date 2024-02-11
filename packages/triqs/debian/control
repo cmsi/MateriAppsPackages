@@ -2,7 +2,7 @@ Source: triqs
 Section: scientific
 Priority: extra
 Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
-Build-Depends: debhelper (>= 8.0.0), gfortran, cmake, mpi-default-dev, libhdf5-dev, h5utils, liblapack-dev, libboost-mpi-dev, libfftw3-dev, libgmp-dev, libboost-serialization-dev, libboost-system-dev, python3-dev, python3-mako, python3-h5py, python3-scipy, python3-mpi4py
+Build-Depends: debhelper (>= 8.0.0), gfortran, cmake, mpi-default-dev, libhdf5-dev, h5utils, liblapack-dev, libboost-mpi-dev, libfftw3-dev, libgmp-dev, libboost-serialization-dev, libboost-system-dev, python3-dev, python3-mako, python3-h5py, python3-scipy, python3-mpi4py, libclang-dev
 Standards-Version: 3.9.3
 Homepage: https://triqs.github.io
 

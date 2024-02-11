@@ -1,3 +1,9 @@
+triqs (3.2.0-2) unstable; urgency=low
+
+  * Add libclang
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sun, 11 Feb 2024 21:13:25 +0900
+
 triqs (3.2.0-1) unstable; urgency=low
 
   * New upstream version 3.2.0
