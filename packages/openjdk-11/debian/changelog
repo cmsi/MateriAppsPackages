@@ -1,3 +1,9 @@
+openjdk-11 (11.0.22+7-3) unstable; urgency=medium
+
+  * Package for bookworm and trixie
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sun, 11 Feb 2024 19:55:14 +0900
+
 openjdk-11 (11.0.22+7-2) unstable; urgency=medium
 
   [ Matthias Klose ]

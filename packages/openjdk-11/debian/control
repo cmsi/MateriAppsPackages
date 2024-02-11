@@ -2,7 +2,7 @@ Source: openjdk-11
 Section: java
 Priority: optional
 Maintainer: OpenJDK Team <openjdk-11@packages.debian.org>
-Uploaders: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Uploaders: Matthias Klose <doko@ubuntu.com>
 Build-Depends: debhelper,
   m4, lsb-release, zip, unzip,
   sharutils, gawk, cpio, pkg-config, procps, wdiff, fastjar,
