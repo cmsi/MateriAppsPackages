@@ -1,3 +1,9 @@
+materiapps-keyring (20240520-1) unstable; urgency=low
+
+  * Extended expiration date of gpg key to 2034-05-18
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 20 May 2024 14:16:52 +0900
+
 materiapps-keyring (20190512-1) unstable; urgency=low
 
   * Extended expiration date of gpg key to 2024-05-10
