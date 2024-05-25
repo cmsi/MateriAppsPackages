@@ -1,3 +1,9 @@
+lammps (20240207+dfsg-1.1build4) noble; urgency=medium
+
+  * No-change rebuild for bullseye, bookworm, jammy
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 25 May 2024 09:44:45 +0900
+
 lammps (20240207+dfsg-1.1build3) noble; urgency=medium
 
   * No-change rebuild for CVE-2024-3094
