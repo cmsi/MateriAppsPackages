@@ -1,4 +1,3 @@
 usr/include
-usr/lib/*/liblammps.so
-usr/lib/*/pkgconfig
-usr/lib/*/cmake
+usr/lib/*/pkgconfig/liblammps.pc
+usr/lib/*/cmake/LAMMPS

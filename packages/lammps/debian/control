@@ -1,132 +1,23 @@
 Source: lammps
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-XSBC-Original-Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
-Uploaders: Anton Gladky <gladk@debian.org>
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
 Section: science
-Priority: optional
-Build-Depends: dpkg-dev (>= 1.22.5), cmake,
-               debhelper-compat (= 13),
-               dh-python,
-               pybuild-plugin-pyproject,
-               gfortran | fortran-compiler,
-               libavcodec-dev,
+Priority: extra
+Build-Depends: debhelper (>= 9),
                libeigen3-dev,
                libfftw3-dev,
-               libhdf5-mpi-dev,
                libjpeg-dev,
-               libkim-api-dev,
-               libnetcdf-dev,
-               libpnetcdf-dev [amd64 arm64 mips64el ppc64el riscv64 s390x ia64 ppc64 sparc64],
-               libsymspg-dev,
-               libvtk9-dev,
-               libvtk9-qt-dev,
                mpi-default-bin,
                mpi-default-dev,
-               ocl-icd-opencl-dev | opencl-dev,
-               python3-all-dev,
-               python3-sphinx,
-               voro++-dev
-Build-Depends-Indep: libjs-sphinxdoc,
-                     libjs-jquery,
-                     libjs-mathjax,
-                     libjs-underscore,
-                     texlive-latex-recommended,
-                     texlive-fonts-recommended,
-                     texlive-latex-extra,
-                     tex-gyre,
-                     doxygen,
-                     sphinx-rtd-theme-common,
-                     latexmk,
-                     htmldoc,
-                     python3-sphinx-tabs,
-                     python3-sphinxcontrib.jquery,
-                     python3-sphinxcontrib.spelling,
-                     python3-breathe,
-                     python3-venv,
-                     git
-Standards-Version: 4.6.2
-Vcs-Browser: https://salsa.debian.org/science-team/lammps
-Vcs-Git: https://salsa.debian.org/science-team/lammps.git
-Homepage: https://lammps.sandia.gov/
+               python3-distutils
+Standards-Version: 3.9.8
+Homepage: http://lammps.sandia.gov/
 
 Package: lammps
 Architecture: any
-Depends: lammps-data,
-         ${misc:Depends},
-         ${shlibs:Depends},
-         mpi-default-bin
-Recommends: lammps-doc
-Suggests: python3,
-          openkim-models
-Description: Molecular Dynamics Simulator
- LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale
- Atomic/Molecular Massively Parallel Simulator.
- .
- LAMMPS has potentials for soft materials (biomolecules, polymers) and
- solid-state materials (metals, semiconductors) and coarse-grained or
- mesoscopic systems. It can be used to model atoms or, more generically, as a
- parallel particle simulator at the atomic, meso, or continuum scale.
- .
- LAMMPS runs on single processors or in parallel using message-passing
- techniques and a spatial-decomposition of the simulation domain. The code is
- designed to be easy to modify or extend with new functionality.
-
-Package: liblammps-dev
-Architecture: any
-Depends: liblammps0t64 (= ${binary:Version}),
-         ${misc:Depends},
-         ${shlibs:Depends},
-         mpi-default-dev
-Recommends: lammps-doc
-Description: Molecular Dynamics Simulator (dev files)
- LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale
- Atomic/Molecular Massively Parallel Simulator.
- .
- LAMMPS has potentials for soft materials (biomolecules, polymers) and
- solid-state materials (metals, semiconductors) and coarse-grained or
- mesoscopic systems. It can be used to model atoms or, more generically, as a
- parallel particle simulator at the atomic, meso, or continuum scale.
- .
- LAMMPS runs on single processors or in parallel using message-passing
- techniques and a spatial-decomposition of the simulation domain. The code is
- designed to be easy to modify or extend with new functionality.
- .
- This package contains development files and headers to build applications
- using the LAMMPS shared library.
-
-Package: liblammps0t64
-Provides: ${t64:Provides}
-Replaces: liblammps0
-Breaks: liblammps0 (<< ${source:Version})
-Architecture: any
-Multi-Arch: same
 Depends: ${misc:Depends},
-         ${shlibs:Depends}
-Description: Molecular Dynamics Simulator (shared library)
- LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale
- Atomic/Molecular Massively Parallel Simulator.
- .
- LAMMPS has potentials for soft materials (biomolecules, polymers) and
- solid-state materials (metals, semiconductors) and coarse-grained or
- mesoscopic systems. It can be used to model atoms or, more generically, as a
- parallel particle simulator at the atomic, meso, or continuum scale.
- .
- LAMMPS runs on single processors or in parallel using message-passing
- techniques and a spatial-decomposition of the simulation domain. The code is
- designed to be easy to modify or extend with new functionality.
- .
- This package provides the LAMMPS shared library.
-
-Package: python3-lammps
-Architecture: any
-Section: python
-Depends: liblammps-dev,
-         ${misc:Depends},
-         ${python3:Depends},
          ${shlibs:Depends},
-         mpi-default-bin
-Recommends: python3-mpi4py,
-            lammps-doc
+         mpi-default-bin,
+         liblammps
 Description: Molecular Dynamics Simulator
  LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale
  Atomic/Molecular Massively Parallel Simulator.
@@ -139,20 +30,12 @@ Description: Molecular Dynamics Simulator
  LAMMPS runs on single processors or in parallel using message-passing
  techniques and a spatial-decomposition of the simulation domain. The code is
  designed to be easy to modify or extend with new functionality.
- .
- This package provides the Python module for LAMMPS.
 
 Package: lammps-doc
 Architecture: all
-Multi-Arch: foreign
 Section: doc
-Depends: ${misc:Depends},
-         ${sphinxdoc:Depends},
-         libjs-mathjax,
-         libjs-jquery,
-         libjs-underscore
-Recommends: lammps-examples
-Description: Molecular Dynamics Simulator (documentation)
+Depends: ${misc:Depends}
+Description: Molecular Dynamics Simulator. Examples
  LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale
  Atomic/Molecular Massively Parallel Simulator.
  .
@@ -165,11 +48,10 @@ Description: Molecular Dynamics Simulator (documentation)
  techniques and a spatial-decomposition of the simulation domain. The code is
  designed to be easy to modify or extend with new functionality.
  .
- The package contains documentation.
+ The package contains examples.
 
 Package: lammps-data
 Architecture: all
-Multi-Arch: foreign
 Section: doc
 Depends: ${misc:Depends}
 Description: Molecular Dynamics Simulator. Data (potentials)
@@ -185,15 +67,13 @@ Description: Molecular Dynamics Simulator. Data (potentials)
  techniques and a spatial-decomposition of the simulation domain. The code is
  designed to be easy to modify or extend with new functionality.
  .
- The package contains data (potentials)
+ The package contains data (potentials).
 
-Package: lammps-examples
-Architecture: all
-Multi-Arch: foreign
-Section: doc
-Depends: ${misc:Depends}
-Recommends: lammps
-Description: Molecular Dynamics Simulator (examples)
+Package: liblammps
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Description: Molecular Dynamics Simulator. Librariy
  LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale
  Atomic/Molecular Massively Parallel Simulator.
  .
@@ -206,4 +86,24 @@ Description: Molecular Dynamics Simulator (examples)
  techniques and a spatial-decomposition of the simulation domain. The code is
  designed to be easy to modify or extend with new functionality.
  .
- The package contains example scripts and benchmarks.
+ The package contains shared libraries.
+
+Package: liblammps-dev
+Architecture: any
+Depends: ${misc:Depends}, 
+         ${shlibs:Depends},
+         liblammps
+Description: Molecular Dynamics Simulator. Header files
+ LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale
+ Atomic/Molecular Massively Parallel Simulator.
+ .
+ LAMMPS has potentials for soft materials (biomolecules, polymers) and
+ solid-state materials (metals, semiconductors) and coarse-grained or
+ mesoscopic systems. It can be used to model atoms or, more generically, as a
+ parallel particle simulator at the atomic, meso, or continuum scale.
+ .
+ LAMMPS runs on single processors or in parallel using message-passing
+ techniques and a spatial-decomposition of the simulation domain. The code is
+ designed to be easy to modify or extend with new functionality.
+ .
+ The package contains header files.
