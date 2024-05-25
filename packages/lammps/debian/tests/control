@@ -1,0 +1,6 @@
+Tests: crack dipole ellipse flow friction hugo 
+Depends: lammps
+Restrictions: allow-stderr
+
+Test-Command: cd python/examples; python3 demo.py
+Depends: python3-lammps, python3

@@ -1,0 +1,67 @@
+Description: Do not download from github
+Author: Anton Gladky <gladk@debian.org>
+Last-Update: 2020-05-16
+
+Index: lammps/doc/Makefile
+===================================================================
+--- lammps.orig/doc/Makefile	2024-02-18 13:21:12.900590055 +0100
++++ lammps/doc/Makefile	2024-02-18 13:21:12.896590020 +0100
+@@ -69,7 +69,7 @@
+ # ------------------------------------------
+ 
+ clean-all: clean
+-	rm -rf $(BUILDDIR)/docenv $(MATHJAX) $(BUILDDIR)/LAMMPS.mobi $(BUILDDIR)/LAMMPS.epub $(BUILDDIR)/Manual.pdf
++	rm -rf $(BUILDDIR)/docenv $(BUILDDIR)/LAMMPS.mobi $(BUILDDIR)/LAMMPS.epub $(BUILDDIR)/Manual.pdf
+ 
+ clean: clean-spelling
+ 	rm -rf $(BUILDDIR)/html $(BUILDDIR)/epub $(BUILDDIR)/latex $(BUILDDIR)/doctrees $(BUILDDIR)/doxygen/xml $(BUILDDIR)/doxygen-warn.log $(BUILDDIR)/doxygen/Doxyfile $(SPHINXCONFIG)/conf.py $(BUILDDIR)/fasthtml
+@@ -83,7 +83,7 @@
+ 	    -e 's,@LAMMPS_PYTHON_DIR@,$(BUILDDIR)/../python,g' \
+ 	    -e 's,@LAMMPS_DOC_DIR@,$(BUILDDIR),g' $< > $@
+ 
+-html: xmlgen $(VENV) $(SPHINXCONFIG)/conf.py $(ANCHORCHECK) $(MATHJAX)
++html: xmlgen $(VENV) $(SPHINXCONFIG)/conf.py $(ANCHORCHECK)
+ 	@if [ "$(HAS_BASH)" == "NO" ] ; then echo "bash was not found at $(OSHELL)! Please use: $(MAKE) SHELL=/path/to/bash" 1>&2; exit 1; fi
+ 	@$(MAKE) $(MFLAGS) -C graphviz all
+ 	@(\
+@@ -258,9 +258,6 @@
+ 	@( \
+ 		$(PYTHON) -m venv $(VENV); \
+ 		. $(VENV)/bin/activate; \
+-		pip $(PIP_OPTIONS) install --upgrade pip; \
+-		pip $(PIP_OPTIONS) install --upgrade wheel; \
+-		pip $(PIP_OPTIONS) install -r $(BUILDDIR)/utils/requirements.txt; \
+ 		deactivate;\
+ 	)
+ 
+Index: lammps/doc/utils/sphinx-config/conf.py.in
+===================================================================
+--- lammps.orig/doc/utils/sphinx-config/conf.py.in	2024-02-18 13:21:12.900590055 +0100
++++ lammps/doc/utils/sphinx-config/conf.py.in	2024-02-18 13:21:12.900590055 +0100
+@@ -52,12 +52,12 @@
+     'sphinx.ext.autodoc',
+     'lammps_theme',
+     'sphinxcontrib.jquery',
+-    'sphinxfortran.fortran_domain',
+     'sphinx_tabs.tabs',
+     'table_from_list',
+     'tab_or_note',
+     'breathe',
+ ]
++# not available:    'sphinxfortran.fortran_domain'
+ 
+ images_config = {
+   'default_image_width' : '25%',
+@@ -269,9 +269,9 @@
+ else:
+   html_math_renderer = 'mathjax'
+ 
+-# use relative path for mathjax, so it is looked for in the
+-# html tree and the manual becomes readable when offline
+-mathjax_path = 'mathjax/es5/tex-mml-chtml.js'
++# use absolute local path for mathjax, so the manual becomes readable when offline
++# note config=MML_CHTML (per original upstream) does not render correctly in firefox
++mathjax_path = 'file:///usr/share/javascript/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+ 
+ # hack to enable use of \AA in :math:
+ rst_prolog = r"""

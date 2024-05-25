@@ -1,0 +1,60 @@
+Description: _set_potentials_path
+Index: lammps/src/ML-IAP/mliap_model_python.cpp
+===================================================================
+--- lammps.orig/src/ML-IAP/mliap_model_python.cpp	2024-02-18 13:21:07.780544455 +0100
++++ lammps/src/ML-IAP/mliap_model_python.cpp	2024-02-18 13:21:07.776544420 +0100
+@@ -69,6 +69,8 @@
+   if (potentials_path != nullptr) {
+     PyList_Append(py_path, PY_STRING_FROM_STRING(potentials_path));
+   }
++  const char *debian_potentials_path = "/usr/share/lammps/potentials";
++  PyList_Append(py_path, PY_STRING_FROM_STRING(debian_potentials_path));
+   PyGILState_Release(gstate);
+   if (coefffilename) read_coeffs(coefffilename);
+ 
+Index: lammps/src/PYTHON/pair_python.cpp
+===================================================================
+--- lammps.orig/src/PYTHON/pair_python.cpp	2024-02-18 13:21:07.780544455 +0100
++++ lammps/src/PYTHON/pair_python.cpp	2024-02-18 13:21:07.776544420 +0100
+@@ -63,6 +63,8 @@
+   if (potentials_path != nullptr) {
+     PyList_Append(py_path, PY_STRING_FROM_STRING(potentials_path));
+   }
++  const char *debian_potentials_path = "/usr/share/lammps/potentials";
++  PyList_Append(py_path, PY_STRING_FROM_STRING(debian_potentials_path));
+ }
+ 
+ /* ---------------------------------------------------------------------- */
+Index: lammps/src/utils.cpp
+===================================================================
+--- lammps.orig/src/utils.cpp	2024-02-18 13:21:07.780544455 +0100
++++ lammps/src/utils.cpp	2024-02-18 13:21:07.776544420 +0100
+@@ -1481,6 +1481,10 @@
+       auto filepath = platform::path_join(dir, pot);
+       if (platform::file_is_readable(filepath)) return filepath;
+     }
++    const auto debian_dir = "/usr/share/lammps/potentials";
++    auto pot = platform::path_basename(path);
++    auto filepath = platform::path_join(debian_dir, pot);
++    if (platform::file_is_readable(filepath)) return filepath;
+   }
+   return "";
+ }
+Index: lammps/unittest/utils/test_utils.cpp
+===================================================================
+--- lammps.orig/unittest/utils/test_utils.cpp	2024-02-18 13:21:07.780544455 +0100
++++ lammps/unittest/utils/test_utils.cpp	2024-02-18 13:21:07.776544420 +0100
+@@ -1010,6 +1010,13 @@
+         EXPECT_THAT(utils::get_potential_units(path, "EAM"), Eq("metal"));
+     }
+ 
++    const char *debian_folder = "/usr/share/lammps/potentials";
++    if (debian_folder != nullptr) {
++        std::string path = platform::path_join(debian_folder, "Cu_u3.eam");
++        EXPECT_THAT(utils::get_potential_file_path("Cu_u3.eam"), Eq(path));
++        EXPECT_THAT(utils::get_potential_units(path, "EAM"), Eq("metal"));
++    }
++
+     ASSERT_THAT(utils::get_potential_date("ctest1.txt", "Test"), Eq("2020-02-20"));
+     ASSERT_THAT(utils::get_potential_units("ctest1.txt", "Test"), Eq("real"));
+     ASSERT_THAT(utils::get_potential_date("ctest2.txt", "Test"), Eq(""));

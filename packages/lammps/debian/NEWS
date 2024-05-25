@@ -1,0 +1,7 @@
+lammps (0~20180822.gitb47e49223+dfsg1-1) unstable; urgency=medium
+
+  The main LAMMPS binary was renamed from the "/usr/bin/lammps" to its
+  original name "/usr/bin/lmp".
+
+ -- Anton Gladky <gladk@debian.org>  Wed, 05 Sep 2018 23:13:17 +0200
+

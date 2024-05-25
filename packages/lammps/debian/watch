@@ -1,0 +1,3 @@
+version=4
+opts="dversionmangle=s/\+dfsg\d*$//,repacksuffix=+dfsg" \
+ https://download.lammps.org/tars/releases/@PACKAGE@@ANY_VERSION@@ARCHIVE_EXT@

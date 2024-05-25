@@ -1,0 +1,146 @@
+#!/usr/bin/make -f
+BUILDDIR = $(CURDIR)/debian/build
+
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+PY3VER_DEFAULT := $(shell py3versions -dv)
+
+export OMPI_MCA_plm_rsh_agent=/bin/false                #workaround to start MPI-applications in chroot
+
+disable_auto_test_archs_mpi = hurd-i386 mips mipsel mips64el s390 s390x i386 armhf armel
+disable_auto_test_archs_simpl = mips64el
+
+%:
+	dh $@ --with python3,sphinxdoc --sourcedirectory=cmake --builddirectory=$(BUILDDIR)
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		-DBUILD_SHARED_LIBS=ON \
+		-DCMAKE_SKIP_INSTALL_RPATH=TRUE \
+		-DPKG_ASPHERE=ON \
+		-DPKG_ATC=ON \
+		-DPKG_AWPMD=ON \
+		-DPKG_BOCS=ON \
+		-DPKG_BODY=ON \
+		-DPKG_CG-DNA=ON \
+		-DPKG_CG-SPICA=ON \
+		-DPKG_CLASS2=ON \
+		-DPKG_COLLOID=ON \
+		-DPKG_COMPRESS=ON \
+		-DPKG_CORESHELL=ON \
+		-DPKG_EXTRA-PAIR=ON \
+		-DPKG_DIELECTRIC=ON \
+		-DPKG_DIFFRACTION=ON \
+		-DPKG_DIPOLE=ON \
+		-DPKG_DPD-BASIC=ON \
+		-DPKG_DRUDE=ON \
+		-DPKG_EFF=ON \
+		-DPKG_ELECTRODE=ON \
+		-DUSE_INTERNAL_LINALG=no \
+		-DPKG_FEP=ON \
+		-DPKG_GPU=OFF \
+		-DPKG_GRANULAR=ON \
+		-DPKG_H5MD=ON \
+		-DPKG_KIM=ON \
+		-DPKG_KSPACE=ON \
+		-DPKG_LATBOLTZ=ON \
+		-DPKG_MANIFOLD=ON \
+		-DPKG_MANYBODY=ON \
+		-DPKG_MC=ON \
+		-DPKG_MEAM=ON \
+		-DPKG_MGPT=ON \
+		-DPKG_MISC=ON \
+		-DPKG_MOFFF=ON \
+		-DPKG_MOLFILE=ON \
+		-DPKG_MPIIO=ON \
+		-DPKG_MOLECULE=ON \
+		-DPKG_NETCDF=ON \
+		-DPKG_OPENMP==ON \
+		-DPKG_OPT=ON \
+		-DPKG_ORIENT=ON \
+		-DPKG_PERI=ON \
+		-DPKG_PHONON=ON \
+		-DPKG_POEMS=ON \
+		-DPKG_PYTHON=ON \
+		-DPKG_QEQ=ON \
+		-DPKG_QTB=ON \
+		-DPKG_REAXFF=OFF \
+		-DPKG_REPLICA=ON \
+		-DPKG_RIGID=ON \
+		-DPKG_SHOCK=ON \
+		-DPKG_SMTBQ=ON \
+		-DPKG_SNAP=ON \
+		-DPKG_SPH=ON \
+		-DPKG_SRD=ON \
+		-DPKG_TALLY=ON \
+		-DPKG_UEF=ON \
+		-DPKG_VTK=ON \
+		-DPKG_VORONOI=ON
+
+ifeq (,$(filter nodoc,$(DEB_BUILD_OPTIONS)))
+execute_after_dh_auto_build-indep: export http_proxy=127.0.0.1:9
+execute_after_dh_auto_build-indep: export https_proxy=127.0.0.1:9
+execute_after_dh_auto_build-indep:
+	if [ ! -d doc/html.orig ]; then mv doc/html doc/html.orig; fi
+	$(MAKE) -C doc html
+endif
+
+execute_after_dh_auto_clean:
+	rm -rf $(BUILDDIR)
+	rm -rf .pybuild
+	rm -rf python/build
+	rm -rf python/lammps.egg-info
+	rm -f python/examples/log.lammps
+	if [ -d doc/html.orig ]; then \
+	  rm -rf doc/html; \
+	  mv doc/html.orig doc/html; \
+	fi
+	rm -rf doc/docenv doc/doctrees doc/utils/sphinx-config/conf.py
+	rm -rf doc/doxygen/xml doc/doxygen-warn.log doc/doxygen/Doxyfile
+
+override_dh_auto_install-indep:
+
+execute_after_dh_auto_install-arch:
+	LD_LIBRARY_PATH=$(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH) \
+	 CMAKE_PREFIX_PATH=$(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/cmake \
+	  pybuild --dir=$(CURDIR)/python --system=pyproject --name=lammps
+
+override_dh_installman-arch:
+	sed -i 's|TH LAMMPS|TH LAMMPS \"1\"|g' $(CURDIR)/debian/tmp/usr/share/man/man1/lmp.1
+	dh_installman -a
+
+override_dh_installexamples:
+	dh_installexamples -X.gitignore
+
+execute_after_dh_fixperms-indep:
+	find $(CURDIR)/debian/lammps-examples/usr/share/lammps/examples/ -type f -a -not -name *.sh -print -exec chmod 644 {} \;
+
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+override_dh_auto_test-arch:
+ifeq (,$(filter $(DEB_HOST_ARCH),$(disable_auto_test_archs_simpl)))
+	mkdir test; cp examples/crack/* test/
+	cd test; $(BUILDDIR)/lmp < in.crack
+	rm -rf test
+endif
+ifeq (,$(filter $(DEB_HOST_ARCH),$(disable_auto_test_archs_mpi)))
+	mkdir test; cp examples/crack/* test/
+	cd test; mpirun -np 2 --allow-run-as-root --oversubscribe $(BUILDDIR)/lmp < in.crack
+	rm -rf test
+endif
+
+execute_before_dh_python3-arch:
+	set -e; \
+	cd python/examples; \
+	LD_LIBRARY_PATH=$(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH) \
+	  PYTHONPATH=$(CURDIR)/debian/python3-lammps/usr/lib/python$(PY3VER_DEFAULT)/dist-packages:$${PYTHONPATH} \
+	  python3 demo.py
+endif
+
+# dwz reports: .../liblammps.so.0: elf_update failed
+override_dh_dwz:
+	dh_dwz -Xliblammps.so.0
+
+override_dh_sphinxdoc:
+	echo "sphinx and dh_sphinx are broken for lammps docs. See Bug#1059621"
+
+override_dh_compress:
+	dh_compress -X.pdf
