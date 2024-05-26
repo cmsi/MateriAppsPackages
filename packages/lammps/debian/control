@@ -30,7 +30,7 @@ Description: Molecular Dynamics Simulator
  techniques and a spatial-decomposition of the simulation domain. The code is
  designed to be easy to modify or extend with new functionality.
 
-Package: lammps-doc
+Package: lammps-examples
 Architecture: all
 Section: doc
 Depends: ${misc:Depends}
