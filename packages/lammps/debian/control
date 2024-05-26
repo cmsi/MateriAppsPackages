@@ -13,10 +13,10 @@ Homepage: http://lammps.sandia.gov/
 
 Package: lammps
 Architecture: any
-Depends: ${misc:Depends},
+Depends: lammps-data,
+         ${misc:Depends},
          ${shlibs:Depends},
-         mpi-default-bin,
-         liblammps
+         mpi-default-bin
 Description: Molecular Dynamics Simulator
  LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale
  Atomic/Molecular Massively Parallel Simulator.
@@ -68,7 +68,10 @@ Description: Molecular Dynamics Simulator. Data (potentials)
  .
  The package contains data (potentials).
 
-Package: liblammps
+Package: liblammps0t64
+Provides: ${t64:Provides}
+Replaces: liblammps0
+Breaks: liblammps0 (<< ${source:Version})
 Architecture: any
 Depends: ${misc:Depends},
          ${shlibs:Depends}
@@ -89,9 +92,10 @@ Description: Molecular Dynamics Simulator. Librariy
 
 Package: liblammps-dev
 Architecture: any
-Depends: ${misc:Depends}, 
+Depends: liblammps0t64 (= ${binary:Version}),
+         ${misc:Depends}, 
          ${shlibs:Depends},
-         liblammps
+         mpi-default-dev
 Description: Molecular Dynamics Simulator. Header files
  LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale
  Atomic/Molecular Massively Parallel Simulator.
