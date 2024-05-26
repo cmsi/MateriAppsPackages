@@ -8,7 +8,7 @@ include /usr/share/mpi-default-dev/debian_defaults
 
 export OMPI_MCA_plm_rsh_agent=/bin/false
 
-CMAKE_FLAGS = -DCMAKE_INSTALL_PREFIX=/usr -C../cmake/presets/all_on.cmake -C../cmake/presets/nolib.cmake -DBUILD_SHARED_LIBS=yes -DPKG_USER-INTEL=no
+CMAKE_FLAGS = -DCMAKE_INSTALL_PREFIX=/usr -C../cmake/presets/all_on.cmake -C../cmake/presets/nolib.cmake -DBUILD_SHARED_LIBS=yes -DPKG_INTEL=no
 
 BUILD_DIR = obj-$(DEB_BUILD_GNU_TYPE)
 

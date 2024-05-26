@@ -1,6 +1,6 @@
-lammps (20230802-1) unstable; urgency=medium
+lammps (20240303-1) unstable; urgency=medium
 
-  * New upstream version 20230802
+  * New upstream version 20240303 (Update 3 for Stable release 2 August 2023)
 
  -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 25 May 2024 23:03:23 +0900
 

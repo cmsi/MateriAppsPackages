@@ -7,7 +7,7 @@ VERSION_BASE=$(echo ${VERSION} | cut -d '-' -f 1)
 echo ${VERSION}
 echo ${VERSION_BASE}
 
-if [ ${VERSION_BASE} = "20230802" ]; then
+if [ ${VERSION_BASE} = "20240303" ]; then
   VERSION_DOWNLOAD="2Aug2023-update3"
   VERSION_DOWNLOAD_DIR="stable_2Aug2023_update3"
 fi
@@ -23,5 +23,5 @@ rm -f lammps-src-${VERSION_DOWNLOAD}.tar.gz
 wget https://github.com/lammps/lammps/releases/download/${VERSION_DOWNLOAD_DIR}/lammps-src-${VERSION_DOWNLOAD}.tar.gz
 mkdir lammps-${VERSION_BASE}
 tar -xvf lammps-src-${VERSION_DOWNLOAD}.tar.gz -C lammps-${VERSION_BASE} --strip-components=1
-tar -cvzf lammps-${VERSION_BASE}.orig.tar.gz lammps-${VERSION_BASE}
+tar -cvzf lammps_${VERSION_BASE}.orig.tar.gz lammps-${VERSION_BASE}
 rm -rf lammps-src-${VERSION_DOWNLOAD}.tar.gz lammps-${VERSION_BASE}
