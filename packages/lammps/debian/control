@@ -7,8 +7,7 @@ Build-Depends: debhelper (>= 9),
                libfftw3-dev,
                libjpeg-dev,
                mpi-default-bin,
-               mpi-default-dev,
-               python3-distutils
+               mpi-default-dev
 Standards-Version: 3.9.8
 Homepage: http://lammps.sandia.gov/
 
