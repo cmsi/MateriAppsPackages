@@ -18,3 +18,8 @@ BUILD_DIR = obj-$(DEB_BUILD_GNU_TYPE)
 override_dh_auto_configure:
 	mkdir -p $(BUILD_DIR)
 	(cd $(BUILD_DIR) && cmake $(CMAKE_FLAGS) ../cmake)
+
+# workaround for Unknown DWARF DW_OP_255 bug in dwz
+override_dh_dwz:
+	:
+
