@@ -1,3 +1,9 @@
+hwave (1.0.0-2) unstable; urgency=low
+
+  * Fix python module dependence
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 12 Feb 2025 09:41:21 +0900
+
 hwave (1.0.0-1) unstable; urgency=low
 
   * Initial release for 1.0.0
