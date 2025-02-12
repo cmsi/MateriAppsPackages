@@ -1,0 +1,2 @@
+etc/ceenv.desktop	/etc/skel/Desktop
+etc/lxterminal.conf /etc/skel/.config/lxterminal

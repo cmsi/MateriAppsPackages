@@ -1,0 +1,6 @@
+[Desktop Entry]
+Encoding=UTF-8
+Categories=X-Database;
+Type=Application
+Exec=firefox http://pdbj.org/
+Name=PDBj: Protain Data Bank Japan

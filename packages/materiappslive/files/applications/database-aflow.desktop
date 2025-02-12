@@ -1,0 +1,6 @@
+[Desktop Entry]
+Encoding=UTF-8
+Categories=X-Database;
+Type=Application
+Exec=firefox http://aflowlib.org/
+Name=AFLOW Materials Database
