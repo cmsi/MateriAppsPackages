@@ -1,3 +1,9 @@
+hwave (1.0.1-1) unstable; urgency=low
+
+  * New upstream version for 1.0.1
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 12 Feb 2025 10:08:55 +0900
+
 hwave (1.0.0-2) unstable; urgency=low
 
   * Fix python module dependence
