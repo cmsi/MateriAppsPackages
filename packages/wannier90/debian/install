@@ -1,1 +1,2 @@
 examples usr/share/wannier90
+utility/kmesh.pl usr/share/wannier90/utility
