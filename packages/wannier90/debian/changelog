@@ -1,6 +1,6 @@
-wannier90 (3.1.0-2) unstable; urgency=low
+wannier90 (1:3.1.0-1) unstable; urgency=low
 
-  * Include utility/kmesh.pl
+  * Include utility/kmesh.pl and module files
 
  -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sun, 16 Feb 2025 14:29:14 +0900
 
