@@ -1,3 +1,9 @@
+cif2cell (2.1.0-1) unstable; urgency=low
+
+  * New upstream version 2.1.0
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sun, 16 Feb 2025 12:00:01 +0900
+
 cif2cell (2.0.0a5-1) unstable; urgency=low
 
   * New upstream version 2.0.0a5
