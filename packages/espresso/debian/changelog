@@ -1,3 +1,10 @@
+espresso (7.4-1) unstable; urgency=medium
+
+  * New upstream version 7.4
+  * Make wannier90 external
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sun, 16 Feb 2025 18:12:37 +0900
+
 espresso (7.3-1) unstable; urgency=medium
 
   * New upstream version 7.3

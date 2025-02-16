@@ -8,7 +8,8 @@ Build-Depends: debhelper,
                libfftw3-dev,
                liblapack-dev,
                libscalapack-mpi-dev,
-               mpi-default-dev
+               mpi-default-dev,
+               wannier90
 Standards-Version: 4.2.0
 Homepage: https://www.quantum-espresso.org/
 
