@@ -46,7 +46,7 @@
  #
  # for single-thread
  ##LIBLAPACK = -lmkl_lapack95_lp64 # for composerxe-2011
-@@ -127,43 +127,41 @@
+@@ -132,43 +132,41 @@
  	${FC} -c ${DEFINES} ${FOPTNON} mdlin.F
  
  # for AMD GPU
@@ -114,7 +114,7 @@
  #--------------------------------
  # for K computer
  #
-@@ -232,11 +230,11 @@
+@@ -237,11 +235,11 @@
  #SCGDGOBJ = dvdsnmp.o hploc.o nlprj.o rotwfn.o sorthcl.o \
  #	exchange.o exchange_kern_cuda.o ${EIGSYSTM_OBJ}
  # for AMD GPU
@@ -130,7 +130,7 @@
  #==========================================================
  ################## FOR ESM METHOD by M.Otani 2006/02/06####################
  ################## Modified by Y.Ando 2011/01/21 ##########################
-@@ -505,7 +503,7 @@
+@@ -512,7 +510,7 @@
  tetrapdos: tetrapdos.F90 subr_tetra.o
  	${FC} -o tetrapdos tetrapdos.F90 subr_tetra.o ${LDLIBS}
  
@@ -141,7 +141,7 @@
  	hmatr2bnd wannier pefcos atmcdist distpart \
 --- /dev/null
 +++ b/src/Makefile
-@@ -0,0 +1,541 @@
+@@ -0,0 +1,548 @@
 +# Copyright (c) 1983-2000 TAPP Consortium
 +# Copyright (c) 2000-2017 Yoshihide Yoshimoto
 +######################################################################
@@ -251,18 +251,23 @@
 +	${FC} -O3 -openmp -msse3 -fno-inline-functions -unroll=0 -traceback ${DEFINES} -c $<
 +
 +XMPI_OBJ = xmpi_univ.o
++xmpi_univ.o : timeprof.o
 +
 +EIGSYSTM_OBJ = eigsystm-lapack.o
++eigsystm-lapack.o : timeprof.o
 +#EIGSYSTM_OBJ = eigsystm-scalapack.o
++#eigsystm-scalapack.o : timeprof.o
 +
 +FFT3D_OBJ = fft3d_mkl.o
 +mkl_dfti.o: mkl_dfti.f90
 +mkl_dfti.f90:
 +	cp ${MKLROOT}/include/mkl_dfti.f90 .
 +FFTGRID_H_SRC = fftgrid-scl.h
++fft3d_fftw.o : timeprof.o
 +
 +#FFT3D_OBJ = fft3d_fftw.o
 +#FFTGRID_H_SRC = fftgrid-scl-fftw.h
++#fft3d_fftw.o : timeprof.o
 +
 +exchange_kern_cuda.o: exchange_kern_cuda.cu exchange_kern_cuda.h
 +	nvcc -ccbin=icc -Xcompiler -openmp -I /usr/local/cuda40/cuda/NVIDIA_GPU_Computing_SDK/C/common/inc -m64 -c -arch sm_20 exchange_kern_cuda.cu
@@ -615,8 +620,10 @@
 +arch_ha8k.o: arch_ha8k.f90 timeprof.o
 +arch_exp_r128.o: arch_exp_r128.f90 timeprof.o
 +
-+subr_input_nompi.o: subr_input.F90 util.o
++subr_distpart.o : bsplpot.o
++subr_input_nompi.o: subr_input.F90 util.o read_tappinput.o
 +	${FC} -DNO_MPI -o subr_input_nompi.o -c subr_input.F90
++subr_shrtor.o : meshgen.o
 +
 +################## FOR ESM METHOD by M.Otani 2006/02/06####################
 +################## Modified by Y.Ando 2011/01/21 ##########################
