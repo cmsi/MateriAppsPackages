@@ -1,0 +1,6 @@
+[Desktop Entry]
+Encoding=UTF-8
+Categories=X-Database;
+Type=Application
+Exec=firefox http://www.rcsb.org/pdb/
+Name=PDB: RCSB Protain Data Bank

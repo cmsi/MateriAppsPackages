@@ -8,9 +8,6 @@ include /usr/share/mpi-default-dev/debian_defaults
 
 DEB_RELEASE ?= $(shell lsb_release -c -s)
 export SCALAPACK_LIBS:=-lscalapack-$(ARCH_DEFAULT_MPI_IMPL)
-ifeq ($(DEB_RELEASE), stretch)
-    export SCALAPACK_LIBS:=-lscalapack-$(ARCH_DEFAULT_MPI_IMPL) -lblacs-$(ARCH_DEFAULT_MPI_IMPL) -lblacsF77init-$(ARCH_DEFAULT_MPI_IMPL)
-endif
 export SCALAPACK_LIB:=/usr/lib
 ifeq ($(DEB_BUILD_ARCH_CPU), i386)
     export FFTW_FORCE_ALIGN=-D_FFTW_FORCE_UNALIGNED

@@ -72,7 +72,7 @@
 -#F77FLAGS =
 -#F90FLAGS = -ffree-line-length-none
 -#FOPTNON = -O0
-+FFLAGS = -O3 -fopenmp -fno-inline-functions -fallow-argument-mismatch ${DEFINES} -I/usr/include
++FFLAGS = -O3 -fopenmp -fno-inline-functions ${DEFINES} -I/usr/include
 +F77FLAGS =
 +F90FLAGS = -ffree-line-length-none
 +FOPTNON = -O0
@@ -289,7 +289,7 @@
 +#    when thread computing is inconsistent, define this
 +#DEFINES = -O3 ${GDEFS} -DINCONSISTENT_THREAD_COMP
 +
-+FFLAGS = -O3 -fopenmp -fno-inline-functions -fallow-argument-mismatch ${DEFINES} -I/usr/include
++FFLAGS = -O3 -fopenmp -fno-inline-functions ${DEFINES} -I/usr/include
 +F77FLAGS =
 +F90FLAGS = -ffree-line-length-none
 +FOPTNON = -O0

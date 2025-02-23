@@ -1,539 +1,60 @@
-lammps (20240207+dfsg-1.1build4) noble; urgency=medium
+lammps (20240303.stable2Aug2023update3-1) unstable; urgency=medium
 
-  * No-change rebuild for bullseye, bookworm, jammy
+  * New upstream version 20240303 (Update 3 for Stable release 2 August 2023)
 
- -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 25 May 2024 09:44:45 +0900
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 25 May 2024 23:03:23 +0900
 
-lammps (20240207+dfsg-1.1build3) noble; urgency=medium
+lammps (20210514-1) unstable; urgency=medium
 
-  * No-change rebuild for CVE-2024-3094
+  * New upstream version 20210514
 
- -- Steve Langasek <steve.langasek@ubuntu.com>  Sun, 31 Mar 2024 18:39:17 +0000
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 17 May 2021 22:14:06 +0900
 
-lammps (20240207+dfsg-1.1build2) noble; urgency=medium
+lammps (20201009-1) unstable; urgency=medium
 
-  * No-change rebuild against libcurl4t64
+  * New upstream version 20201009
 
- -- Steve Langasek <steve.langasek@ubuntu.com>  Sat, 16 Mar 2024 06:29:06 +0000
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 20 Oct 2020 13:32:55 +0900
 
-lammps (20240207+dfsg-1.1build1) noble; urgency=medium
+lammps (20200824-1) unstable; urgency=medium
 
-  * No-change rebuild against libhdf5-103-1t64
+  * New upstream version 20200824
 
- -- Steve Langasek <steve.langasek@ubuntu.com>  Wed, 13 Mar 2024 17:59:16 +0000
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sat, 12 Sep 2020 21:28:01 +0900
 
-lammps (20240207+dfsg-1.1) unstable; urgency=medium
+lammps (20200721-1) unstable; urgency=medium
 
-  * Non-maintainer upload.
-  * Rename libraries for 64-bit time_t transition.  Closes: #1062514
+  * New upstream version 20200721
 
- -- Lukas Märdian <slyon@debian.org>  Wed, 28 Feb 2024 16:51:42 +0000
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 22 Jul 2020 15:29:35 +0900
 
-lammps (20240207+dfsg-1) unstable; urgency=medium
+lammps (20200303-1) unstable; urgency=medium
 
-  * Team upload.
-  * New upstream feature release.
-  * remove lib/{latte,mscg,smd} from debian/copyright exclusion list
-    (no longer included in upstream source)
-  * Standards-Version: 4.6.2
+  * New upstream version 20200303
 
- -- Drew Parsons <dparsons@debian.org>  Sun, 18 Feb 2024 16:27:44 +0100
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 30 Mar 2020 15:39:18 +0900
 
-lammps (20231121+dfsg-4) unstable; urgency=medium
+lammps (20200204-1) unstable; urgency=medium
 
-  * Team upload.
-  * python3-lammps Depends: liblammps-dev not liblammps0
-    since loads liblammps.so using CDLL (ctypes dlopen)
+  * New upstream version 20200204
 
- -- Drew Parsons <dparsons@debian.org>  Sun, 31 Dec 2023 10:32:04 +0100
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Sun, 16 Feb 2020 15:47:31 +0900
 
-lammps (20231121+dfsg-3) unstable; urgency=medium
+lammps (20190807-1) unstable; urgency=medium
 
-  * Team upload.
-  * libpnetcdf-dev is supported only on 64-bit systems
-    [amd64 arm64 mips64el ppc64el riscv64 s390x ia64 ppc64 sparc64]
-    For loong64 support see Bug#1058578.
+  * New upstream (20190807)
 
- -- Drew Parsons <dparsons@debian.org>  Sat, 30 Dec 2023 13:44:33 +0100
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 09 Sep 2019 18:26:43 +0900
 
-lammps (20231121+dfsg-2) unstable; urgency=medium
+lammps (20190201-1) unstable; urgency=medium
 
-  * Team upload.
-  * move python3-sphinx to general Build-Depends to allow
-    dh --with sphinxdoc to work in arch builds.
+  * New upstream (20190201)
+  * Switch to cmake
 
- -- Drew Parsons <dparsons@debian.org>  Sat, 30 Dec 2023 12:29:18 +0100
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Wed, 27 Feb 2019 09:54:02 +0900
 
-lammps (20231121+dfsg-1) unstable; urgency=medium
+lammps (0~20170811.malive-1) unstable; urgency=medium
 
-  * Team upload.
-  * New upstream Feature Release 21 Nov 2023.
-    - html docs provides in upstream tarball, no need to rebuild
-  * create debian/watch monitoring the list of releases in
-    machine-readable format at
-    https://download.lammps.org/tars/releases/
-    (linked as "older versions" from
-    https://www.lammps.org/download.html)
-  * drop debian patch 10_enable_spglib.patch: spglib support is now
-    managed by cmake
-  * update debian patch 20_set_potentials_path.patch to keep reading
-    env variable LAMMPS_POTENTIALS as used in upstream code for custom
-    potential data sets. Use the default debian location
-    /usr/share/lammps/potentials if LAMMPS_POTENTIALS is not defined.
-  * use pybuild to build python module after library. Closes: #1054792.
-    - Build-Depends: pybuild-plugin-pyproject
-    - test using example demo.py (build time and debian/tests runtime)
-    - drop debian/python3-lammps.install
-  * install benchmarks in lammps-examples (/usr/share/lammps/bench)
-    - update debian patch do-not-install-potentials.patch to keep cmake
-      from installing bench files in order to enable arch-indep builds
-      (dh_install installs them from the source dir)
-  * update debian/copyright
-    - src/USER* dirs renamed
-    - lib/message/cslib no longer used
-  * remove generated python files. Closes: #1048351.
-  * update docs in lammps-doc
-    - rebuild HTML docs using sphinx. Closes: #988849.
-    - dh --with sphinxdoc and Build-Depends: libjs-sphinxdoc
-      - neverthless skip dh_sphinxdoc since sphinx and dh_sphinx are
-        broken for lammps docs. See Bug#1059621
-    - Build-Depends-Indep: python3-venc not virtualvenv,
-      python3-sphinxcontrib.jquery
-    - move existing upstream html to html.org. Closes: #1049827.
-    - update debian patch 30_build_docs.patch
-      - skip sphinxfortran (not available for debian)
-      - use local mathjax. Build-Depends: libjs-mathjax
-        (config=TeX-AMS-MML_HTMLorMML not MML_CHTML)
-    - provide Manual.pdf in lammps-doc
-    - register html and PDF docs with doc-base
-    - override lintian warning source-is-missing [doc/html/*.html]
-      Source is in doc/src.
-    - override dh_compress to not compress pdf files
-  * update build config options: use PKG_* instead of PKG_USER_*
-    Activate DIELECTRIC. Closes: #1050795.
-  * Build-Depends: libpnetcdf-dev (as well as libnetcdf-dev)
-    Lammps supports parallel NETCDF, though not parallel HDF5 (H5MD)
+  * New upstream (20170811)
 
- -- Drew Parsons <dparsons@debian.org>  Sat, 30 Dec 2023 10:45:36 +0100
-
-lammps (20220106.git7586adbb6a+ds1-2) unstable; urgency=medium
-
-  * [a623229] Switch off GPU
-
- -- Anton Gladky <gladk@debian.org>  Thu, 17 Mar 2022 19:23:11 +0100
-
-lammps (20220106.git7586adbb6a+ds1-1) unstable; urgency=medium
-
-  * [b442ad0] New upstream version 20220106.git7586adbb6a+ds1
-  * [97b22c7] Update patches
-  * [b1930ce] Minor fixes
-  * [4a8cbcc] Apply cme fix dpkg
-
- -- Anton Gladky <gladk@debian.org>  Fri, 11 Mar 2022 17:00:02 +0100
-
-lammps (20210122~gita77bb+ds1-4) unstable; urgency=medium
-
-  * [97c5ecd] Fix compilation
-
- -- Anton Gladky <gladk@debian.org>  Thu, 11 Nov 2021 22:10:36 +0100
-
-lammps (20210122~gita77bb+ds1-3) unstable; urgency=medium
-
-  * [de1b3b8] Add tex-gyre to B-D. (Closes: #997418)
-  * [3ba7eec] Bump debhelper from old 12 to 13.
-  * [067811c] Update renamed lintian tag names in lintian overrides.
-  * [40a4e10] Update standards version to 4.6.0, no changes needed.
-
- -- Anton Gladky <gladk@debian.org>  Mon, 08 Nov 2021 22:59:09 +0100
-
-lammps (20210122~gita77bb+ds1-2) unstable; urgency=medium
-
-  * [0d859c3] Compile against vtk9
-  * [c332a91] Ignore quilt dir
-  * [71bc0f1] Ignore debian/files
-
- -- Anton Gladky <gladk@debian.org>  Tue, 26 Jan 2021 19:41:12 +0100
-
-lammps (20210122~gita77bb+ds1-1) unstable; urgency=medium
-
-  * [0fdcea2] Add gitlab-ci.yml
-  * [27f8ce0] Update get_orig script
-  * [237ce88] Update gitlab-ci.yml
-  * [673a7c7] New upstream version 0~20210122.gita77bb3073
-  * [a64d2c8] Refresh patches
-  * [97c9689] Update d-files
-  * [72d1d2f] Add sphinxdoc
-
- -- Anton Gladky <gladk@debian.org>  Sun, 24 Jan 2021 20:57:55 +0100
-
-lammps (20200303+dfsg1-3) unstable; urgency=medium
-
-  * [4476c93] Drop downloading mathjax from internet. (Closes: #960745)
-
- -- Anton Gladky <gladk@debian.org>  Sat, 16 May 2020 20:59:56 +0200
-
-lammps (20200303+dfsg1-2) unstable; urgency=medium
-
-  * [e847bc5] Add git to build-depends
-  * [d98d86a] Set Standards-Version to 4.5.0
-  * [f86ac75] Minor update of d/copyright
-  * [d5b40da] Remove use of githubredir
-
- -- Anton Gladky <gladk@debian.org>  Mon, 13 Apr 2020 18:54:55 +0200
-
-lammps (20200303+dfsg1-1) unstable; urgency=medium
-
-  * [527333e] Update copyright file
-  * [1fe839a] Update download-scrupt
-  * [a0650a6] Refresh patches
-  * [68b28bc] Update d/copyright
-  * [712c691] Do not use sphinxdoc
-  * [bffc1f8] Add lintian-overrides, which seem to be false positive
-  * [e698d38] New upstream version 20200303+dfsg1
-
- -- Anton Gladky <gladk@debian.org>  Mon, 13 Apr 2020 13:57:08 +0200
-
-lammps (20191120+dfsg1-2) unstable; urgency=medium
-
-  * [986614f] Remove PKG_MEAM and PKG_REAX options
-  * [b6ac058] Minor fixes in d/copyright and d/patches
-  * [67a37ea] Use secure URI in Homepage field.
-  * [46d7c3a] Enable PKG_KIM
-
- -- Anton Gladky <gladk@debian.org>  Wed, 15 Jan 2020 21:50:25 +0100
-
-lammps (20191120+dfsg1-1) unstable; urgency=medium
-
-  * Team upload.
-  * New upstream patch release 20 November 2019.
-  * rename debian patches build_docs_direct.patch as build_docs.patch:
-    use system sphinx to build docs. Build-Depends: virtualenv.
-
- -- Drew Parsons <dparsons@debian.org>  Fri, 03 Jan 2020 11:25:33 +1100
-
-lammps (20190919+dfsg2-2) unstable; urgency=medium
-
-  * Team upload.
-  * mark liblammps0 as Multi-Arch: same
-
- -- Drew Parsons <dparsons@debian.org>  Mon, 30 Dec 2019 10:35:45 +1100
-
-lammps (20190919+dfsg2-1) unstable; urgency=medium
-
-  * Team upload.
-  * New upstream patch release 19 Sep 2019. Closes: #925729.
-  * move Files-Excluded to Source stanza of debian/copyright.
-    Enables mk-origtargz to removed unwanted files in upstream tarball
-    - drop examples/log.* (no longer present in upstream tarball)
-    - do not exclude doc/utils/sphinx-config from orig tarball.
-      Needed to build docs with `make html`.
-      sphinx-config/_themes/lammps_theme uses MIT licence.
-  * Standards-Version: 4.4.1
-  * debhelper compatibility level 12: debhelper-compat (= 12)
-  * Build-Depends: python3-all-dev. Closes: #936814.
-  * Build-Depends: libvtk7-dev, libhdf5-mpi-dev
-  * Build-Depends: libvtk7-qt-dev. Causes USER-VTK to build against
-    Qt5 (via vtkGUISupportQt).
-  * Debian patch build_docs_direct.patch eliminates virtualenv,
-    enabling `make html` to build docs directly. Uses python3 only.
-  * provide shared library in liblammps-dev, liblammps0
-  * provide python module in python3-lammps (with examples)
-    - Debian patch python_lib_soname.patch points the LAMMPS library
-      used in lammps.py at soversion .so.0 instead of .so.
-      Allows the python module to depend only on liblammps0, otherwise
-      liblammps-dev would also have to be installed.
-  * provide sample scripts and benchmarks in lammps-examples
-    - install in /usr/share/lammps to link to potentials.
-      Closes: #924189.
-  * emacs mode installed by lammps-data
-  * mark -doc, -data, -examples as Multi-Arch: foreign
-  * disable dh_dwz on liblammps.so.0 (elf_update failed)
-  * Debian patch fix_man.patch fixes section and space delimiter in
-    lammps.1.
-
- -- Drew Parsons <dparsons@debian.org>  Thu, 31 Oct 2019 21:51:12 +0800
-
-lammps (0~20181211.gitad1b1897d+dfsg1-2) unstable; urgency=medium
-
-  * Team upload.
-  * Build-Depends: gfortran
-    Closes: #923466
-
- -- Andreas Tille <tille@debian.org>  Fri, 08 Mar 2019 07:18:57 +0100
-
-lammps (0~20181211.gitad1b1897d+dfsg1-1) unstable; urgency=medium
-
-  * [63546ae] Fix typo in d/copyright
-  * [863405f] Update install-file
-  * [b47a528] Update patches
-  * [7466010] New upstream version 0~20181211.gitad1b1897d+dfsg1
-
- -- Anton Gladky <gladk@debian.org>  Thu, 20 Dec 2018 21:27:37 +0100
-
-lammps (0~20180822.gitb47e49223+dfsg1-2) unstable; urgency=medium
-
-  * [803c676] Disable REAX because it causes segfault on mips*
-  * [88f9fca] Update Standards-Version to 4.2.1
-
- -- Anton Gladky <gladk@debian.org>  Thu, 13 Sep 2018 20:52:16 +0200
-
-lammps (0~20180822.gitb47e49223+dfsg1-1) unstable; urgency=medium
-
-  [ Anton Gladky ]
-  * [ceb6296] Update patches
-  * [ffd7251] Add lammps-data binary
-  * [31838f8] Switch to cmake build system
-  * [50340be] Update d/copyright
-  * [86e8141] New upstream version 0~20180822.gitb47e49223+dfsg1
-  * [d3bd62d] Update address of FSF
-  * [9a1d41f] Update autopkgtests
-  * [24aefb7] Add NEWS-file
-
-  [ Andrius Merkys ]
-  * [d4bfbf3] Link against libsymspg-dev. (Closes: #901060)
-
- -- Anton Gladky <gladk@debian.org>  Wed, 05 Sep 2018 23:13:17 +0200
-
-lammps (0~20180510.gitaa1d815fe-4) unstable; urgency=medium
-
-  * [3958d4e]  Disable mpi-unit-test on armhf and armel
-
- -- Anton Gladky <gladk@debian.org>  Tue, 15 May 2018 18:24:32 +0200
-
-lammps (0~20180510.gitaa1d815fe-3) unstable; urgency=medium
-
-  * [1f3a539] Disable mpi-unit-test on i386
-
- -- Anton Gladky <gladk@debian.org>  Sun, 13 May 2018 15:18:25 +0200
-
-lammps (0~20180510.gitaa1d815fe-2) unstable; urgency=medium
-
-  * [dfd9a8b] Fix FTBFS on most platforms. (Closes: #896860)
-
- -- Anton Gladky <gladk@debian.org>  Sun, 13 May 2018 10:09:09 +0200
-
-lammps (0~20180510.gitaa1d815fe-1) unstable; urgency=medium
-
-  [ Adrian Bunk ]
-  * [6692458] Fix FTBFS with TeX Live 2018
-
-  [ Anton Gladky ]
-  * [88573f8] New upstream version 0~20180510.gitaa1d815fe
-  * [452d2b9] Set compat-level 11
-  * [859ce26] Set Standards-Version to 4.1.4
-  * [569ae1d] Add htmldoc to build-depends
-  * [b1acdc8], [a8f70a1]  Refresh patch
-  * [cc843f9] Update paths in d/rules and in doc-base
-  * [189066e] Remove deprecated autopkgtest field in d/control
-
- -- Anton Gladky <gladk@debian.org>  Sat, 12 May 2018 21:05:20 +0200
-
-lammps (0~20161109.git9806da6-7) unstable; urgency=medium
-
-  * [ca7dc38] Better fix for the bug, fixed in previous upload.
-              (Thanks, Graham)
-
- -- Anton Gladky <gladk@debian.org>  Thu, 19 Jan 2017 19:06:24 +0100
-
-lammps (0~20161109.git9806da6-6) unstable; urgency=medium
-
-  * [7dbb0cf] Do not fail on mpi-errors.
-
- -- Anton Gladky <gladk@debian.org>  Wed, 18 Jan 2017 21:32:19 +0100
-
-lammps (0~20161109.git9806da6-5) unstable; urgency=medium
-
-  * [cbbbe25] Disable test on mips64el (unstable).
-
- -- Anton Gladky <gladk@debian.org>  Thu, 29 Dec 2016 23:13:34 +0100
-
-lammps (0~20161109.git9806da6-4) unstable; urgency=medium
-
-  * [0c12ebd] Add mips64el to disable_auto_test_archs_mpi in d/rules.
-
- -- Anton Gladky <gladk@debian.org>  Thu, 29 Dec 2016 20:04:45 +0100
-
-lammps (0~20161109.git9806da6-3) unstable; urgency=medium
-
-  [ Graham Inggs ]
-  * [f1a60b8] Replace deprecated OMPI_MCA_orte_rsh_agent with
-              OMPI_MCA_plm_rsh_agent
-  * [89af794] Allow stderr output in the autopkgtests
-  * [64c465d] Allow --oversubscribe for autopkgtests
-
- -- Anton Gladky <gladk@debian.org>  Wed, 28 Dec 2016 22:28:59 +0100
-
-lammps (0~20161109.git9806da6-2) unstable; urgency=medium
-
-  * [c90dbc8] Respect build-indep.
-
- -- Anton Gladky <gladk@debian.org>  Sat, 12 Nov 2016 12:35:48 +0100
-
-lammps (0~20161109.git9806da6-1) unstable; urgency=medium
-
-  * [7c868a1] Update get-script to clean it from VCS and other support-files.
-  * [7328d32] New upstream version 0~20161109.git9806da6
-  * [1c61fdb] Refresh patch.
-  * [f13ed88] Generate docs during build.
-  * [0bf08ca] Apply cme fix dpkg.
-
- -- Anton Gladky <gladk@debian.org>  Sat, 12 Nov 2016 07:39:16 +0100
-
-lammps (0~20151117.gite3c4db7-3) unstable; urgency=medium
-
-  * [579bfa9] Respect --parallel option. (Closes: #805533)
-  * [24992fd] Remove duplicates in doc.
-  * [acdfe10] Minor fix in d/copyright.
-
- -- Anton Gladky <gladk@debian.org>  Sun, 06 Dec 2015 11:58:46 +0100
-
-lammps (0~20151117.gite3c4db7-2) unstable; urgency=medium
-
-  * [ce58358] Update get_orig script.
-  * [7fe6df7] Remove embedded js-scripts.
-
- -- Anton Gladky <gladk@debian.org>  Wed, 18 Nov 2015 21:49:58 +0100
-
-lammps (0~20151117.gite3c4db7-1) unstable; urgency=medium
-
-  * [879c7b4] Add libeigen3-dev to BD.
-  * [50e6397] Apply cme fix dpkg-control.
-  * [14e7d41] Update patch.
-  * [a00dbfc] Imported Upstream version 0~20151117.gite3c4db7
-  * [8f8aa65] Update d/copyright.
-
- -- Anton Gladky <gladk@debian.org>  Wed, 18 Nov 2015 21:02:52 +0100
-
-lammps (0~20150313.gitfa668e1-1) unstable; urgency=medium
-
-  * Upload into unstable.
-
- -- Anton Gladky <gladk@debian.org>  Wed, 29 Apr 2015 23:44:49 +0200
-
-lammps (0~20150313.gitfa668e1-1~exp1) experimental; urgency=medium
-
-  * [aad2273] Imported Upstream version 0~20150313.gitfa668e1
-  * [820b5c5] Refresh patches. Remove applied by upstream.
-  * [b303847] Update d/copyright.
-  * [5dc10e0] Minor fix in d/rules.
-  * [b833c3c] Set Standards-Version: 3.9.6. No changes.
-  * [0e947fe] Enable C++11.
-
- -- Anton Gladky <gladk@debian.org>  Sun, 15 Mar 2015 20:59:57 +0100
-
-lammps (0~20140523.gite5e877d-1) unstable; urgency=medium
-
-  * [4c132dc] Grab source from GitHub page.
-  * [7811c49] Move mpi-default-bin to Depends.
-  * [4bd2ecb] Imported Upstream version 0~20140523.gite5e877d
-  * [7f4e9a8] Remove colloid autopkgtest.
-
- -- Anton Gladky <gladk@debian.org>  Sat, 24 May 2014 19:03:51 +0200
-
-lammps (0~20140415.git42bb280-2) unstable; urgency=medium
-
-  * [eff3471] Update/fix autopkgtest.
-
- -- Anton Gladky <gladk@debian.org>  Sun, 18 May 2014 11:30:46 +0200
-
-lammps (0~20140415.git42bb280-1) unstable; urgency=medium
-
-  * [f2930e3] Imported Upstream version 0~20140415.git42bb280
-  * [b05b302] Remove patch, applied by upstream.
-  * [12f95b6] Fix autotest.
-  * [cca8000] Replace deprecated MPI-flag in debian/rules.
-
- -- Anton Gladky <gladk@debian.org>  Wed, 16 Apr 2014 19:23:18 +0200
-
-lammps (0~20140212.git32a5cd0-4) unstable; urgency=medium
-
-  * [db83dbb] Fix autotest (MPI error).
-
- -- Anton Gladky <gladk@debian.org>  Sat, 15 Feb 2014 21:49:51 +0100
-
-lammps (0~20140212.git32a5cd0-3) unstable; urgency=medium
-
-  * [842e614] Fix autotest.
-
- -- Anton Gladky <gladk@debian.org>  Sat, 15 Feb 2014 09:42:10 +0100
-
-lammps (0~20140212.git32a5cd0-2) unstable; urgency=medium
-
-  * [9fad448] Fix FTBFS on arch-only builds.
-
- -- Anton Gladky <gladk@debian.org>  Fri, 14 Feb 2014 07:39:31 +0100
-
-lammps (0~20140212.git32a5cd0-1) unstable; urgency=medium
-
-  * [5127b33] Imported Upstream version 0~20140212.git32a5cd0
-  * [9c47579] Refresh patch.
-  * [b21f32c] Set Standards-Version: 3.9.5. No changes.
-  * [249a3f2] Set canonical VCS-fields.
-  * [85cb066] Add autotests.
-  * [bf2b96e] Remove executable bit in examples.
-
- -- Anton Gladky <gladk@debian.org>  Thu, 13 Feb 2014 22:38:05 +0100
-
-lammps (0~20131119.git7162cf0-1) unstable; urgency=low
-
-  * [e65b919] Imported Upstream version 0~20131119.git7162cf0
-  * [f7bddd4] Fix some problems, introduced by upstream recently.
-  * [3616dfc] Use wrap-and-sort script.
-  * [7e92030] Ignore quilt dir
-
- -- Anton Gladky <gladk@debian.org>  Wed, 20 Nov 2013 22:41:36 +0100
-
-lammps (0~20130503.gitd2adfba-1) unstable; urgency=low
-
-  * [4a7ac95] Imported Upstream version 0~20130503.gitd2adfba
-  * [2f578c3] Minor description update.
-  * [fdb3192] Use parallel build.
-  * [afade40] Add doc-base file.
-
- -- Anton Gladky <gladk@debian.org>  Tue, 07 May 2013 21:27:12 +0200
-
-lammps (0~20130201.gitdf9c707-1) experimental; urgency=low
-
-  * [acf02f1] Imported Upstream version 0~20130201.gitdf9c707
-  * [9477729] Add -fopenmp option to compilation flags.
-  * [a422953] Use Standards-Version: 3.9.4. No changes.
-  * [3b9caec] Remove obsolete DM-Upload-Allowed flag.
-  * [84d264e] Remove parallel option due to high RAM-consumption.
-
- -- Anton Gladky <gladk@debian.org>  Sun, 03 Feb 2013 21:40:03 +0100
-
-lammps (0~20121116.git9eeec79-1~exp1) experimental; urgency=low
-
-  * [8b791e7] Update git_orig-script. Use more effective xz-compression.
-  * [c4ee715] Imported Upstream version 0~20121116.git9eeec79
-  * [e9300f9] Update patch.
-
- -- Anton Gladky <gladky.anton@gmail.com>  Mon, 19 Nov 2012 18:55:39 +0100
-
-lammps (0~20120615.gite442279-1) unstable; urgency=low
-
-  * [de9ec1f] Imported Upstream version 0~20120615.gite442279
-  * [864de63] Remove patch, applied by upstream.
-
- -- Anton Gladky <gladky.anton@gmail.com>  Mon, 18 Jun 2012 20:34:59 +0200
-
-lammps (0~20120426.git67de404-1) unstable; urgency=low
-
-  * [cf6ee1b] Disable mpirun-test on some platforms, where it crashes.
-  * [b4a9875] Imported Upstream version 0~20120426.git67de404
-  * [8abc62b] Enable additional modules before compiling. (Closes: #670547)
-
- -- Anton Gladky <gladky.anton@gmail.com>  Fri, 27 Apr 2012 00:04:27 +0200
-
-lammps (0~20120305.git5d7feb1-1) unstable; urgency=low
-
-  * [23cace5] Imported Upstream version 0~20120305.git5d7feb1
-  * [c2d8e83] Enable auto-test.
-
- -- Anton Gladky <gladky.anton@gmail.com>  Tue, 06 Mar 2012 20:03:14 +0100
-
-lammps (0~20120228.git268a14f-1) unstable; urgency=low
-
-  * Initial Release. (Closes: #610622).
-
- -- Anton Gladky <gladky.anton@gmail.com>  Sat, 25 Feb 2012 22:49:48 +0100
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Fri, 27 Oct 2017 12:16:20 +0900

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Categories=X-MateriApps;
+Type=Application
+Exec=firefox https://ma.issp.u-tokyo.ac.jp/
+Name=MateriApps Website
+Name[ja]=MateriAppsウェブページ

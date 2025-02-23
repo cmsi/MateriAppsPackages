@@ -1,8 +1,14 @@
+alamode (1.5.0-1) unstable; urgency=low
+
+  * New upstream version 1.5.0
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Mon, 29 Jul 2024 14:03:54 +0900
+
 alamode (1.4.2-2) unstable; urgency=low
 
   * Add missing tool python script
 
- -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 06 Feb 2024 16:05:30 +0900q
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 06 Feb 2024 16:05:30 +0900
 
 alamode (1.4.2-1) unstable; urgency=low
 

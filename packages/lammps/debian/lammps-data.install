@@ -1,2 +1,1 @@
-potentials usr/share/lammps
-tools/emacs/lammps-mode.el usr/share/emacs/site-lisp
+usr/share/lammps/potentials

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Categories=X-Database;
+Type=Application
+Exec=firefox https://www.materialsproject.org
+Name=Materials Project
+Name[ja]=Materials Project

@@ -1,2 +1,2 @@
 usr/bin
-etc/profile.d
+usr/etc/profile.d/lammps.* etc/profile.d

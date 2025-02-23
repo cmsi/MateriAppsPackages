@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Categories=X-Database;
+Type=Application
+Exec=firefox http://mits.nims.go.jp
+Name=MatNavi
+Name[ja]=MatNavi

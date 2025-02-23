@@ -1,2 +1,2 @@
 examples usr/share/lammps
-bench usr/share/lammps
+usr/share/lammps/bench

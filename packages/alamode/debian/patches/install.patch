@@ -21,7 +21,7 @@
      set(serial "${alm_version}")
 --- a/anphon/CMakeLists.txt
 +++ b/anphon/CMakeLists.txt
-@@ -148,3 +148,4 @@
+@@ -153,3 +153,4 @@
  if (fftw3library)
      target_link_libraries(anphon ${fftw3library})
  endif()

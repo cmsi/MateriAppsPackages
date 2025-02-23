@@ -1,0 +1,3 @@
+applications/*	/usr/share/applications
+etc/GettingStarted.desktop	/etc/skel/Desktop
+etc/lxterminal.conf /etc/skel/.config/lxterminal
