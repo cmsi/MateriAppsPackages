@@ -40,7 +40,7 @@ RUN apt-get update -qq \
       sudo \
       vim \
       wget \
- && curl -L https://sourceforge.net/projects/materiappslive/files/Debian/sources/setup.sh/download | /bin/sh \
+ && curl -L https://malive.s3/amazonaws.com/repos/setup.sh | /bin/sh \
  && apt-get update \
  && echo "unalias ls" >> /etc/skel/.bashrc
 
