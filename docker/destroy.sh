@@ -13,8 +13,10 @@ if [ -z "${CODENAMES}" ]; then
 fi
 
 for c in ${CODENAMES}; do
+  VERSION=$(docker images --format "{{.Tag}}" madev/"$c")
+  IMAGE="madev/${c}:${VERSION}"
   echo "removing image ${IMAGE}..."
-  docker rmi madev/${c}
+  docker rmi "$IMAGE"
 done
 docker volume prune -f
 docker system prune -f

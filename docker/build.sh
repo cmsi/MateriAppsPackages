@@ -40,7 +40,7 @@ RUN apt-get update -qq \
       sudo \
       vim \
       wget \
- && curl -L https://malive.s3/amazonaws.com/repos/setup.sh | /bin/sh \
+ && curl -L https://malive.s3.amazonaws.com/repos/setup.sh | /bin/sh \
  && apt-get update \
  && echo "unalias ls" >> /etc/skel/.bashrc
 
