@@ -1,9 +1,0 @@
-Source: pmix
-Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
-Build-Depends: debhelper (>= 10), libmunge-dev, libevent-dev, libhwloc-dev
-Standards-Version: 3.9.4
-
-Package: pmix
-Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
-Description: openpmix library
