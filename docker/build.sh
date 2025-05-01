@@ -48,10 +48,9 @@ ARG USERNAME=$(id -un)
 ARG GROUPNAME=$(id -gn)
 ARG UID=$(id -u)
 ARG GID=$(id -g)
-ARG PASSWORD=live
 RUN groupadd -f -g \$GID \$GROUPNAME \
  && useradd -m -s /bin/bash -u \$UID -g \$GID -G sudo \$USERNAME \
- && echo \$USERNAME:\$PASSWORD | chpasswd \
+ && echo \$USERNAME:live | chpasswd \
  && echo "\$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 USER \$USERNAME
 WORKDIR /home/\$USERNAME/
