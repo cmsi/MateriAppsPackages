@@ -1,0 +1,17 @@
+Source: sparse-ir
+Section: scientific
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9), dh-python, python3-all-dev, python3-setuptools, python3-numpy, python3-scipy
+Standards-Version: 3.9.3
+Homepage: https://github.com/SpM-lab/sparse-ir
+
+Package: sparse-ir
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: sparse-ir - A library for the intermediate representation of propagators
+ This library provides routines for constructing and working with the intermediate 
+ representation of correlation functions. It provides:
+ on-the-fly computation of basis functions for arbitrary cutoff Λ
+ basis functions and singular values are accurate to full precision
+ routines for sparse sampling

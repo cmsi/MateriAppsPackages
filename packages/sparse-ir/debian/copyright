@@ -1,0 +1,7 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: dcorelib
+Source: https://github.com/shinaoka/dcorelib
+
+Files: *
+Copyright: H. Shinaoka
+License: GPL-3+

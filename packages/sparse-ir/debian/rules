@@ -1,0 +1,7 @@
+#!/usr/bin/make -f
+
+export PYBUILD_NAME = dcore
+
+%:
+	dh $@ --buildsystem=pybuild
+
