@@ -6,7 +6,7 @@ Build-Depends: debhelper (>= 9), dh-python, python3-all-dev, python3-setuptools,
 Standards-Version: 3.9.3
 Homepage: https://github.com/SpM-lab/sparse-ir
 
-Package: sparse-ir
+Package: python3-sparse-ir
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: sparse-ir - A library for the intermediate representation of propagators
