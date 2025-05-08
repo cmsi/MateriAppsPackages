@@ -8,7 +8,7 @@ Homepage: https://github.com/SpM-lab/sparse-ir
 
 Package: python3-sparse-ir
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, python3-numpy, python3-scipy
 Description: sparse-ir - A library for the intermediate representation of propagators
  This library provides routines for constructing and working with the intermediate 
  representation of correlation functions. It provides:
