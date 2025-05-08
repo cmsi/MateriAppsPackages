@@ -8,7 +8,7 @@ Homepage: https://github.com/shinaoka/dcorelib
 
 Package: python3-dcorelib
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, python3-numpy, python3-scipy, python3-h5py, python3-matplotlib, python3-mpi4py, python3-sparse-ir
 Description: Backend library for DCore
  TRIQS https://github.com/TRIQS/triqs.git
  TRIQS/DFTTools https://github.com/TRIQS/dft_tools.git

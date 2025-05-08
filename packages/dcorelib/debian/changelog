@@ -1,3 +1,9 @@
+dcorelib (0.9.4-2) unstable; urgency=low
+
+  * Fix dependencies
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Thu, 08 May 2025 11:32:42 +0900
+
 dcorelib (0.9.4-1) unstable; urgency=low
 
   * Initial release for 0.9.4
