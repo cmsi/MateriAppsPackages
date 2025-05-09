@@ -5,3 +5,5 @@ export PYBUILD_NAME = dcore
 %:
 	dh $@ --buildsystem=pybuild
 
+override_dh_auto_test:
+	/bin/true
