@@ -1,0 +1,12 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: more-itertools
+Source: https://github.com/more-itertools/more-itertools
+
+Files: *
+Copyright: 2012 Erik Rose
+License: MIT
+ This is free software: you can redistribute it and/or modify
+ it under the terms of the MIT License.
+ 
+ On Debian systems, the complete text of the MIT License can be found in
+ `/usr/share/common-licenses/MIT'.

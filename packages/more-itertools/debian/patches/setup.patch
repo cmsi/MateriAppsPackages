@@ -1,0 +1,11 @@
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -34,7 +34,7 @@
+     "Programming Language :: Python :: Implementation :: PyPy",
+     "Topic :: Software Development :: Libraries",
+ ]
+-dynamic = ["version", "description"]
++dynamic = ["version"]
+ 
+ [project.urls]
+ Homepage = "https://github.com/more-itertools/more-itertools"
