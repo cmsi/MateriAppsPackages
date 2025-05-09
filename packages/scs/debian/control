@@ -2,7 +2,7 @@ Source: scs
 Section: scientific
 Priority: extra
 Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
-Build-Depends: debhelper (>= 9), dh-python, pybuild-plugin-pyproject, python3-mesonpy, python3-all-dev, python3-setuptools, python3-numpy, python3-scipy
+Build-Depends: debhelper (>= 9), dh-python, pybuild-plugin-pyproject, python3-mesonpy, python3-all-dev, python3-setuptools, python3-numpy, python3-scipy, libopenblas-dev
 Standards-Version: 3.9.3
 Homepage: 
 

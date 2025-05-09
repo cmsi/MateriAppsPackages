@@ -6,7 +6,7 @@ export PYBUILD_NAME = scs
 	dh $@ --buildsystem=pybuild
 
 override_dh_auto_clean:
-	rm -rf scs_source
+	rm -rf scs_source .mesonpy-native-file.ini
 	mkdir -p scs_source
 	dh_auto_clean
 
