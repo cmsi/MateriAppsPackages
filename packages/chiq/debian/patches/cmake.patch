@@ -1,0 +1,37 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,6 +7,8 @@
+ 
+ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+ 
++include(GNUInstallDirs)
++
+ list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+ find_package(Eigen3 3.1 REQUIRED)
+ 
+@@ -32,11 +34,12 @@
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+ endif(OPENMP_FOUND)
+ 
+-add_subdirectory(extern/pybind11)  # require cmake 3.4
++set(PYBIND11_FINDPYTHON ON)
++find_package(pybind11 CONFIG REQUIRED)
+ add_subdirectory(src)
+ add_subdirectory(python)
+ 
+ # Configuration files for ChiQ
+ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/chiqvars.sh.build.in ${CMAKE_CURRENT_BINARY_DIR}/chiqvars.sh @ONLY)
+ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/chiqvars.sh.installed.in ${CMAKE_CURRENT_BINARY_DIR}/share/chiqvars.sh @ONLY)
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/share/chiqvars.sh DESTINATION share)
++# install(FILES ${CMAKE_CURRENT_BINARY_DIR}/share/chiqvars.sh DESTINATION share)
+--- a/python/CMakeLists.txt
++++ b/python/CMakeLists.txt
+@@ -9,6 +9,6 @@
+  GROUP_EXECUTE GROUP_READ
+  WORLD_EXECUTE WORLD_READ
+  DESTINATION ${CMAKE_INSTALL_BINDIR})
+-install(DIRECTORY package/chiq DESTINATION ${CMAKE_INSTALL_LIBDIR}/bse-python)
++install(DIRECTORY package/chiq DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/python3/dist-packages)
+ # make bse package for backward compatibility
+-install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/bse-python/chiq ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/bse-python/bse)")
++execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${CMAKE_INSTALL_PREFIX}/lib/python3/dist-packages/chiq ${CMAKE_INSTALL_PREFIX}/lib/python3/dist-packages/bse)

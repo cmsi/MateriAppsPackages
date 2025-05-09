@@ -1,0 +1,18 @@
+Source: chiq
+Section: scientific
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 8.0.0), cmake, libeigen3-dev, python3-pybind11
+Standards-Version: 3.9.3
+Homepage: https://github.com/issp-center-dev/ChiQ
+
+Package: chiq
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, python3-scipy, python3-h5py, python3-more-itertools
+Description: This package solves the Bethe-Salpeter equation
+ (BSE) in the dynamical mean-field theory (DMFT) and calculates
+ the momentum-dependent static and dynamical susceptibilities 
+ χ(q,ν_m) in correlated electron systems. Necessary input to
+ this package can be generated using DCore. Combined with DCore,
+ this package offers investigations of two-particle responses
+ in models and materials.

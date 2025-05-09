@@ -1,0 +1,7 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: hphi
+Source: <https://github.com/issp-center-dev/ChiQ>
+
+Files: *
+Copyright: The University of Tokyo
+License: GPL-3+
