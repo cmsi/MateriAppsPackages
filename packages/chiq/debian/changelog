@@ -1,3 +1,9 @@
+chiq (1.0b-2) unstable; urgency=low
+
+  * Add examples
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Fri, 09 May 2025 17:54:28 +0900
+
 chiq (1.0b-1) unstable; urgency=low
 
   * Initial release for 1.0-beta
