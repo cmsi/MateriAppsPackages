@@ -1,9 +1,6 @@
 #!/usr/bin/make -f
 
-export PYBUILD_NAME = dcore
+export PYBUILD_NAME = more_itertools
 
 %:
 	dh $@ --buildsystem=pybuild
-
-override_dh_auto_test:
-	/bin/true
