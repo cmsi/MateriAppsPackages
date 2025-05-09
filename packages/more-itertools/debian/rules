@@ -4,3 +4,7 @@ export PYBUILD_NAME = more_itertools
 
 %:
 	dh $@ --buildsystem=pybuild
+
+override_dh_clean:
+	dh_clean
+	rm -rf more_itertools.egg-info

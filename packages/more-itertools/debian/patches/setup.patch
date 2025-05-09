@@ -9,3 +9,15 @@
  
  [project.urls]
  Homepage = "https://github.com/more-itertools/more-itertools"
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -24,3 +24,9 @@
+ 
+ [mypy-tests.*]
+ disallow_untyped_defs = false
++
++[options]
++packages = find:
++
++[options.packages.find]
++exclude = debian
