@@ -1,0 +1,13 @@
+Source: python3-clarabel
+Section: scientific
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9), python3-pip
+Standards-Version: 3.9.3
+
+Package: python3-clarabel
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, python3-numpy, python3-scipy
+Description: Clarabel.rs is a Rust implementation of an interior point
+ numerical solver for convex optimization problems using a novel homogeneous
+ embedding.

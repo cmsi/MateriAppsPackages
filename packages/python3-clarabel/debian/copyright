@@ -1,0 +1,7 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: clarabel
+Source: https://github.com/oxfordcontrol/Clarabel.rs
+
+Files: *
+Copyright: 2022 University of Oxford Control Group
+License: Apache-2.0
