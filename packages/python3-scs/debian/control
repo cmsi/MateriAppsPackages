@@ -1,0 +1,11 @@
+Source: python3-scs
+Section: scientific
+Priority: extra
+Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9), python3-pip, gfortran, libopenblas-dev
+Standards-Version: 3.9.3
+
+Package: python3-scs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, python3-numpy, python3-scipy
+Description: Python interface for SCS 3.0.0 and higher.
