@@ -8,3 +8,6 @@
 
 override_dh_shlibdeps:
 	/bin/true
+
+override_dh_strip:
+	/bin/true
