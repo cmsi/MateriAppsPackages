@@ -8,7 +8,7 @@ Homepage: https://github.com/issp-center-dev/ChiQ
 
 Package: chiq
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, python3-scipy, python3-h5py, python3-more-itertools
+Depends: ${shlibs:Depends}, ${misc:Depends}, python3-scipy, python3-h5py, python3-more-itertools, python3-toml
 Description: This package solves the Bethe-Salpeter equation
  (BSE) in the dynamical mean-field theory (DMFT) and calculates
  the momentum-dependent static and dynamical susceptibilities 
