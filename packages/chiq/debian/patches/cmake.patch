@@ -35,3 +35,11 @@
  # make bse package for backward compatibility
 -install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/bse-python/chiq ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/bse-python/bse)")
 +execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${CMAKE_INSTALL_PREFIX}/lib/python3/dist-packages/chiq ${CMAKE_INSTALL_PREFIX}/lib/python3/dist-packages/bse)
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -13,4 +13,4 @@
+ pybind11_add_module(bse_solver bse_solver_pybind.cpp)
+ 
+ install(TARGETS bse_solver
+-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/bse-python)
++    LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/python3/dist-packages)
