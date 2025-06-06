@@ -68,7 +68,7 @@ class Frame(wx.Frame):
         box_1.Add(self.button_help, 0, wx.LEFT | wx.BOTTOM, 5)
         box_1.Add(self.button_cancel, 0, wx.LEFT | wx.BOTTOM, 5)
         box_1.Add(self.button_install, 0, wx.LEFT | wx.BOTTOM, 5)
-        layout.Add(box_1, 0, wx.ALIGN_BOTTOM | wx.ALIGN_RIGHT | wx.RIGHT | wx.TOP, 10)
+        layout.Add(box_1, 0, wx.ALIGN_RIGHT | wx.RIGHT | wx.TOP, 10)
 
         self.text_log = wx.TextCtrl(self.panel, -1, style=wx.TE_MULTILINE | wx.TE_READONLY, size=(50,10))
         layout.Add(self.text_log, 1, wx.LEFT | wx.RIGHT | wx.TOP | wx.BOTTOM | wx.EXPAND, 10)

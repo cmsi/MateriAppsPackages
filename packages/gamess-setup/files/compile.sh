@@ -31,6 +31,8 @@ if [ "$MD5SUM" = "5b019733bd4054cdb27a0d84dbbd5d1a" ]; then
   VERSION="202109"
 elif [ "$MD5SUM" = "489a8516c5a597d152b38264f42db519" ]; then
   VERSION="202309"
+elif [ "$MD5SUM" = "6210613bddd3930e67b7a7eba8c24e4c" ]; then
+  VERSION="202407"
 else
   echo "Warning: unkown version. Let's assume latest version."
   VERSION="latest"

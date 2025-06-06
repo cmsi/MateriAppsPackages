@@ -1,3 +1,9 @@
+gamess-setup (1:202407-1) unstable; urgency=low
+
+  * Fix GUI and support gamess-202407
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Fri, 06 Jun 2025 15:35:15 +0900
+
 gamess-setup (1:202309-1) unstable; urgency=low
 
   * Fix GUI and support gamess-202309
