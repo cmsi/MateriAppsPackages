@@ -1,3 +1,9 @@
+materiappslive (1:5.0-2) unstable; urgency=low
+
+  * Fixed broken link to MatNavi
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Tue, 10 Jun 2025 16:45:50 +0900
+
 materiappslive (1:5.0-1) unstable; urgency=low
 
   * Moved wiki to online
