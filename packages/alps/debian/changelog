@@ -1,3 +1,9 @@
+alps (2:2.3.3-1) unstable; urgency=low
+
+  * New upstream version 2.3.3
+
+ -- Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>  Thu, 31 Jul 2025 15:40:38 -0400
+
 alps (1:20220304~r7871-2) unstable; urgency=low
 
   * Workaround for boost 1.84.0

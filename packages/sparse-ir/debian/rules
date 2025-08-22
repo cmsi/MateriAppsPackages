@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-export PYBUILD_NAME = dcore
+export PYBUILD_NAME = sparse_ir
 
 %:
 	dh $@ --buildsystem=pybuild

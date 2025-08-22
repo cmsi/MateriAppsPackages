@@ -1,7 +1,7 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: dcorelib
-Source: https://github.com/shinaoka/dcorelib
+Source: https://github.com/SpM-lab/sparse-ir
 
 Files: *
-Copyright: H. Shinaoka
-License: GPL-3+
+Copyright: 2020-2021 Markus Wallerberger and others
+License: MIT

@@ -1,14 +1,16 @@
 #!/bin/sh
 
-SCRIPT_DIR=$(cd $(dirname $0) && pwd)
-VERSION=$(head -1 ${SCRIPT_DIR}/debian/changelog | sed 's/1://g' | cut -d ' ' -f 2 | sed 's/[()]//g')
-VERSION_BASE=$(echo ${VERSION} | cut -d '-' -f 1)
+PACKAGE=dcore
+PACKAGE_DIR=$(cd "$(dirname "$0")" && pwd)
 
-if [ -f dcore-$VERSION_BASE.orig.tar.gz ]; then
+# shellcheck disable=SC1091
+. "$PACKAGE_DIR"/../../script/path.sh
+
+if [ -f "$PACKAGE"_"$VERSION_BASE".orig.tar.gz ]; then
   exit 127
 fi
-wget https://github.com/issp-center-dev/DCore/archive/refs/tags/v${VERSION_BASE}.tar.gz
-mkdir dcore-${VERSION_BASE}
-tar zxvf v${VERSION_BASE}.tar.gz -C dcore-${VERSION_BASE} --strip-component=1
-tar zcvf dcore_${VERSION_BASE}.orig.tar.gz dcore-${VERSION_BASE}
-rm -rf dcore-${VERSION_BASE} v${VERSION_BASE}.tar.gz
+rm -rf "$PACKAGE"-"$VERSION_BASE"
+mkdir -p "$PACKAGE"-"$VERSION_BASE"
+wget -O - https://github.com/issp-center-dev/DCore/archive/refs/tags/v"$VERSION_BASE".tar.gz | tar zxvf - -C "$PACKAGE"-"$VERSION_BASE" --strip-components=1
+tar zcvf "$PACKAGE"_"$VERSION_BASE".orig.tar.gz "$PACKAGE"-"$VERSION_BASE"
+rm -rf "$PACKAGE"-"$VERSION_BASE"
