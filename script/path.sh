@@ -9,7 +9,7 @@ if [ -d "${PACKAGE_DIR}" ]; then :; else
   exit 127
 fi
 
-VERSION=$(head -1 ${PACKAGE_DIR}/debian/changelog | sed 's/1://g' | cut -d ' ' -f 2 | sed 's/[()]//g')
+VERSION=$(head -1 ${PACKAGE_DIR}/debian/changelog | sed 's/[1-9]://g' | cut -d ' ' -f 2 | sed 's/[()]//g')
 VERSION_BASE=$(echo ${VERSION} | cut -d '-' -f 1)
 
 echo "PACKAGE: ${PACKAGE}"
