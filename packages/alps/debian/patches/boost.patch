@@ -727,3 +727,14 @@
  #define NPY_NO_DEPRECATED_API NPY_1_11_API_VERSION
  #include <numpy/arrayobject.h>
  
+--- a/applications/dmrg/tebd/CMakeLists.txt
++++ b/applications/dmrg/tebd/CMakeLists.txt
+@@ -28,7 +28,7 @@
+               core/PropOps.f90 core/Hdf5Interface.f90 tebd.f90)
+   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${LAPACK_LINKER_FLAGS}")
+   add_executable(tebd ${SOURCES})
+-  target_link_libraries(tebd ${HDF5_Fortran_LIBRARIES} ${HDF5_LIBRARIES} ${LAPACK_LIBRARY} ${BLAS_LIBRARY})
++  target_link_libraries(tebd ${HDF5_Fortran_LIBRARIES} ${HDF5_LIBRARIES} LAPACK::LAPACK)
+   if(HDF5_DEFINITIONS)
+     foreach (_hdf5_def ${HDF5_DEFINITIONS})
+       string(REPLACE "-D" "" _escaped_def ${_hdf5_def})
