@@ -636,6 +636,15 @@
        MESSAGE(STATUS "PYTHON_EXTRA_LIBS =${PYTHON_EXTRA_LIBS}" )
        mark_as_advanced(PYTHON_EXTRA_LIBS)
  
+@@ -258,7 +261,7 @@
+ 
+ 
+ EXEC_PYTHON_SCRIPT("import sys; print('{}.{}'.format(sys.version_info.major,sys.version_info.minor))" PYVER) # e.g. 27, 38
+-set(ALPS_PYTHON_LIB_DEST_ROOT lib/python${PYVER}/site-packages CACHE PATH "Module install path")
++set(ALPS_PYTHON_LIB_DEST_ROOT lib CACHE PATH "Module install path")
+ 
+ #
+ # This function writes down a script to compile f2py modules
 --- a/src/alps/CMakeLists.txt
 +++ b/src/alps/CMakeLists.txt
 @@ -136,7 +136,7 @@
