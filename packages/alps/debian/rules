@@ -1,25 +1,12 @@
 #!/usr/bin/make -f
 
-include /usr/share/cdbs/1/rules/debhelper.mk
-include /usr/share/cdbs/1/class/cmake.mk
 
-# Add here any variable or target overrides you need.
+%:
+	dh $@
 
-# Extra flags passed to cmake.
-#  ALPS specific options
-DEB_CMAKE_EXTRA_FLAGS = \
-    -DALPS_BUILD_APPLICATIONS:BOOL=ON \
-    -DALPS_ENABLE_OPENMP:BOOL=ON \
-    -DALPS_BUILD_FORTRAN:BOOL=ON \
-    -DCMAKE_Fortran_FLAGS:STRING=-fopenmp \
-    -DALPS_BUILD_TESTS=OFF -DALPS_BUILD_EXAMPLES=OFF \
-    -DPYTHON_INTERPRETER=/usr/bin/python3
+override_dh_auto_configure:
+	dh_auto_configure -- -DALPS_BUILD_APPLICATIONS:BOOL=ON -DALPS_ENABLE_OPENMP:BOOL=ON -DALPS_BUILD_FORTRAN:BOOL=ON -DCMAKE_Fortran_FLAGS:STRING=-fopenmp -DALPS_BUILD_TESTS=OFF -DALPS_BUILD_EXAMPLES=OFF -DPYTHON_INTERPRETER=/usr/bin/python3
 
-#  Linker flags for reduce binary size
-DEB_CMAKE_EXTRA_FLAGS += \
-    -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed" \
-    -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed" \
-    -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed"
+override_dh_auto_build:
+	dh_auto_build --no-parallel
 
-# Allow parallel builds
-# DEB_BUILD_PARALLEL = yes

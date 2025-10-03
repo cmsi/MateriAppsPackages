@@ -37,6 +37,30 @@
  
  # XML Path
  set(ALPS_XML_PATH "lib" CACHE STRING "Directory to install ALPS XML directory in")
+@@ -882,19 +878,10 @@
+             
+     install(FILES LICENSE.txt README.txt CITATIONS.txt
+             DESTINATION share/alps COMPONENT libraries)
+-    string(CONFIGURE [[
+-     set(PROJECT_SOURCE_DIR "@PROJECT_SOURCE_DIR@")
+-     set(ALPS_PYTHON_LIB_DEST_ROOT "@ALPS_PYTHON_LIB_DEST_ROOT@")
+-     message(STATUS "PROJECT_SOURCE_DIR: ${PROJECT_SOURCE_DIR}")
+-     message(STATUS "CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
+-     message(STATUS "CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")
+-     message(STATUS "CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}")
+-     message(STATUS "ALPS_PYTHON_LIB_DEST_ROOT: ${ALPS_PYTHON_LIB_DEST_ROOT}")
+-
+-     configure_file(${PROJECT_SOURCE_DIR}/lib/pyalps/pyalps_config.py.in ${CMAKE_INSTALL_PREFIX}/${ALPS_PYTHON_LIB_DEST_ROOT}/pyalps/pyalps_config.py)
+-    ]] install_script @ONLY)
+-    install(CODE ${install_script})
+-            
++
++    configure_file(${PROJECT_SOURCE_DIR}/lib/pyalps/pyalps_config.py.in ${PROJECT_BINARY_DIR}/lib/pyalps/pyalps_config.py)
++    install(FILES ${PROJECT_BINARY_DIR}/lib/pyalps/pyalps_config.py DESTINATION ${ALPS_PYTHON_LIB_DEST_ROOT}/pyalps COMPONENT python)
++
+     if (VISTRAILS_FOUND AND (APPLE OR WIN32))
+       message (STATUS "VisTrails found.")
+       set(PYTHONEXEC "${CMAKE_INSTALL_PREFIX}/bin/vispython")
 --- a/applications/qmc/looper/looper/lapack.h
 +++ b/applications/qmc/looper/looper/lapack.h
 @@ -54,7 +54,7 @@
@@ -740,3 +764,23 @@
    if(HDF5_DEFINITIONS)
      foreach (_hdf5_def ${HDF5_DEFINITIONS})
        string(REPLACE "-D" "" _escaped_def ${_hdf5_def})
+--- a/tool/CMakeLists.txt
++++ b/tool/CMakeLists.txt
+@@ -155,15 +155,8 @@
+     if (NOT WIN32)
+       set(PYTHONPATH "${ALPS_PYTHON_LIB_DEST_ROOT}")
+       set(PYTHONBIN "${PYTHON_INTERPRETER}")
+-      string(CONFIGURE [[
+-        set(PROJECT_SOURCE_DIR "@PROJECT_SOURCE_DIR@")
+-        set(PYTHONBIN "@PYTHONBIN@")
+-        set(PYTHONPATH "${CMAKE_INSTALL_PREFIX}/@PYTHONPATH@")
+-        message(STATUS ": ${PYTHONPATH}")
+-        message(STATUS ": ${PYTHONBIN}")
+-        configure_file(${PROJECT_SOURCE_DIR}/tool/alpspython.in ${CMAKE_INSTALL_PREFIX}/bin/alpspython )
+-        ]] install_script @ONLY)
+-      install(CODE ${install_script})
++      configure_file(${PROJECT_SOURCE_DIR}/tool/alpspython.in ${PROJECT_BINARY_DIR}/tool/alpspython)
++      install(FILES ${PROJECT_BINARY_DIR}/tool/alpspython DESTINATION bin COMPONENT tools)
+     else (NOT WIN32)
+       set(PYTHONPATH "%HOMEDRIVE%\\Program Files\\ALPS\\lib;%HOMEDRIVE%\\Program Files (x86)\\ALPS\\lib")
+       set(PYTHONBIN "python")
