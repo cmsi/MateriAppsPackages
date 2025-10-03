@@ -2,7 +2,7 @@ Source: alps
 Section: non-free
 Priority: extra
 Maintainer: Synge Todo <wistaria@phys.s.u-tokyo.ac.jp>
-Build-Depends: debhelper-compat (= 13), cmake, dh-sequence-cmake, libboost-all-dev, libhdf5-dev, mpi-default-dev, libsqlite3-dev, python3-matplotlib, python3-dev, liblapack-dev, gfortran
+Build-Depends: debhelper-compat (= 13), dh-cmake-compat (= 1), cmake, dh-sequence-cmake, libboost-all-dev, libhdf5-dev, mpi-default-dev, libsqlite3-dev, python3-matplotlib, python3-dev, liblapack-dev, gfortran
 Standards-Version: 3.9.1
 Homepage: http://alps.comp-phys.org/
 Vcs-Browser: https://alps.comp-phys.org/trac/browser
