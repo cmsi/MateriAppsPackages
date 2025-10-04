@@ -32,6 +32,7 @@ RUN apt-get update -qq \
       curl \
       debhelper \
       devscripts \
+      dh-cmake \
       gfortran \
       git \
       liblapack-dev \
